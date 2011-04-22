@@ -423,10 +423,10 @@ public class DirectAccessFile extends RegisterFile
      */
     public boolean remove ( Grabable obj )
     {   
-        // si algo anda mal, salir retornando false.
+       // si algo anda mal, salir retornando false.
         if( clase == null || getMode().equals( "r" ) ) return false;
-        if( ! isOk( obj ) ) return false;    
-        
+        if( ! isOk( obj ) ) return false;
+
         // si todo estaba bien, marcar el registro y salir.
         boolean resp = false;
         long pos = search( obj );
@@ -435,10 +435,10 @@ public class DirectAccessFile extends RegisterFile
             seekRegister( pos );
             Register reg = this.read();
             reg.setState( Register.BORRADO );
-               
+
             seekRegister( pos );
             resp = this.write( reg );
-        }   
+        }
         return resp;
     }   
      

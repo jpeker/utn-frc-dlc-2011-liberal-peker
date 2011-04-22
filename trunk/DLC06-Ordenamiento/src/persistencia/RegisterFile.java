@@ -238,6 +238,7 @@ public abstract class RegisterFile
     {
         try
         {
+
             return maestro.length();
         }
         catch( IOException e )
@@ -247,7 +248,19 @@ public abstract class RegisterFile
         }
         
         return 0;
-    }    
+    }
+    public void setlength(long tamaño)
+    {
+     try
+        {
+            maestro.setLength(tamaño);
+        }
+        catch( IOException e )
+        {
+            JOptionPane.showMessageDialog( null, "Error al posicionar al final: " + e.getMessage() );
+            System.exit( 1 );
+        }
+    }
     
     /**
      * Determina si se ha llegado al final del archivo o no.
