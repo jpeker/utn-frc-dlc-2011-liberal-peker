@@ -10,8 +10,8 @@ import persistencia.*;
 import datos.*;
 public class Principal
 {        
-     private static DirectAccessFile m1;
-     private static DirectAccessFile m2;
+     private static DirectAccessFileDelete m1;
+     private static DirectAccessFileDelete m2;
        
      private static Alumno   alu;
      private static Articulo art; 
@@ -79,8 +79,8 @@ public class Principal
     {
         int x, op;
 
-        m1 = new DirectAccessFile( "Alumnos.dat", "rw" );
-        m2 = new DirectAccessFile( "Articulos.dat", "rw" );
+        m1 = new DirectAccessFileDelete( "Alumnos.dat", "rw" );
+        m2 = new DirectAccessFileDelete( "Articulos.dat", "rw" );
         
         alu = new Alumno();
         art = new Articulo();
@@ -92,15 +92,15 @@ public class Principal
             System.out.println ("2.  Listado de Alumnos");
             System.out.println ("3.  Ordenar archivo de Alumnos");
             System.out.println ("4.  Búsqueda binaria de Alumnos");
-
+            System.out.println ("5.  Borrar un Alumno");
             System.out.println ("-----------------------------------");
             
-            System.out.println ("5.  Alta de un registro de Articulo");      
-            System.out.println ("6.  Listado de Articulos");
-            System.out.println ("7.  Ordenar archivo de Articulos");
-            System.out.println ("8.  Búsqueda binaria de Articulos");
-            
-            System.out.println ("9. Salir");
+            System.out.println ("6.  Alta de un registro de Articulo");
+            System.out.println ("7.  Listado de Articulos");
+            System.out.println ("8.  Ordenar archivo de Articulos");
+            System.out.println ("9.  Búsqueda binaria de Articulos");
+            System.out.println ("10.  Borrar Articulos");
+            System.out.println ("11. Salir");
 
             System.out.print ( "Ingrese opcion: " );
             op = Consola.readInt();
@@ -133,22 +133,34 @@ public class Principal
                          break;
                
                case 5:  
+                         System.out.print( "Ingrese el legajo del alumno a borrar: " );
+                         x = Consola.readInt();
+                         alu.setLegajo(x);
+                         long br = m1.search( alu );
+                         if ( br != -1 )
+                         {
+                             Grabable obje = m1.get(br);
+                             m1.remove(obje);
+                             System.out.print("Alumno borrado");}
+                         else System.out.print( "Alumno no encontrado y no borrado" );
+                         break;
+              case 6:
                          System.out.println("Ingrese los datos del Artículo: ");
                          leerArticulo();
                          m2.add( art );
-                         break;   
+                         break;
 
-               case 6:  
+               case 7:
                          System.out.print("Se muestra el archivo de Articulos...");
                          mostrarTodo( m2 );
                          break;
-               case 7:  
+               case 8:
                          System.out.print( "Ordenando archivo de Articulos..." );
                          m2.sort();
                          System.out.println("Hecho...");
                          break;
                 
-               case 8:
+               case 9:
                          System.out.print( "Ingrese el código del artículo a buscar: " );
                          x = Consola.readInt();
                          art.setCodigo( x );
@@ -156,14 +168,26 @@ public class Principal
                          if ( b2 != -1 )System.out.print( "Articulo encontrado (binarySearch()): " + m2.get( b2 ) );
                          else System.out.print( "Articulo no encontrado (binarySearch())" );
                          break;
-
-                case 9: 
+                case 10:
+                         System.out.print( "Ingrese el código del artículo a borrar: " );
+                         x = Consola.readInt();
+                         art.setCodigo( x );
+                         long bt = m2.search( art );
+                         if ( bt != -1 )
+                         {
+                             Grabable objet = m2.get(bt);
+                             m2.remove(objet);
+                             System.out.print( "Articulo borrado"  );
+                         }
+                         else System.out.print( "Articulo no encontrado y borrado" );
+                         break;
+                case 11:
                          m1.close();
                          m2.close();
                          break;
             }
          }
-         while (op != 9);
+         while (op != 11);
          System.exit(0);
     }
 }
