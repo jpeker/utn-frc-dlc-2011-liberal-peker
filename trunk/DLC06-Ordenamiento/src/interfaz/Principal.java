@@ -93,14 +93,16 @@ public class Principal
             System.out.println ("3.  Ordenar archivo de Alumnos");
             System.out.println ("4.  Búsqueda binaria de Alumnos");
             System.out.println ("5.  Borrar un Alumno");
+            System.out.println ("6.  Vaciar el archivo alumno");
             System.out.println ("-----------------------------------");
             
-            System.out.println ("6.  Alta de un registro de Articulo");
-            System.out.println ("7.  Listado de Articulos");
-            System.out.println ("8.  Ordenar archivo de Articulos");
-            System.out.println ("9.  Búsqueda binaria de Articulos");
-            System.out.println ("10.  Borrar Articulos");
-            System.out.println ("11. Salir");
+            System.out.println ("7.  Alta de un registro de Articulo");
+            System.out.println ("8.  Listado de Articulos");
+            System.out.println ("9.  Ordenar archivo de Articulos");
+            System.out.println ("10.  Búsqueda binaria de Articulos");
+            System.out.println ("11.  Borrar Articulos");
+            System.out.println ("12.  Vaciar el archivo articulo");
+            System.out.println ("13. Salir");
 
             System.out.print ( "Ingrese opcion: " );
             op = Consola.readInt();
@@ -145,22 +147,25 @@ public class Principal
                          else System.out.print( "Alumno no encontrado y no borrado" );
                          break;
               case 6:
+                         m1.clean();
+                         break;
+              case 7:
                          System.out.println("Ingrese los datos del Artículo: ");
                          leerArticulo();
                          m2.add( art );
                          break;
 
-               case 7:
+               case 8:
                          System.out.print("Se muestra el archivo de Articulos...");
                          mostrarTodo( m2 );
                          break;
-               case 8:
+               case 9:
                          System.out.print( "Ordenando archivo de Articulos..." );
                          m2.sort();
                          System.out.println("Hecho...");
                          break;
                 
-               case 9:
+               case 10:
                          System.out.print( "Ingrese el código del artículo a buscar: " );
                          x = Consola.readInt();
                          art.setCodigo( x );
@@ -168,7 +173,7 @@ public class Principal
                          if ( b2 != -1 )System.out.print( "Articulo encontrado (binarySearch()): " + m2.get( b2 ) );
                          else System.out.print( "Articulo no encontrado (binarySearch())" );
                          break;
-                case 10:
+                case 11:
                          System.out.print( "Ingrese el código del artículo a borrar: " );
                          x = Consola.readInt();
                          art.setCodigo( x );
@@ -181,13 +186,16 @@ public class Principal
                          }
                          else System.out.print( "Articulo no encontrado y borrado" );
                          break;
-                case 11:
+                 case 12:
+                         m2.clean();
+                         break;
+                case 13:
                          m1.close();
                          m2.close();
                          break;
             }
          }
-         while (op != 11);
+         while (op != 13);
          System.exit(0);
     }
 }
