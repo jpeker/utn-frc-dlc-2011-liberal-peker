@@ -12,7 +12,10 @@ public class Principal
 {        
      private static DirectAccessFileDelete m1;
      private static DirectAccessFileDelete m2;
-       
+     //private static DirectAccessFile m1;
+     //private static DirectAccessFile m2;
+
+
      private static Alumno   alu;
      private static Articulo art; 
 
@@ -81,6 +84,8 @@ public class Principal
 
         m1 = new DirectAccessFileDelete( "Alumnos.dat", "rw" );
         m2 = new DirectAccessFileDelete( "Articulos.dat", "rw" );
+       // m1 = new DirectAccessFile( "Alumnos.dat", "rw" );
+       // m2 = new DirectAccessFile( "Articulos.dat", "rw" );
         
         alu = new Alumno();
         art = new Articulo();

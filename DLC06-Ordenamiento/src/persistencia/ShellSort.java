@@ -24,7 +24,8 @@ public class ShellSort implements DirectAccessFileSorter
         // obtenemos la cantidad de registros del archivo
         long n = rf.count();
 
-        // aplicamos el algoritmo QuickSort
+        // aplicamos el algoritmo Shell
+        shell();
     }
     private void shell()
     {
@@ -32,12 +33,12 @@ public class ShellSort implements DirectAccessFileSorter
        for(h = 1; h <= n / 9; h = 3*h + 1);
        for ( ; h > 0; h /= 3)
        {
-
            for (long j = h; j < n; j++)
              {
-                  Grabable y= rf.get( j );
+                  Grabable y= rf.get(0);
+                  
+                  //for (k = j - h; k >= 0 && y < v[k]; k-=h)
                   long k;
-                  //for (Grabable k = j - h; k >= 0 && y < v[k]; k-=h)
                   for (k=j-h; k >= 0 && y.compareTo(rf.get(k))< 0; k-=h)
                   {
                         //v[k+h] = v[k];

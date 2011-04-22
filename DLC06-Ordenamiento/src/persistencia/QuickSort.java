@@ -60,6 +60,7 @@ public class QuickSort implements DirectAccessFileSorter
                 }  
                 
                 Grabable rj  = rf.get( j );
+
                 while ( rc.compareTo( rj ) < 0  &&  j > izq )
                 {  
                       j--;
