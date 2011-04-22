@@ -55,7 +55,8 @@ public class DirectAccessFileDelete extends RegisterFile
         super( nombre, modo );
 
         // creamos un objeto ordenador por defecto para el archivo.
-//        sorter = new QuickSort( this );
+        // sorter = new QuickSort( this );
+        sorter = new ShellSort (this);
     }
 
     /**
