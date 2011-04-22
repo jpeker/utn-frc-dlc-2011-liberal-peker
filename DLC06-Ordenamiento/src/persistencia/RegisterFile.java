@@ -249,6 +249,10 @@ public abstract class RegisterFile
         
         return 0;
     }
+    /**
+     * Cambia el tamaño del archivo.
+     * @return el total de bytes del archivo.
+     */
     public void setlength(long tamaño)
     {
      try
