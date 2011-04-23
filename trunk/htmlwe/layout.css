@@ -17,8 +17,19 @@ root {
 }
 
 body {
+      
 	font-family: Arial;
 	font-size: 14px;
+        background-color:#F5F5F5;
+           
+}
+.table {
+
+          background-color:#FFFFF;        
+	font-family: Arial;
+	font-size: 14px;
+        background-color:#F5F5F5;
+           
 }
 
 .content {
