@@ -7,7 +7,11 @@ package persistencia;
 
 /**
  *
- * @author Administrador
+ * @author Rodrigo Liberal, Peker Julian
+ * @version Abril de 2011
+ *
+ * ShellSort es empleada para organizar los elementos de un DirectAccessFileDelete
+ * usando el algoritmo de ordenamiento de Shell
  */
 public class ShellSort implements DirectAccessFileSorter
 {
@@ -27,7 +31,7 @@ public class ShellSort implements DirectAccessFileSorter
         // aplicamos el algoritmo Shell
         shell();
     }
-    private void shell()
+    private void shell() // El algoritmo de shell sort fue extraido de los apuntes de TSB del 2010 con leves modificaciones
     {
        long h;
        long n=rf.count();
@@ -41,9 +45,9 @@ public class ShellSort implements DirectAccessFileSorter
                for (long j = h; j < n; j++)
                  {
                       Grabable y= rf.get(j);
-
-                      //for (k = j - h; k >= 0 && y < v[k]; k-=h)
                       long k;
+                      //for (k = j - h; k >= 0 && y < v[k]; k-=h)
+                      //Queda comentado la implementacion extraida de los apuntes la dejo justamente a proposito como guia
                       for (k=j-h; k >= 0 && y.compareTo(rf.get(k))< 0; k-=h)
                       {
                             //v[k+h] = v[k];
