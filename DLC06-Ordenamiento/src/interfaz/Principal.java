@@ -17,7 +17,8 @@ public class Principal
 
 
      private static Alumno   alu;
-     private static Articulo art; 
+     private static Articulo art;
+     private static int listado = 0;
 
      /**
       * Muestra el contenido de un archivo (incluidos los registros marcados como borrados) en consola estandar
@@ -25,11 +26,20 @@ public class Principal
      public static void mostrarTodo ( RegisterFile m )
      {
           RegisterFileIterator rfi = m.createIterator();
-          while ( rfi.hasNext() )
+          if(rfi != null)
+          {   if(listado==1)System.out.print("Se muestra el archivo de Alumnos...");
+              if(listado==2)System.out.print("Se muestra el archivo de Articulos...");
+              while ( rfi.hasNext() )
+              {
+                   Grabable x = rfi.current();
+                   System.out.print( x.toString() );
+                   rfi.next();
+              }
+          }
+          else
           {
-               Grabable x = rfi.current();
-               System.out.print( x.toString() );
-               rfi.next();
+          if(listado ==1) System.out.println("Debe crear al menos un alumno para listar");
+          if(listado ==2) System.out.println("Debe crear al menos un articulo para listar");
           }
      }  
 
@@ -120,7 +130,8 @@ public class Principal
                          break;   
                 
                 case 2:  
-                         System.out.print("Se muestra el archivo de Alumnos...");
+                         
+                         listado = 1;
                          mostrarTodo( m1 );
                          break;
                          
@@ -161,7 +172,8 @@ public class Principal
                          break;
 
                case 8:
-                         System.out.print("Se muestra el archivo de Articulos...");
+                         
+                         listado = 2;
                          mostrarTodo( m2 );
                          break;
                case 9:
@@ -189,7 +201,7 @@ public class Principal
                              m2.remove(objet);
                              System.out.print( "Articulo borrado"  );
                          }
-                         else System.out.print( "Articulo no encontrado y borrado" );
+                         else System.out.print( "Articulo no encontrado y no borrado" );
                          break;
                  case 12:
                          m2.clean();

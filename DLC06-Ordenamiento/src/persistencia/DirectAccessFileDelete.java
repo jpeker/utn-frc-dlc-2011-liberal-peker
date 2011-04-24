@@ -7,15 +7,13 @@ package persistencia;
 
 /**
  *
- * @author Peker
+ * @author Rodrigo Liberal, Peker Julian
+ * @version Abril de 2011
  */
 import java.io.*;
 import javax.swing.*;
 public class DirectAccessFileDelete extends RegisterFile
 {
-
-
-
     protected DirectAccessFileSorter sorter;
 
     //*********************************************************************
@@ -105,7 +103,9 @@ public class DirectAccessFileDelete extends RegisterFile
     public RegisterFileIterator createIterator()
     {
         if( clase == null ) return null;
-        return new SequentialIterator();
+        //return new SequentialIterator(this);
+        // Iterador nuevo  implementado recorre inversamente desde el ultimo a primero
+        return new DirectAccessFileDeleteIterator(this);
     }
 
     /**
@@ -525,8 +525,8 @@ public class DirectAccessFileDelete extends RegisterFile
      private class SequentialIterator implements RegisterFileIterator
      {
            // el número relativo de registro actualmente accedido.
-           private int currentIndex;
-
+           private long currentIndex;
+           private DirectAccessFileDelete rf;
            /**
             * Crea un iterador posicionado en el registro número 0(cero). El
             * constructor lanza un proceso de limpieza del archivo (invoca al
@@ -537,13 +537,18 @@ public class DirectAccessFileDelete extends RegisterFile
                //clean();
                currentIndex = 0;
            }
-
+           private SequentialIterator(DirectAccessFileDelete rfp)
+           {
+               //clean();
+               rf=rfp;
+               currentIndex = rf.count()-1;
+           }
            /**
             * Vuelve el iterador al primer registro del archivo.
             */
            public void first()
            {
-               currentIndex = 0;
+               currentIndex = rf.count()-1;
            }
 
            /**
@@ -553,9 +558,9 @@ public class DirectAccessFileDelete extends RegisterFile
             */
            public void next()
            {
-               if ( currentIndex < count() )
+               if ( currentIndex >= 0 )
                {
-                   currentIndex++;
+                   currentIndex--;
                }
            }
 
@@ -566,7 +571,8 @@ public class DirectAccessFileDelete extends RegisterFile
             */
            public boolean hasNext()
            {
-               return ( currentIndex < count() );
+               if(currentIndex < 0 ) return false;
+               else return true;
            }
 
            /**
