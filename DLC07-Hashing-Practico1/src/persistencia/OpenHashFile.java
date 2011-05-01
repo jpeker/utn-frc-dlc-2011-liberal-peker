@@ -6,13 +6,14 @@
 package persistencia;
 
 import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.util.Iterator;
 import javax.swing.JOptionPane;
 
 
 /**
  *
- * @author dlc
+ * @author Peker Liberal
  */
 public class OpenHashFile extends HashFile{
 
@@ -27,6 +28,7 @@ public class OpenHashFile extends HashFile{
         count=0;
         init();
     }
+
     private void init()
     {
         // si no hay clase base, salir sin más...
@@ -94,7 +96,7 @@ public class OpenHashFile extends HashFile{
         long d = madre;
         this.seekByte(begin_table);
         int tam=this.read().sizeOf();
-        this.seekByte( (d-1)*tam+begin_table );
+        this.seekByte( (d)*tam+begin_table );
         Register r= this.read();
 
         while(  r.getState() != 2 )
@@ -122,15 +124,15 @@ public class OpenHashFile extends HashFile{
             writeClassName( obj );
 
             // ... y crear la tabla (con 11 cabeceras de listas en este caso)...
-            createTable( 11 );
+            createTable( capacity );
         }
 
         // controlar si es necesario redispersar...
-  //      if( count >= capacity / 2 ) rehash( true ); // si te mando un verdadero cambia el tamaño de la tabla y si no  limpia los borrados
+       if( count >= capacity / 2 ) rehash( true ); // si te mando un verdadero cambia el tamaño de la tabla y si no  limpia los borrados
 
         // obtener el índice de dispersión del objeto...
         long y = h( obj );
-
+        System.out.println("capacidad"+capacity);
 
 
         // agregar a obj en esa lista, si no estaba repetido...
@@ -154,16 +156,12 @@ public class OpenHashFile extends HashFile{
 
     @Override
     public boolean remove(Grabable obj) {
-              // si algo anduvo mal, salir retornando false...
+        // si algo anduvo mal, salir retornando false...
         if( ! isOk( obj ) ) return false;
         if( clase == null || getMode().equals( "r" ) ) return false;
-
-
         long y = h( obj );
         // remover el objeto de esa lista..
         boolean ok = eliminar(y, obj );
-
-
         if(ok){
                 count--;
                 System.out.println("count"+count);
@@ -175,15 +173,13 @@ public class OpenHashFile extends HashFile{
     private boolean eliminar(long madre,  Grabable obj )
     {
         boolean ok = false;
-
         // recorrer la lista y verificar si obj existe en ella...
-
          long d = madre;
       System.out.println("tama"+begin_table);
     this.seekByte(begin_table);
     int tam=this.read().sizeOf();
       System.out.println("tamaño reg"+tam);
-    this.seekByte( (d-1)*tam+begin_table );
+    this.seekByte( (d)*tam+begin_table );
     Register r= this.read();
 
         while(  r.getState() != 2 )
@@ -204,7 +200,6 @@ public class OpenHashFile extends HashFile{
                 ok=true;
             }
             // ... si no cortó, avanzar al siguiente NodeRegister...
-           //this.seekByte( (d-1)*tam+begin_table );
             r= this.read();
         }
      
@@ -258,7 +253,7 @@ public class OpenHashFile extends HashFile{
          long d = madre;
          this.seekByte(begin_table);
          int tam=this.read().sizeOf();
-         this.seekByte( (d-1)*tam+begin_table );
+         this.seekByte( (d)*tam+begin_table );
          Register r= this.read();
 
         while(  r.getState() != 2 )
@@ -279,7 +274,6 @@ public class OpenHashFile extends HashFile{
                 ok=true;
             }
             // ... si no cortó, avanzar al siguiente NodeRegister...
-           //this.seekByte( (d-1)*tam+begin_table );
             r= this.read();
         }
 
@@ -296,7 +290,7 @@ public class OpenHashFile extends HashFile{
         if( clase == null || getMode().equals( "r" ) ) return;
        
         // ajustar el tamaño de la tabla...
-        if( n <= 0 ) n = 11;
+        if( n <= 0 ) {n = 11;}
         capacity = n;
 
         // grabar ese tamaño (el file pointer está ubicado detrás del nombre de la clase base)...
@@ -304,8 +298,6 @@ public class OpenHashFile extends HashFile{
         {
             maestro.writeLong( capacity );
             maestro.writeLong( count );
-       
-         
         }
         catch( IOException e )
         {
@@ -327,70 +319,73 @@ public class OpenHashFile extends HashFile{
     }
    private void rehash(boolean change)
    {
+//  si el archivo no tiene una clase base asociada (está vacío
+//         físicamente), o está abierto en modo de sólo lectura, salir.
+        if( clase == null || getMode().equals( "r" ) ) return;
 
+        // calcular el nuevo tamaño de la tabla.
+        long new_capacity = capacity;
+        if( change )
+        {
+            long n = ( long )( new_capacity * 1.5 );
+            new_capacity = siguientePrimo( n );
+        }
 
+        // lanzar la redispersión.
+        try
+        {
+           // preparar el archivo temporal...
+           OpenHashFile temp = new OpenHashFile( "temporal.dat", "rw" ,new_capacity);
+            System.out.println("Contador hash"+count);
+           temp.maestro.setLength(0);
+           temp.writeClassName( clase );
+           temp.createTable( new_capacity );
+           this.seekByte( begin_table);
+           while ( ! this.eof() )
+           {
+               Register reg =  this.read();
+               // si el registro es válido, INSERTARLO en el archivo temporal
+               if ( reg.getState() == Register.CLOSED ) {temp.add( reg.getData() );}
+           }
+           this.close();
+           temp.close();
+           this.delete();
+           temp.rename( this );
+           capacity = new_capacity;
+           // reabrir el RandomAcccessFile original, en el mismo modo que tenía
+           maestro = new RandomAccessFile( fd, apertura );
+        }
+           catch( Exception e )
+        {
+            JOptionPane.showMessageDialog( null, "Error al limpiar el archivo: " + e.getMessage() );
+            System.exit( 1 );
+        }
    }
   private  boolean insertar(long madre,Grabable obj)// exploracion cuadratica graba o rechaza cuando el registro esta repetido
   {
    long d = madre;
-      System.out.println("tama"+begin_table);
+   System.out.println("direccion de registro"+d);
     this.seekByte(begin_table);
     int tam=this.read().sizeOf();
-      System.out.println("tamaño reg"+tam);
-    this.seekByte( (d-1)*tam+begin_table );
+    this.seekByte( (d)*tam+begin_table );
     Register r= this.read();
 
         while(  r.getState() != 2 )
         {
-            // suponemos que las direcciones son de byte y no de registro relativo...
-            //r = ( NodeRegister ) this.read();
-          //  r =  this.read();
-
             // controlar si el registro contiene a obj... en cuyo caso, cortar sin insertar...
             if(
                     r.getState() == Register.CLOSED && obj.equals( r.getData() ) ) return false;
 
             // ... si no cortó, avanzar al siguiente NodeRegister...
-          // this.seekByte( (d-1)*tam+begin_table );
             r= this.read();
         }
         long direccion=findPos(obj);
-        System.out.println("posi"+direccion+"clave"+madre);
         this.seekByte(direccion*tam+begin_table);
+        Register re = new Register(obj);
         r.setData(obj);
-        r.setState(Register.CLOSED);
-        this.seekByte( direccion*tam+begin_table);
-        this.write( r );
-        // si no existía, crear un NodeRegister para grabarlo...
-
-
-//        // saltamos al final del archivo...
-//        this.goFinal();
-//
-//        // obtenemos la dirección donde será grabado el nodo...
-//        long dir = this.bytePos();
-//
-//        // ... lo grabamos...
-//        this.write ( nuevo );
-//
-//        // ... y lo enganchamos en la lista...
-//        if( ant == NodeRegister.NIL )
-//        {
-//            // lista vacía... va al principio de la lista... modificar el header list...
-//            hl.setFirst( dir );
-//        }
-//        else
-//        {
-//            // va al final... cambiar el nodo en la posición ant... o sea: el último r leído!!!
-//            r.setNext( dir );
-//            this.seekByte( ant );
-//            this.write( r );
-//        }
-//
-//        // incrementar en uno el contador en el header list...
-//        hl.increase();
-//
-//        // bye bye...
+        re.setState(Register.CLOSED);
+        //this.seekByte( direccion*tam+begin_table);
+        this.write( re );
         return true;
   }
   private long findPos(Grabable obj)
@@ -399,10 +394,9 @@ public class OpenHashFile extends HashFile{
     long currentPos = h(obj);
     this.seekByte(begin_table);
     int tamaño=this.read().sizeOf();
-    this.seekByte( (currentPos-1)*tamaño+begin_table );
+    this.seekByte( (currentPos)*tamaño+begin_table );
     Register r= this.read();
 
-    //!array[currentPos].element.equals(x)
     while ( r.OPEN != 2 )
     {
       currentPos += offset;
@@ -413,7 +407,7 @@ public class OpenHashFile extends HashFile{
        this.seekByte( (currentPos-1)*tamaño+begin_table );
         r= this.read();
     }
-    return currentPos-1;
+    return currentPos;
   }
     private class Iterator implements RegisterFileIterator
     {
@@ -432,7 +426,7 @@ public class OpenHashFile extends HashFile{
             */
            private Iterator()
            {
-              // rehash( false );
+               rehash( false );
                currentIndex = begin_table;
            }
 
