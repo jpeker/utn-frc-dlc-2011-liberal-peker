@@ -98,7 +98,11 @@ public class OpenHashFile extends HashFile{
         boolean ok = insertar( y, obj );
 
         // ... si la grabación se hizo, volver a grabar la cabecera de la lista...
-        if( ok ){ count++;}
+        if( ok ){ 
+            count++;
+            System.out.println("count"+count);
+            setCabecera();
+        }
 
         // ... y retornar el flag de resultado...
         return ok;
@@ -121,7 +125,11 @@ public class OpenHashFile extends HashFile{
         boolean ok = eliminar(y, obj );
 
 
-
+        if(ok){
+                count--;
+                System.out.println("count"+count);
+                setCabecera();
+           }
         // ... y retornar el flag de resultado...
         return ok;
     }
@@ -162,6 +170,30 @@ public class OpenHashFile extends HashFile{
         }
      
         return ok;
+    }
+     /**
+     * Actualiza la capacidad y la cantidad de registro
+     * No hace nada  si el archivo
+     * no dispone de una clase base asociada
+     */
+    private void setCabecera()
+    {
+         if( clase == null || getMode().equals( "r" ) ) return;
+         this.seekByte(marca);
+         try
+         {
+            maestro.writeLong( capacity );
+            maestro.writeLong( count );
+
+
+        }
+        catch( IOException e )
+        {
+            JOptionPane.showMessageDialog( null, "Error al grabar el tamaño de la tabla: " + e.getMessage() );
+            System.exit(1);
+        }
+        begin_table = this.bytePos();
+
     }
     @Override
     public boolean update(Grabable obj) {
