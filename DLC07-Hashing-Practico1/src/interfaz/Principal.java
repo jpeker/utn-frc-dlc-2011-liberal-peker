@@ -25,8 +25,10 @@ public class Principal
           else{
           while ( rfi.hasNext() )
           {
+
                Grabable x = rfi.current();
-               System.out.print( x.toString() );
+               if(x!=null){
+               System.out.print( x.toString() );}
                rfi.next();
           }
      }  }
