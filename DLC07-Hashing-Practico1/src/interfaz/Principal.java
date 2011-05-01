@@ -10,7 +10,8 @@ import persistencia.*;
 import datos.*;
 public class Principal
 {        
-     private static ListHashFile m1;
+     private static  OpenHashFile m1;
+     //private static  ListHashFile m1;
      private static Alumno   alu;
 
      /**
@@ -57,7 +58,8 @@ public class Principal
     {
         int x, op;
         Alumno resp = null;
-        m1 = new ListHashFile( "Alumnos.dat", "rw" );
+      m1 = new OpenHashFile( "Alumnos.dat", "rw",11 );
+       // m1 = new ListHashFile( "Alumnos.dat", "rw" );
         alu = new Alumno();
         
         do

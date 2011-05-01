@@ -513,7 +513,8 @@ public class ListHashFile extends HashFile
             r = ( NodeRegister ) this.read();
             
             // controlar si el registro contiene a obj... en cuyo caso, cortar sin insertar...
-            if( r.getState() == Register.ACTIVO && obj.equals( r.getData() ) ) return false;
+            if(
+                    r.getState() == Register.ACTIVO && obj.equals( r.getData() ) ) return false;
             
             // ... si no cortó, avanzar al siguiente NodeRegister...
             ant = d;
