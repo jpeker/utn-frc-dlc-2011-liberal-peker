@@ -66,9 +66,48 @@ public class OpenHashFile extends HashFile{
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    @Override
+         /**
+     * Busca un registro en el archivo. Retorna una copia del registro que estaba en el archivo
+     * si es que el archivo contenía uno igual al que entra como parámetro. Si no lo encuentra,
+     * retorna null. No se garantiza que el file pointer quede apuntando al mismo lugar que
+     * apuntaba al empezar.
+     * @param obj el objeto a buscar en el archivo.
+     * @return una referencia al registro encontrado, o null si no se encontró.
+     */
     public Grabable find(Grabable obj) {
-        throw new UnsupportedOperationException("Not supported yet.");
+         // si algo anduvo mal, salir retornando false...
+        if( ! isOk( obj ) ) return null;
+        if( clase == null ) return null;
+
+        // acceder al headerlist correspondiente al objeto...
+        long y = h( obj );
+
+
+        // buscar el objeto de esa lista y retornar el resultado...
+        return buscar( y, obj );
+    }
+  // busca la primera ocurrencia de obj en la lista hl, retornando una
+    // referencia a él si lo encuentra, o null si no. Invocado por find().
+    private Grabable buscar( long madre, Grabable obj )
+    {
+        // recorrer la lista y verificar si obj existe en ella...
+        long d = madre;
+        this.seekByte(begin_table);
+        int tam=this.read().sizeOf();
+        this.seekByte( (d-1)*tam+begin_table );
+        Register r= this.read();
+
+        while(  r.getState() != 2 )
+        {
+
+            if(
+                    r.getState() == Register.CLOSED && obj.equals( r.getData() ) ) return r.getData();
+
+            r= this.read();
+        }
+
+        // ...si no estaba, retornar null...
+        return null;
     }
 
     @Override
@@ -195,10 +234,58 @@ public class OpenHashFile extends HashFile{
         begin_table = this.bytePos();
 
     }
-    @Override
-    public boolean update(Grabable obj) {
-        throw new UnsupportedOperationException("Not supported yet.");
+   public boolean update(Grabable obj) {
+          // si algo anduvo mal, salir retornando false...
+        if( ! isOk( obj ) ) return false;
+        if( clase == null || getMode().equals( "r" ) ) return false;
+
+        // acceder al headerlist correspondiente al objeto...
+        long y = h( obj );
+
+
+        // cambiar los objeto que coincidan con obj en esa lista..
+        boolean ok = modificar( y, obj );
+
+        // ... y retornar el flag de resultado...
+        return ok;
     }
+    private boolean modificar( long madre, Grabable obj )
+    {
+        boolean ok = false;
+
+        // recorrer la lista y verificar si obj existe en ella...
+
+         long d = madre;
+         this.seekByte(begin_table);
+         int tam=this.read().sizeOf();
+         this.seekByte( (d-1)*tam+begin_table );
+         Register r= this.read();
+
+        while(  r.getState() != 2 )
+        {
+            // suponemos que las direcciones son de byte y no de registro relativo...
+
+            // controlar si el registro contiene a obj... en cuyo caso, cortar sin insertar...
+            if(r.getState() == Register.CLOSED && obj.equals( r.getData() ) ) {
+              r.setData(obj);
+              try{
+                this.seekByte(maestro.getFilePointer()-r.sizeOf());}
+                catch( IOException e )
+                {
+                    JOptionPane.showMessageDialog( null, "Error al intentar devolver el número de byte: " + e.getMessage() );
+                    System.exit( 1 );
+                }
+                this.write( r );
+                ok=true;
+            }
+            // ... si no cortó, avanzar al siguiente NodeRegister...
+           //this.seekByte( (d-1)*tam+begin_table );
+            r= this.read();
+        }
+
+        return ok;
+    }
+
 
     @Override
     public void clean() {

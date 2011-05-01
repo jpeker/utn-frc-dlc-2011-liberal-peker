@@ -48,7 +48,7 @@ public class Principal
       */
     public static void leerAlumno ( )
     { 
-          cargarLegajo();
+         // cargarLegajo();
           System.out.print("Ingrese el Nombre: ");
           String nombre = Consola.readLine();
           alu.setNombre(nombre);
@@ -110,9 +110,11 @@ public class Principal
                
                 case 5:
                          System.out.println( "Ingrese los datos del alumno a modificar:" );
+                         cargarLegajo();
+                         if(m1.find(alu)!=null){
                          leerAlumno();
                          if ( m1.update( alu ) ) System.out.print( "Datos modificados..." );
-                         else System.out.print( "Alumno no encontrado..." );
+                         }else System.out.print( "Alumno no encontrado..." );
                          break;
                          
                 case 6: 
