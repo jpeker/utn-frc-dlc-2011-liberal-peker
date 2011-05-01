@@ -23,6 +23,8 @@ public class Articulo implements Grabable
         */
        public Articulo ()
        {
+           codigo=0;
+           descripcion=" ";
        }
        
        /**

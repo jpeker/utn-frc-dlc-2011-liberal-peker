@@ -458,6 +458,7 @@ public abstract class RegisterFile
       */ 
      protected Register getRegisterInstance()
      {
+
         Grabable aux = null;
         try
         {

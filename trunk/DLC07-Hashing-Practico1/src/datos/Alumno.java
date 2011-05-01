@@ -24,6 +24,10 @@ public class Alumno implements Grabable
         */
        public Alumno ()
        {
+           legajo=0;
+           promedio=0;
+           nombre="";
+
        }
        
        /**
@@ -108,9 +112,11 @@ public class Alumno implements Grabable
        {
            try
            {
-                a.writeInt(legajo);
-                RegisterFile.writeString (a, nombre, 30);
-                a.writeFloat(promedio);
+              
+               a.writeInt(legajo);
+               RegisterFile.writeString (a, nombre, 30);
+               a.writeFloat(promedio);
+            
            }
            catch(IOException e)
            {
