@@ -98,7 +98,7 @@ public class OpenHashFile extends HashFile{
         boolean ok = insertar( y, obj );
 
         // ... si la grabación se hizo, volver a grabar la cabecera de la lista...
-        if( ok ) count++;
+        if( ok ){ count++;}
 
         // ... y retornar el flag de resultado...
         return ok;
@@ -111,9 +111,58 @@ public class OpenHashFile extends HashFile{
 
     @Override
     public boolean remove(Grabable obj) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+              // si algo anduvo mal, salir retornando false...
+        if( ! isOk( obj ) ) return false;
+        if( clase == null || getMode().equals( "r" ) ) return false;
 
+
+        long y = h( obj );
+        // remover el objeto de esa lista..
+        boolean ok = eliminar(y, obj );
+
+
+
+        // ... y retornar el flag de resultado...
+        return ok;
+    }
+    private boolean eliminar(long madre,  Grabable obj )
+    {
+        boolean ok = false;
+
+        // recorrer la lista y verificar si obj existe en ella...
+
+         long d = madre;
+      System.out.println("tama"+begin_table);
+    this.seekByte(begin_table);
+    int tam=this.read().sizeOf();
+      System.out.println("tamaño reg"+tam);
+    this.seekByte( (d-1)*tam+begin_table );
+    Register r= this.read();
+
+        while(  r.getState() != 2 )
+        {
+            // suponemos que las direcciones son de byte y no de registro relativo...
+
+            // controlar si el registro contiene a obj... en cuyo caso, cortar sin insertar...
+            if(r.getState() == Register.CLOSED && obj.equals( r.getData() ) ) {
+              r.setState( Register.TOMBSTONE );
+              try{
+                this.seekByte(maestro.getFilePointer()-r.sizeOf());}
+                catch( IOException e )
+                {
+                    JOptionPane.showMessageDialog( null, "Error al intentar devolver el número de byte: " + e.getMessage() );
+                    System.exit( 1 );
+                }
+                this.write( r );
+                ok=true;
+            }
+            // ... si no cortó, avanzar al siguiente NodeRegister...
+           //this.seekByte( (d-1)*tam+begin_table );
+            r= this.read();
+        }
+     
+        return ok;
+    }
     @Override
     public boolean update(Grabable obj) {
         throw new UnsupportedOperationException("Not supported yet.");
@@ -172,24 +221,25 @@ public class OpenHashFile extends HashFile{
     this.seekByte( (d-1)*tam+begin_table );
     Register r= this.read();
 
-        while(  r.OPEN != 2 )
+        while(  r.getState() != 2 )
         {
             // suponemos que las direcciones son de byte y no de registro relativo...
-
-            r = ( NodeRegister ) this.read();
+            //r = ( NodeRegister ) this.read();
+          //  r =  this.read();
 
             // controlar si el registro contiene a obj... en cuyo caso, cortar sin insertar...
             if(
                     r.getState() == Register.CLOSED && obj.equals( r.getData() ) ) return false;
 
             // ... si no cortó, avanzar al siguiente NodeRegister...
-           this.seekByte( (d-1)*tam+begin_table );
+          // this.seekByte( (d-1)*tam+begin_table );
             r= this.read();
         }
         long direccion=findPos(obj);
         System.out.println("posi"+direccion+"clave"+madre);
         this.seekByte(direccion*tam+begin_table);
         r.setData(obj);
+        r.setState(Register.CLOSED);
         this.seekByte( direccion*tam+begin_table);
         this.write( r );
         // si no existía, crear un NodeRegister para grabarlo...
@@ -314,9 +364,16 @@ public class OpenHashFile extends HashFile{
 
                // leer el registro en esa posición.
                reg = read();
-
+               if(reg.getState()==1){
                // retornar el objeto contenido en el registro leído
-               return reg.getData();
+               return reg.getData();}
+                else{
+                       // reg.setData(null);
+                        Grabable x =null;
+                       // return reg.getData();
+                        return x;
+                }
+
            }
     }
 }
