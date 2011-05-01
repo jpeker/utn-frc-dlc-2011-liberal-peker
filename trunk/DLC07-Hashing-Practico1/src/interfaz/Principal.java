@@ -22,13 +22,14 @@ public class Principal
      {
           RegisterFileIterator rfi = m.createIterator();
           if( rfi == null ) System.out.println( "El archivo est� vac�o..." );
+          else{
           while ( rfi.hasNext() )
           {
                Grabable x = rfi.current();
                System.out.print( x.toString() );
                rfi.next();
           }
-     }  
+     }  }
 
     /**
      * Carga un legajo por teclado 

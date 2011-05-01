@@ -165,10 +165,11 @@ public class OpenHashFile extends HashFile{
   private  boolean insertar(long madre,Grabable obj)// exploracion cuadratica graba o rechaza cuando el registro esta repetido
   {
    long d = madre;
-
+      System.out.println("tama"+begin_table);
     this.seekByte(begin_table);
-    int tamaño=this.read().sizeOf();
-    this.seekByte( (d-1)*tamaño+begin_table );
+    int tam=this.read().sizeOf();
+      System.out.println("tamaño reg"+tam);
+    this.seekByte( (d-1)*tam+begin_table );
     Register r= this.read();
 
         while(  r.OPEN != 2 )
@@ -182,14 +183,14 @@ public class OpenHashFile extends HashFile{
                     r.getState() == Register.CLOSED && obj.equals( r.getData() ) ) return false;
 
             // ... si no cortó, avanzar al siguiente NodeRegister...
-           this.seekByte( (d-1)*tamaño+begin_table );
+           this.seekByte( (d-1)*tam+begin_table );
             r= this.read();
         }
         long direccion=findPos(obj);
         System.out.println("posi"+direccion+"clave"+madre);
-        this.seekByte(direccion);
+        this.seekByte(direccion*tam+begin_table);
         r.setData(obj);
-        this.seekByte( direccion );
+        this.seekByte( direccion*tam+begin_table);
         this.write( r );
         // si no existía, crear un NodeRegister para grabarlo...
 
@@ -243,7 +244,7 @@ public class OpenHashFile extends HashFile{
        this.seekByte( (currentPos-1)*tamaño+begin_table );
         r= this.read();
     }
-    return currentPos-1+begin_table;
+    return currentPos-1;
   }
     private class Iterator implements RegisterFileIterator
     {
@@ -253,8 +254,8 @@ public class OpenHashFile extends HashFile{
            // un NodeRegister como auxiliar de operaciones.
            private Register reg =   getRegisterInstance();
 
-           // un Register asociado a un HeaderList como auxiliar de ooperaciones.
-           private Register rhl = new Register( new HeaderList() );
+           // un Register asociado a un HeaderList como auxiliar de operaciones.
+           //private Register rhl = new Register( new () );
 
            /**
             * Crea un iterador posicionado en el primer registro almacenado en el
@@ -263,7 +264,7 @@ public class OpenHashFile extends HashFile{
            private Iterator()
            {
               // rehash( false );
-               currentIndex = begin_table + capacity * rhl.sizeOf();
+               currentIndex = begin_table;
            }
 
            /**
@@ -271,7 +272,7 @@ public class OpenHashFile extends HashFile{
             */
            public void first()
            {
-               currentIndex = begin_table + capacity * rhl.sizeOf();
+               currentIndex = begin_table ;
            }
 
            /**

@@ -98,7 +98,6 @@ public abstract class HashFile extends RegisterFile
     protected long h( Grabable obj )
     {
         int k = Math.abs( obj.hashCode() );
-        System.out.println("sds"+this.tableSize());
         return k % this.tableSize();
     }
     
