@@ -128,11 +128,11 @@ public class OpenHashFile extends HashFile{
         }
 
         // controlar si es necesario redispersar...
-       if( count >= capacity / 2 ) rehash( true ); // si te mando un verdadero cambia el tamaño de la tabla y si no  limpia los borrados
+     if( count >= capacity / 2 ) rehash( true ); // si te mando un verdadero cambia el tamaño de la tabla y si no  limpia los borrados
 
         // obtener el índice de dispersión del objeto...
         long y = h( obj );
-        System.out.println("capacidad"+capacity);
+        System.out.println("capacidad del addd :"+capacity);
 
 
         // agregar a obj en esa lista, si no estaba repetido...
@@ -141,7 +141,7 @@ public class OpenHashFile extends HashFile{
         // ... si la grabación se hizo, volver a grabar la cabecera de la lista...
         if( ok ){ 
             count++;
-            System.out.println("count"+count);
+            System.out.println("count del inserto"+count);
             setCabecera();
         }
 
@@ -380,6 +380,7 @@ public class OpenHashFile extends HashFile{
             r= this.read();
         }
         long direccion=findPos(obj);
+        System.out.println("direcion del find pos "+direccion);
         this.seekByte(direccion*tam+begin_table);
         Register re = new Register(obj);
         r.setData(obj);
@@ -396,15 +397,17 @@ public class OpenHashFile extends HashFile{
     int tamaño=this.read().sizeOf();
     this.seekByte( (currentPos)*tamaño+begin_table );
     Register r= this.read();
-
-    while ( r.OPEN != 2 )
+      System.out.println("capacidad del fin pos"+capacity+"conTador "+count);
+    while (true)
     {
+        if(r.getState()==2)break;
+
       currentPos += offset;
       offset += 2;
       System.out.println("currentPos: " + currentPos);
       if (currentPos >= capacity)
         currentPos -= capacity;
-       this.seekByte( (currentPos-1)*tamaño+begin_table );
+       this.seekByte( (currentPos)*tamaño+begin_table );
         r= this.read();
     }
     return currentPos;
@@ -426,7 +429,7 @@ public class OpenHashFile extends HashFile{
             */
            private Iterator()
            {
-               rehash( false );
+               //rehash( false );
                currentIndex = begin_table;
            }
 
