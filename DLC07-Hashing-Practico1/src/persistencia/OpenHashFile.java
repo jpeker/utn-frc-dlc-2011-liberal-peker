@@ -65,7 +65,7 @@ public class OpenHashFile extends HashFile{
 
     @Override
     public boolean contains(Grabable obj) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return ( find( obj ) != null );
     }
 
          /**
@@ -95,17 +95,18 @@ public class OpenHashFile extends HashFile{
         // recorrer la lista y verificar si obj existe en ella...
         long d = madre;
         this.seekByte(begin_table);
-        int tam=this.read().sizeOf();
-        this.seekByte( (d)*tam+begin_table );
-        Register r= this.read();
+//        int tam=this.read().sizeOf();
+//        this.seekByte( (d)*tam+begin_table );
+//         Register r= this.read();
 
-        while(  r.getState() != 2 )
+        while( ! this.eof() )
         {
+            Register r= this.read();
 
             if(
                     r.getState() == Register.CLOSED && obj.equals( r.getData() ) ) return r.getData();
 
-            r= this.read();
+         //   r= this.read();
         }
 
         // ...si no estaba, retornar null...
@@ -175,15 +176,16 @@ public class OpenHashFile extends HashFile{
         boolean ok = false;
         // recorrer la lista y verificar si obj existe en ella...
          long d = madre;
-      System.out.println("tama"+begin_table);
-    this.seekByte(begin_table);
-    int tam=this.read().sizeOf();
-      System.out.println("tamaño reg"+tam);
-    this.seekByte( (d)*tam+begin_table );
-    Register r= this.read();
+//      System.out.println("tama"+begin_table);
+//    this.seekByte(begin_table);
+//    int tam=this.read().sizeOf();
+//      System.out.println("tamaño reg"+tam);
+    this.seekByte( begin_table );
 
-        while(  r.getState() != 2 )
+
+        while(  ! this.eof() )
         {
+                Register r= this.read();
             // suponemos que las direcciones son de byte y no de registro relativo...
 
             // controlar si el registro contiene a obj... en cuyo caso, cortar sin insertar...
@@ -198,9 +200,10 @@ public class OpenHashFile extends HashFile{
                 }
                 this.write( r );
                 ok=true;
+                break;
             }
             // ... si no cortó, avanzar al siguiente NodeRegister...
-            r= this.read();
+            //r= this.read();
         }
      
         return ok;
@@ -252,12 +255,13 @@ public class OpenHashFile extends HashFile{
 
          long d = madre;
          this.seekByte(begin_table);
-         int tam=this.read().sizeOf();
-         this.seekByte( (d)*tam+begin_table );
-         Register r= this.read();
+//         int tam=this.read().sizeOf();
+//         this.seekByte( (d)*tam+begin_table );
+        
 
-        while(  r.getState() != 2 )
+        while(! this.eof())
         {
+             Register r= this.read();
             // suponemos que las direcciones son de byte y no de registro relativo...
 
             // controlar si el registro contiene a obj... en cuyo caso, cortar sin insertar...
@@ -272,9 +276,10 @@ public class OpenHashFile extends HashFile{
                 }
                 this.write( r );
                 ok=true;
+                break;
             }
             // ... si no cortó, avanzar al siguiente NodeRegister...
-            r= this.read();
+          //  r= this.read();
         }
 
         return ok;
@@ -283,7 +288,8 @@ public class OpenHashFile extends HashFile{
 
     @Override
     public void clean() {
-        throw new UnsupportedOperationException("Not supported yet.");
+       if( clase == null || getMode().equals( "r" ) ) return;
+        rehash( false );
     }
      private void createTable( long n )
     {
@@ -367,10 +373,10 @@ public class OpenHashFile extends HashFile{
    System.out.println("direccion de registro"+d);
     this.seekByte(begin_table);
     int tam=this.read().sizeOf();
-    this.seekByte( (d)*tam+begin_table );
+    this.seekByte( begin_table );
     Register r= this.read();
 
-        while(  r.getState() != 2 )
+        while(  ! this.eof() )
         {
             // controlar si el registro contiene a obj... en cuyo caso, cortar sin insertar...
             if(
