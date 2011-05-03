@@ -8,6 +8,7 @@ package interfaz;
  */
 import persistencia.*;
 import datos.*;
+import java.util.Random;
 public class Principal
 {        
      private static  OpenHashFile m1;
@@ -31,8 +32,23 @@ public class Principal
                System.out.print( x.toString() );}
                rfi.next();
           }
-     }  }
+     }
+     }
+    public static void prueba()
+    {
+        Random rndLegajo = new Random();
 
+      for(int i = 0; i < 1000; i++)
+      {
+            int legajo=(int)(rndLegajo.nextFloat()*10000);
+            alu.setLegajo(legajo);
+            alu.setNombre(""+legajo);
+            alu.setPromedio(legajo);
+            m1.add(alu);
+      }
+        System.out.println("Termine ATENCION------------------pare el cronometro");
+
+    }
     /**
      * Carga un legajo por teclado 
      */
@@ -61,7 +77,7 @@ public class Principal
     {
         int x, op;
         Alumno resp = null;
-      m1 = new OpenHashFile( "Alumnos.dat", "rw",5);
+      m1 = new OpenHashFile( "Alumnos.dat", "rw",3000);
        // m1 = new ListHashFile( "Alumnos.dat", "rw" );
         alu = new Alumno();
         
@@ -73,8 +89,8 @@ public class Principal
             System.out.println ("3.  Baja de un Alumno");
             System.out.println ("4.  B�squeda de un Alumno");
             System.out.println ("5.  Modificaci�n de un Alumno");
-            
-            System.out.println ("6. Salir");
+            System.out.println ("6. Realizar Prueba");
+            System.out.println ("7. Salir");
 
             System.out.print ( "Ingrese opcion: " );
             op = Consola.readInt();
@@ -110,18 +126,30 @@ public class Principal
                
                 case 5:
                          System.out.println( "Ingrese los datos del alumno a modificar:" );
-                     
-                         leerAlumno();
+                         System.out.print( "Ingrese el legajo del alumno a modificar: " );
+                         x = Consola.readInt();
+                         alu.setLegajo(x);
+                         if(m1.find(alu)!=null){
+
+                             System.out.print("Ingrese el Nombre: ");
+                             String nombre = Consola.readLine();
+                            alu.setNombre(nombre);
+                            System.out.print("Ingrese el Promedio: ");
+                            float promedio = (float)Consola.readDouble();
+                            alu.setPromedio(promedio);
                          if ( m1.update( alu ) ) System.out.print( "Datos modificados..." );
-                         else System.out.print( "Alumno no encontrado..." );
+                        } else
+                        System.out.print("Alumno no encontrado...");
                          break;
-                         
-                case 6: 
+                case 6:
+                         prueba();
+                         break;
+                case 7:
                          m1.close();
                          break;
             }
          }
-         while (op != 6);
+         while (op != 7);
          System.exit(0);
     }
 }
