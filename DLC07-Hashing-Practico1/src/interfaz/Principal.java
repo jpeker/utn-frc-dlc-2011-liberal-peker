@@ -40,7 +40,7 @@ public class Principal
 
       for(int i = 0; i < 1000; i++)
       {
-            int legajo=(int)(rndLegajo.nextFloat()*10000);
+            int legajo=(int)(rndLegajo.nextFloat()*100000);
             alu.setLegajo(legajo);
             alu.setNombre(""+legajo);
             alu.setPromedio(legajo);
@@ -77,7 +77,7 @@ public class Principal
     {
         int x, op;
         Alumno resp = null;
-      m1 = new OpenHashFile( "Alumnos.dat", "rw",3000);
+      m1 = new OpenHashFile( "Alumnos.dat", "rw",11);
        // m1 = new ListHashFile( "Alumnos.dat", "rw" );
         alu = new Alumno();
         
@@ -94,6 +94,7 @@ public class Principal
 
             System.out.print ( "Ingrese opcion: " );
             op = Consola.readInt();
+           //  op = 6;
             switch (op)
             {
                 case 1:  
@@ -143,6 +144,7 @@ public class Principal
                          break;
                 case 6:
                          prueba();
+                         //op=7;
                          break;
                 case 7:
                          m1.close();
