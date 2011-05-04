@@ -88,7 +88,7 @@ public class OpenHashFile extends HashFile{
         // buscar el objeto de esa lista y retornar el resultado...
         return buscar( y, obj );
     }
-  // busca la primera ocurrencia de obj en la lista hl, retornando una
+  // busca la primera ocurrencia de obj en el archivo, retornando una
     // referencia a él si lo encuentra, o null si no. Invocado por find().
     private Grabable buscar( long madre, Grabable obj )
     {
@@ -97,18 +97,16 @@ public class OpenHashFile extends HashFile{
         this.seekByte(begin_table);
 //        int tam=this.read().sizeOf();
 //        this.seekByte( (d)*tam+begin_table );
-//         Register r= this.read();
-
-        while( ! this.eof() )
+         //Register r= this.read();
+      
+        while( !this.eof() )
         {
-            Register r= this.read();
+           Register r= this.read();
 
             if(
                     r.getState() == Register.CLOSED && obj.equals( r.getData() ) ) return r.getData();
-
-         //   r= this.read();
+          // r= this.read();
         }
-
         // ...si no estaba, retornar null...
         return null;
     }
