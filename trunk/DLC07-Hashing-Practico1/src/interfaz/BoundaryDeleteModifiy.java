@@ -174,25 +174,36 @@ public class BoundaryDeleteModifiy extends javax.swing.JFrame {
                 this.txtStatus.setText("Alumno econtrado si desea modifcar haz clik en Modificar");
                }
             else{
-              this.txtStatus.setText("No se encontro el Alumno");
+               this.txtLegajo.setText("");
+               this.txtStatus.setText("No se encontro el Alumno");
                this.btnBuscar.setEnabled(true);
+               this.txtLegajo.setEditable(true);
+               alu=new Alumno();
             }
             }
             else{
              if(m1.remove(alu))
              {
-                 this.txtLegajo.setEditable(true);
-                 this.txtStatus.setText("Baja Realizada");
+                this.txtLegajo.setText("");
+                this.txtLegajo.setEditable(true);
+                this.btnBuscar.setEnabled(true);
+                this.txtStatus.setText("Baja Realizada");
              }
                 else
                 {
+                 this.txtLegajo.setText("");
+                    this.txtLegajo.setEditable(true);
                     this.btnBuscar.setEnabled(true);
                     this.txtStatus.setText("No se encontro el Alumno");
                 }
             }
         }
         else
-             JOptionPane.showMessageDialog(null, "Ingrese el legajo ", "Error ", 0);
+        {
+            this.txtLegajo.setEditable(true);
+            this.btnBuscar.setEnabled(true);
+            JOptionPane.showMessageDialog(null, "Ingrese el legajo ", "Error ", 0);
+        }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
