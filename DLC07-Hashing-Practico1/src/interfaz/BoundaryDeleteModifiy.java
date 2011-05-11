@@ -53,7 +53,7 @@ public class BoundaryDeleteModifiy extends javax.swing.JFrame {
         txtStatus = new javax.swing.JTextField();
         lblPromedio = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Legajo");
 
@@ -157,7 +157,7 @@ public class BoundaryDeleteModifiy extends javax.swing.JFrame {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         this.txtLegajo.setEditable(false);
         this.btnBuscar.setEnabled(false);
-        if(this.txtLegajo.getText()!=""){
+        if(!this.txtLegajo.getText().equals("")){
             alu.setLegajo(Integer.parseInt(this.txtLegajo.getText()));
             if(bandera)
             {
@@ -199,7 +199,7 @@ public class BoundaryDeleteModifiy extends javax.swing.JFrame {
        this.txtLegajo.setEditable(true);
         this.btnBuscar.setEnabled(true);
        
-        if(this.txtNombre.getText()!=""&&this.txtPromedio.getText()!="")
+        if(!this.txtNombre.getText().equals("")&&!this.txtPromedio.getText().equals(""))
        {
          this.btnModificar.setEnabled(false);
        String nomb=this.txtNombre.getText();

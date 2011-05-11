@@ -11,9 +11,8 @@
 
 package interfaz;
 import persistencia.*;
-import datos.*;
 import javax.swing.DefaultListModel;
-import javax.swing.JOptionPane;
+
 /**
  *
  * @author Peker
