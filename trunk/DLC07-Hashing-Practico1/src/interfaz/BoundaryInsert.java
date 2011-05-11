@@ -125,7 +125,7 @@ public class BoundaryInsert extends javax.swing.JFrame {
         int leg;
         String nomb;
         float prom;
-        if(this.txtLegajo.getText()!=""&&this.txtNombre.getText()!=""&&this.txtPromedio.getText()!="")
+        if(!(this.txtLegajo.getText().equals("")&&this.txtNombre.getText().equals("")&&this.txtPromedio.getText().equals("")))
         {
         leg= Integer.parseInt(this.txtLegajo.getText());
         nomb= this.txtNombre.getText();

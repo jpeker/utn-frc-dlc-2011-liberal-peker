@@ -96,6 +96,7 @@ public class OpenHashFile extends HashFile{
         long d = madre;
         this.seekByte(begin_table);
 //        int tam=this.read().sizeOf();
+//          int tr = ( new Register( clase ) ).sizeOf();
 //        this.seekByte( (d)*tam+begin_table );
          //Register r= this.read();
       
