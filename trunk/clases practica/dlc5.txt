@@ -1,0 +1,2 @@
+crear el jdbc resources con la filmina 1 y 2
+agregar la propiedad al pgdlcdbpool filmina3
