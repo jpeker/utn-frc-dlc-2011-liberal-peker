@@ -1,0 +1,111 @@
+﻿/*
+    Document   : layout
+    Created on : Nov 27, 2009, 6:24:15 PM
+    Author     : scarafia
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/*
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+/* Root */
+root {
+    display: block;
+}
+
+body {
+      
+	font-family: Arial;
+	font-size: 14px;
+        background-color:#00FF00;
+           
+}
+.table {
+
+          background-color:#FFFFF;        
+	font-family: Arial;
+	font-size: 14px;
+        background-color:#F5F5F5;
+           
+}
+
+.content {
+	margin-left: 0px;
+	width: 800px;
+}
+
+.top {
+	vertical-align: top;
+}
+
+.middle {
+	vertical-align: middle;
+}
+
+.bottom {
+	vertical-align: bottom;
+}
+
+.left {
+	text-align: left;
+}
+
+.right {
+	text-align: right;
+}
+
+.center {
+	text-align: center;
+}
+
+.litop {
+	margin-top: 1em;
+}
+
+.definicion {
+	border-style: solid;
+	border-width: 2px;
+	border-color: blue;
+	padding: 12px;
+}
+
+.tachado {
+	text-decoration: line-through;
+}
+
+.l00 { margin-left:  0px; }
+
+.l01 {
+	margin-left:  2.5em;
+}
+
+/* Títulos */
+h1 {
+    font-size: 24px;
+    font-weight: bold;
+    font-style: italic;
+    color: blue;
+    border-bottom-style: solid;
+    border-bottom-color: blue;
+    border-bottom-width: 3px;
+    padding-left: 10px;
+}
+
+/* Imagen */
+img {
+	border: 0px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+img.definicion {
+	border-style: solid;
+	border-width: 2px;
+	border-color: blue;
+	padding: 6px;
+}
+/* end hack */
+ 
