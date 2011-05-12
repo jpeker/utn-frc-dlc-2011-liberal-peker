@@ -133,7 +133,10 @@ public class BoundaryInsert extends javax.swing.JFrame {
         alu.setLegajo(leg);
         alu.setNombre(nomb);
         alu.setPromedio(prom);
-        m1.add(alu);
+        if(m1.add(alu))
+             JOptionPane.showMessageDialog(null, "El alumno Se Guardo con Exito ", "Informacion ", 1);
+             else
+           JOptionPane.showMessageDialog(null, "No se inserto El Alumno ya existe ", "Error ", 0);
         this.dispose();
         }
        else

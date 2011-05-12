@@ -120,7 +120,9 @@ public class BoundaryFind extends javax.swing.JFrame {
             if(alu!=null)
                 area.setText(alu.toString());
             else
-                area.setText("Alumno no encontrado");
+            {
+                alu=new Alumno();
+                area.setText("Alumno no encontrado");}
         }
         else
                  JOptionPane.showMessageDialog(null, "Ingrese el legajo ", "Error ", 0);

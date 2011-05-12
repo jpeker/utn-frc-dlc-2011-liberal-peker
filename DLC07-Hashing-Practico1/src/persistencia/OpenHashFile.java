@@ -92,21 +92,22 @@ public class OpenHashFile extends HashFile{
     // referencia a él si lo encuentra, o null si no. Invocado por find().
     private Grabable buscar( long madre, Grabable obj )
     {
-        // recorrer la lista y verificar si obj existe en ella...
-        long d = madre;
-        this.seekByte(begin_table);
-//        int tam=this.read().sizeOf();
-//          int tr = ( new Register( clase ) ).sizeOf();
-//        this.seekByte( (d)*tam+begin_table );
-         //Register r= this.read();
-      
-        while( !this.eof() )
+        long offset = 1;
+        long currentPos = madre;
+        int tam = ( new Register( clase ) ).sizeOf();
+        this.seekByte( currentPos*tam+begin_table );
+         Register r= this.read();
+           // recorrer la lista y verificar si obj existe en ella...
+        while( r.getState()!=2)
         {
-           Register r= this.read();
-
             if(
                     r.getState() == Register.CLOSED && obj.equals( r.getData() ) ) return r.getData();
-          // r= this.read();
+           currentPos += offset;
+           offset += 2;
+          if (currentPos >= capacity)
+            currentPos -= capacity;
+            this.seekByte( (currentPos)*tam+begin_table );
+            r= this.read();
         }
         // ...si no estaba, retornar null...
         return null;
@@ -173,22 +174,17 @@ public class OpenHashFile extends HashFile{
     private boolean eliminar(long madre,  Grabable obj )
     {
         boolean ok = false;
+        long offset = 1;
+        long currentPos = madre;
+        int tam = ( new Register( clase ) ).sizeOf();
+        this.seekByte( currentPos*tam+begin_table );
+         Register r= this.read();
         // recorrer la lista y verificar si obj existe en ella...
-         long d = madre;
-//      System.out.println("tama"+begin_table);
-//    this.seekByte(begin_table);
-//    int tam=this.read().sizeOf();
-//      System.out.println("tamaño reg"+tam);
-    this.seekByte( begin_table );
-
-
-        while(  ! this.eof() )
+        while( r.getState()!=2 )
         {
-                Register r= this.read();
-            // suponemos que las direcciones son de byte y no de registro relativo...
-
             // controlar si el registro contiene a obj... en cuyo caso, cortar sin insertar...
-            if(r.getState() == Register.CLOSED && obj.equals( r.getData() ) ) {
+            if(r.getState() == Register.CLOSED && obj.equals( r.getData() ) )
+            {
               r.setState( Register.TOMBSTONE );
               try{
                 this.seekByte(maestro.getFilePointer()-r.sizeOf());}
@@ -201,10 +197,13 @@ public class OpenHashFile extends HashFile{
                 ok=true;
                 break;
             }
-            // ... si no cortó, avanzar al siguiente NodeRegister...
-            //r= this.read();
+            currentPos += offset;
+            offset += 2;
+            if (currentPos >= capacity)
+                currentPos -= capacity;
+            this.seekByte( (currentPos)*tam+begin_table );
+            r= this.read();
         }
-     
         return ok;
     }
      /**
@@ -249,22 +248,18 @@ public class OpenHashFile extends HashFile{
     private boolean modificar( long madre, Grabable obj )
     {
         boolean ok = false;
-
+        long offset = 1;
+        long currentPos = madre;
+        int tam = ( new Register( clase ) ).sizeOf();
+        this.seekByte( currentPos*tam+begin_table );
+         Register r= this.read();
         // recorrer la lista y verificar si obj existe en ella...
-
-         long d = madre;
-         this.seekByte(begin_table);
-//         int tam=this.read().sizeOf();
-//         this.seekByte( (d)*tam+begin_table );
-        
-
-        while(! this.eof())
+        while(r.getState()!=2)
         {
-             Register r= this.read();
-            // suponemos que las direcciones son de byte y no de registro relativo...
 
             // controlar si el registro contiene a obj... en cuyo caso, cortar sin insertar...
-            if(r.getState() == Register.CLOSED && obj.equals( r.getData() ) ) {
+            if(r.getState() == Register.CLOSED && obj.equals( r.getData() ) )
+            {
               r.setData(obj);
               try{
                 this.seekByte(maestro.getFilePointer()-r.sizeOf());}
@@ -277,10 +272,13 @@ public class OpenHashFile extends HashFile{
                 ok=true;
                 break;
             }
-            // ... si no cortó, avanzar al siguiente NodeRegister...
-          //  r= this.read();
+           currentPos += offset;
+           offset += 2;
+           if (currentPos >= capacity)
+            currentPos -= capacity;
+            this.seekByte( (currentPos)*tam+begin_table );
+            r= this.read();
         }
-
         return ok;
     }
 
@@ -368,20 +366,24 @@ public class OpenHashFile extends HashFile{
    }
   private  boolean insertar(long madre,Grabable obj)// exploracion cuadratica graba o rechaza cuando el registro esta repetido
   {
-   long d = madre;
-   System.out.println("direccion de registro"+d);
-    this.seekByte(begin_table);
-    int tam=this.read().sizeOf();
-    this.seekByte( begin_table );
-    Register r= this.read();
-
-        while(  ! this.eof() )
+  
+        System.out.println("direccion de registro"+madre);
+        long offset = 1;
+        long currentPos = madre;
+        int tam = ( new Register( clase ) ).sizeOf();
+        this.seekByte( currentPos*tam+begin_table );
+         Register r= this.read();
+      System.out.println("direcion del inser buscar"+(currentPos*tam+begin_table));
+        while(r.getState()!=2 )
         {
             // controlar si el registro contiene a obj... en cuyo caso, cortar sin insertar...
             if(
                     r.getState() == Register.CLOSED && obj.equals( r.getData() ) ) return false;
-
-            // ... si no cortó, avanzar al siguiente NodeRegister...
+            currentPos += offset;
+            offset += 2;
+            if (currentPos >= capacity)
+            currentPos -= capacity;
+            this.seekByte( (currentPos)*tam+begin_table );
             r= this.read();
         }
         long direccion=findPos(obj);
@@ -398,8 +400,9 @@ public class OpenHashFile extends HashFile{
   {
     long offset = 1;
     long currentPos = h(obj);
-    this.seekByte(begin_table);
-    int tamaño=this.read().sizeOf();
+//    this.seekByte(begin_table);
+//    int tamaño=this.read().sizeOf();
+     int tamaño = ( new Register( clase ) ).sizeOf();
     this.seekByte( (currentPos)*tamaño+begin_table );
     Register r= this.read();
       System.out.println("capacidad del fin pos"+capacity+"conTador "+count);
