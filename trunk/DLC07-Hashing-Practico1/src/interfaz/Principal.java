@@ -77,7 +77,7 @@ public class Principal
     {
         int x, op;
         Alumno resp = null;
-      m1 = new OpenHashFile( "Alumnos.dat", "rw",11);
+      m1 = new OpenHashFile( "Alumnos.dat", "rw",100001);
        // m1 = new ListHashFile( "Alumnos.dat", "rw" );
         alu = new Alumno();
         
@@ -93,8 +93,8 @@ public class Principal
             System.out.println ("7. Salir");
 
             System.out.print ( "Ingrese opcion: " );
-            op = Consola.readInt();
-           //  op = 6;
+       op = Consola.readInt();
+//           op = 6;
             switch (op)
             {
                 case 1:  
@@ -144,7 +144,7 @@ public class Principal
                          break;
                 case 6:
                          prueba();
-                         //op=7;
+                      //   op=7;
                          break;
                 case 7:
                          m1.close();
