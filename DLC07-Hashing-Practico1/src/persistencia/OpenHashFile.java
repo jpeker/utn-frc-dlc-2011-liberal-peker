@@ -133,7 +133,7 @@ public class OpenHashFile extends HashFile{
 
         // obtener el índice de dispersión del objeto...
         long y = h( obj );
-        System.out.println("capacidad del addd :"+capacity);
+        //System.out.println("capacidad del add :"+capacity);
 
 
         // agregar a obj en esa lista, si no estaba repetido...
@@ -142,7 +142,7 @@ public class OpenHashFile extends HashFile{
         // ... si la grabación se hizo, volver a grabar la cabecera de la lista...
         if( ok ){ 
             count++;
-            System.out.println("count del inserto"+count);
+            //System.out.println("count del inserto"+count);
             setCabecera();
         }
 
@@ -165,7 +165,7 @@ public class OpenHashFile extends HashFile{
         boolean ok = eliminar(y, obj );
         if(ok){
                 count--;
-                System.out.println("count"+count);
+                //System.out.println("count"+count);
                 setCabecera();
            }
         // ... y retornar el flag de resultado...
@@ -339,7 +339,7 @@ public class OpenHashFile extends HashFile{
         {
            // preparar el archivo temporal...
            OpenHashFile temp = new OpenHashFile( "temporal.dat", "rw" ,new_capacity);
-            System.out.println("Contador hash"+count);
+           //System.out.println("Contador hash"+count);
            temp.maestro.setLength(0);
            temp.writeClassName( clase );
            temp.createTable( new_capacity );
@@ -367,13 +367,13 @@ public class OpenHashFile extends HashFile{
   private  boolean insertar(long madre,Grabable obj)// exploracion cuadratica graba o rechaza cuando el registro esta repetido
   {
   
-        System.out.println("direccion de registro"+madre);
+        //System.out.println("direccion de registro"+madre);
         long offset = 1;
         long currentPos = madre;
         int tam = ( new Register( clase ) ).sizeOf();
         this.seekByte( currentPos*tam+begin_table );
          Register r= this.read();
-      System.out.println("direcion del inser buscar"+(currentPos*tam+begin_table));
+      //System.out.println("direcion del inser buscar"+(currentPos*tam+begin_table));
         while(r.getState()!=2 )
         {
             // controlar si el registro contiene a obj... en cuyo caso, cortar sin insertar...
@@ -387,7 +387,7 @@ public class OpenHashFile extends HashFile{
             r= this.read();
         }
         long direccion=findPos(obj);
-        System.out.println("direcion del find pos "+direccion);
+        //System.out.println("direcion del find pos "+direccion);
         this.seekByte(direccion*tam+begin_table);
         Register re = new Register(obj);
         r.setData(obj);
@@ -405,14 +405,14 @@ public class OpenHashFile extends HashFile{
      int tamaño = ( new Register( clase ) ).sizeOf();
     this.seekByte( (currentPos)*tamaño+begin_table );
     Register r= this.read();
-      System.out.println("capacidad del fin pos"+capacity+"conTador "+count);
+      //System.out.println("capacidad del fin pos"+capacity+"conTador "+count);
     while (true)
     {
         if(r.getState()==2)break;
 
       currentPos += offset;
       offset += 2;
-      System.out.println("currentPos: " + currentPos);
+      //System.out.println("currentPos: " + currentPos);
       if (currentPos >= capacity)
         currentPos -= capacity;
        this.seekByte( (currentPos)*tamaño+begin_table );

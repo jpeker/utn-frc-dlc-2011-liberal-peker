@@ -56,7 +56,7 @@ public class Consola
     	  }
     	  catch(NumberFormatException e)
     	  {
-    	      System.out.println("No es un integer. Por favor, pruebe otra vez!");
+    	     // System.out.println("No es un integer. Por favor, pruebe otra vez!");
     	  }
        }
     }
@@ -75,7 +75,7 @@ public class Consola
     	   }
     	   catch(NumberFormatException e)
     	   {
-    	      System.out.println("No es un flotante. " + "Por favor, pruebe otra vez!");
+    	      // System.out.println("No es un flotante. " + "Por favor, pruebe otra vez!");
     	   }
        }
     }

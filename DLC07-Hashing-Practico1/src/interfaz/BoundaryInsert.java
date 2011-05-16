@@ -125,6 +125,7 @@ public class BoundaryInsert extends javax.swing.JFrame {
         int leg;
         String nomb;
         float prom;
+        try{
         if(!(this.txtLegajo.getText().equals("")&&this.txtNombre.getText().equals("")&&this.txtPromedio.getText().equals("")))
         {
         leg= Integer.parseInt(this.txtLegajo.getText());
@@ -141,6 +142,12 @@ public class BoundaryInsert extends javax.swing.JFrame {
         }
        else
      JOptionPane.showMessageDialog(null, "Ingrese todos los datos del alumno ", "Error ", 0);
+        }
+     catch(NumberFormatException e)
+    	   {
+                JOptionPane.showMessageDialog(null, "El legajo debe ser solo valor numerico entero, El promedio es numerico decimal ", "Error ", 0);
+         // System.out.println("No es un flotante. " + "Por favor, pruebe otra vez!");
+    	   }
     }//GEN-LAST:event_jButton1ActionPerformed
 
    
