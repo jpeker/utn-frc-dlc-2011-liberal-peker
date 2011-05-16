@@ -405,7 +405,7 @@ public class OpenHashFile extends HashFile{
      int tamaño = ( new Register( clase ) ).sizeOf();
     this.seekByte( (currentPos)*tamaño+begin_table );
     Register r= this.read();
-      //System.out.println("capacidad del fin pos"+capacity+"conTador "+count);
+    System.out.println("capacidad del fin pos"+capacity+"conTador "+count);
     while (true)
     {
         if(r.getState()==2)break;
