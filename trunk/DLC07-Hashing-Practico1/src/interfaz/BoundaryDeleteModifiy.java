@@ -30,14 +30,18 @@ public class BoundaryDeleteModifiy extends javax.swing.JFrame {
        if(bandera){
            this.btnBuscar.setText("Modificar");
            this.lblPromedio.setText("");
+           this.lblName.setText("");
            this.txtNombre.setVisible(false);
            this.txtPromedio.setVisible(false);
        }
        else
-       {this.btnBuscar.setText("Eliminar");
+       {
+           this.btnBuscar.setText("Eliminar");
            this.lblPromedio.setText("");
+           this.lblName.setText("");
            this.txtNombre.setVisible(false);
            this.txtPromedio.setVisible(false);
+           this.btnModificar.setVisible(false);
        }
     }
 
@@ -61,6 +65,7 @@ public class BoundaryDeleteModifiy extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         txtStatus = new javax.swing.JTextField();
         lblPromedio = new javax.swing.JLabel();
+        lblName = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -96,6 +101,8 @@ public class BoundaryDeleteModifiy extends javax.swing.JFrame {
 
         lblPromedio.setText("jLabel2");
 
+        lblName.setText("Nombre");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -109,10 +116,11 @@ public class BoundaryDeleteModifiy extends javax.swing.JFrame {
                             .addComponent(btnModificar)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton2))
-                        .addComponent(lblNombre)
                         .addComponent(txtStatus, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(lblPromedio, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(lblName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblPromedio, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE))
                             .addGap(18, 18, 18)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -123,7 +131,7 @@ public class BoundaryDeleteModifiy extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGap(154, 154, 154)
                         .addComponent(btnBuscar)))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,25 +142,22 @@ public class BoundaryDeleteModifiy extends javax.swing.JFrame {
                     .addComponent(btnBuscar)
                     .addComponent(txtLegajo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblNombre)
-                        .addGap(58, 58, 58))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblPromedio)
-                            .addComponent(txtPromedio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblName))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtPromedio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPromedio))
                 .addGap(9, 9, 9)
                 .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnModificar)
                     .addComponent(jButton2))
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
 
         pack();
@@ -165,6 +170,7 @@ public class BoundaryDeleteModifiy extends javax.swing.JFrame {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         this.txtLegajo.setEditable(false);
         this.btnBuscar.setEnabled(false);
+        try{
         if(!this.txtLegajo.getText().equals("")){
             alu.setLegajo(Integer.parseInt(this.txtLegajo.getText()));
             if(bandera)
@@ -173,7 +179,8 @@ public class BoundaryDeleteModifiy extends javax.swing.JFrame {
                if(alu!=null)
                {
                this.btnModificar.setEnabled(true);
-               this.lblNombre.setText("Nombre");
+               this.lblName.setText("Nombre");
+
                this.lblPromedio.setText("Promedio");
                this.txtNombre.setEditable(true);
                this.txtPromedio.setEditable(true);
@@ -214,6 +221,15 @@ public class BoundaryDeleteModifiy extends javax.swing.JFrame {
             this.btnBuscar.setEnabled(true);
             JOptionPane.showMessageDialog(null, "Ingrese el legajo ", "Error ", 0);
         }
+        }
+        catch(NumberFormatException e)
+    	   {
+                JOptionPane.showMessageDialog(null, "El legajo debe ser solo valor numerico entero, El promedio es numerico decimal ", "Error ", 0);
+                this.txtLegajo.setEditable(true);
+                this.txtLegajo.setText("");
+                this.btnBuscar.setEnabled(true);
+         // System.out.println("No es un flotante. " + "Por favor, pruebe otra vez!");
+    	   }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
@@ -228,8 +244,8 @@ public class BoundaryDeleteModifiy extends javax.swing.JFrame {
        alu.setNombre(nomb);
        alu.setPromedio(prom);
         if ( m1.update( alu ) )  this.txtStatus.setText("Alumno Modificado");
-       this.btnModificar.setEnabled(true);
-               this.lblNombre.setText("");
+               this.btnModificar.setEnabled(true);
+               this.lblName.setText("");
                this.lblPromedio.setText("");
                this.txtNombre.setEditable(false);
                this.txtPromedio.setEditable(false);
@@ -248,6 +264,7 @@ public class BoundaryDeleteModifiy extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lbl1;
+    private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblPromedio;
     private javax.swing.JTextField txtLegajo;
