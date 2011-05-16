@@ -23,23 +23,16 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="59" pref="59" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="59" pref="59" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jButton1" alignment="1" pref="268" max="32767" attributes="1"/>
-                          <Component id="jButton2" alignment="1" pref="268" max="32767" attributes="1"/>
-                          <Component id="jButton3" alignment="1" pref="268" max="32767" attributes="1"/>
-                          <Component id="jButton4" alignment="1" pref="268" max="32767" attributes="0"/>
-                          <Component id="jButton5" alignment="1" pref="268" max="32767" attributes="0"/>
-                          <Component id="jButton6" alignment="0" pref="268" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
-                      <Component id="jButton7" pref="268" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="jButton7" alignment="1" pref="288" max="32767" attributes="0"/>
+                  <Component id="jButton1" alignment="1" pref="288" max="32767" attributes="1"/>
+                  <Component id="jButton2" alignment="1" pref="288" max="32767" attributes="1"/>
+                  <Component id="jButton3" alignment="1" pref="288" max="32767" attributes="1"/>
+                  <Component id="jButton4" alignment="1" pref="288" max="32767" attributes="0"/>
+                  <Component id="jButton5" alignment="1" pref="288" max="32767" attributes="0"/>
+                  <Component id="jButton6" alignment="0" pref="288" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>

@@ -38,9 +38,9 @@ public class Principal
     {
         Random rndLegajo = new Random();
 
-      for(int i = 0; i < 100000; i++)
+      for(int i = 0; i < 10; i++)
       {
-            int legajo=(int)(rndLegajo.nextFloat()*1000000);
+            int legajo=(int)(rndLegajo.nextFloat()*1000);
             alu.setLegajo(legajo);
             alu.setNombre(""+legajo);
             alu.setPromedio(legajo);
@@ -77,7 +77,7 @@ public class Principal
     {
         int x, op;
         Alumno resp = null;
-      m1 = new OpenHashFile( "Alumnos.dat", "rw",1000000);
+      m1 = new OpenHashFile( "Alumnos.dat", "rw",11);
        // m1 = new ListHashFile( "Alumnos.dat", "rw" );
         alu = new Alumno();
         
