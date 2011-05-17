@@ -98,6 +98,7 @@ public class BoundaryDeleteModifiy extends javax.swing.JFrame {
         });
 
         txtStatus.setEditable(false);
+        txtStatus.setForeground(new java.awt.Color(255, 0, 0));
 
         lblPromedio.setText("jLabel2");
 

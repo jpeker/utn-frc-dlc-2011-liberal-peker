@@ -437,7 +437,7 @@ public class OpenHashFile extends HashFile{
             */
            private Iterator()
            {
-               //rehash( false );
+               rehash( false );
                currentIndex = begin_table;
            }
 
