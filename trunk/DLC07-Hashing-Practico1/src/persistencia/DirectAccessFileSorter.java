@@ -5,7 +5,7 @@ package persistencia;
  * tener una clase que implemente un método de ordenamiento para un
  * DirectAccessFile. Hacemos uso del patrón Strategy.
  * 
- * @author Ing. Valerio Frittelli
+* @author Liberal - Peker
  * @version Abril de 2010
  */
 

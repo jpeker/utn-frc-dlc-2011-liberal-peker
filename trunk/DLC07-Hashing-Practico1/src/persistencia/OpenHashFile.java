@@ -1,4 +1,5 @@
 /*
+ *  @author Liberal - Peker
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -133,7 +134,7 @@ public class OpenHashFile extends HashFile{
 
         // obtener el índice de dispersión del objeto...
         long y = h( obj );
-        //System.out.println("capacidad del add :"+capacity);
+   
 
 
         // agregar a obj en esa lista, si no estaba repetido...
@@ -142,8 +143,7 @@ public class OpenHashFile extends HashFile{
         // ... si la grabación se hizo, volver a grabar la cabecera de la lista...
         if( ok ){ 
             count++;
-            //System.out.println("count del inserto"+count);
-            setCabecera();
+           setCabecera();
         }
 
         // ... y retornar el flag de resultado...
@@ -367,13 +367,13 @@ public class OpenHashFile extends HashFile{
   private  boolean insertar(long madre,Grabable obj)// exploracion cuadratica graba o rechaza cuando el registro esta repetido
   {
   
-        //System.out.println("direccion de registro"+madre);
+
         long offset = 1;
         long currentPos = madre;
         int tam = ( new Register( clase ) ).sizeOf();
         this.seekByte( currentPos*tam+begin_table );
          Register r= this.read();
-      //System.out.println("direcion del inser buscar"+(currentPos*tam+begin_table));
+
         while(r.getState()!=2 )
         {
             // controlar si el registro contiene a obj... en cuyo caso, cortar sin insertar...
@@ -387,7 +387,6 @@ public class OpenHashFile extends HashFile{
             r= this.read();
         }
         long direccion=findPos(obj);
-        //System.out.println("direcion del find pos "+direccion);
         this.seekByte(direccion*tam+begin_table);
         Register re = new Register(obj);
         r.setData(obj);
@@ -396,16 +395,14 @@ public class OpenHashFile extends HashFile{
         this.write( re );
         return true;
   }
-  private long findPos(Grabable obj)
+  private long findPos(Grabable obj)//Busca una posicion apartir del h con exploracion cuadratica
   {
     long offset = 1;
     long currentPos = h(obj);
-//    this.seekByte(begin_table);
-//    int tamaño=this.read().sizeOf();
-     int tamaño = ( new Register( clase ) ).sizeOf();
+    int tamaño = ( new Register( clase ) ).sizeOf();
     this.seekByte( (currentPos)*tamaño+begin_table );
     Register r= this.read();
-    System.out.println("capacidad del fin pos"+capacity+"conTador "+count);
+   // System.out.println("capacidad del fin pos"+capacity+"conTador "+count);
     while (true)
     {
         if(r.getState()==2)break;
@@ -427,9 +424,6 @@ public class OpenHashFile extends HashFile{
 
            // un NodeRegister como auxiliar de operaciones.
            private Register reg =   getRegisterInstance();
-
-           // un Register asociado a un HeaderList como auxiliar de operaciones.
-           //private Register rhl = new Register( new () );
 
            /**
             * Crea un iterador posicionado en el primer registro almacenado en el
@@ -492,9 +486,7 @@ public class OpenHashFile extends HashFile{
                // retornar el objeto contenido en el registro leído
                return reg.getData();}
                 else{
-                       // reg.setData(null);
                         Grabable x =null;
-                       // return reg.getData();
                         return x;
                 }
 

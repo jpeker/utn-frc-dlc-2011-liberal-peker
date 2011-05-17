@@ -4,7 +4,7 @@ package persistencia;
  * Implementa el método Quick Sort para ordenar un archivo
  * representado por un DirectAccessFile. Seguimos el patrón Strategy.
  * 
- * @author Ing. Valerio Frittelli.
+ * @author Liberal - Peker
  * @version Abril de 2010.
  */
 

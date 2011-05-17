@@ -6,8 +6,8 @@ package persistencia;
  * un vector de registros en disco. Provee métodos como get() y set() que permiten acceder
  * a cualquier registro en forma directa, conociendo su índice o número de orden. También
  * provee métodos para ordenar el archivo y realizar búsqueda binaria.
- * @author  Ing. Valerio Frittelli.
- * @version Marzo de 2010.
+* @author Liberal - Peker
+ * @version May de 2011.
  */
 
 import java.io.*;

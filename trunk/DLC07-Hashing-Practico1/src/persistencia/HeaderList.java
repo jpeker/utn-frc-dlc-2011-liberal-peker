@@ -4,7 +4,7 @@ package persistencia;
  * Un nodo de cabecera para una lista con direcciones de disco, que será grabada en
  * un archivo hash con listas de desborde.
  * 
- * @author Ing. Valerio Frittelli.
+ * @author Liberal - Peker
  * @version Abril de 2010.
  */
 

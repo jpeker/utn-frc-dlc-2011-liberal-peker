@@ -15,7 +15,7 @@ import datos.*;
 import javax.swing.JOptionPane;
 /**
  *
- * @author Peker
+ * @author Liberal - Peker
  */
 public class BoundaryDeleteModifiy extends javax.swing.JFrame {
        private   OpenHashFile m1;
