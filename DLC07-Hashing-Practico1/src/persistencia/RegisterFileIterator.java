@@ -5,8 +5,8 @@ package persistencia;
  * tener un iterador para un DirectAccessFile, cuando se pretenda recorrer
  * ese archivo en forma secuencial.
  * 
- * @author Ing. Valerio Frittelli
- * @version Marzo de 2010
+ * @author Liberal - Peker
+ * @version May de 2011
  */
 
 public interface RegisterFileIterator

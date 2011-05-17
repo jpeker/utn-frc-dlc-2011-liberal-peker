@@ -1,4 +1,5 @@
 /*
+ *  @author Liberal - Peker
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -7,7 +8,7 @@ package persistencia;
 
 /**
  *
- * @author Peker
+* @author Liberal - Peker
  */
 import java.io.*;
 import javax.swing.*;

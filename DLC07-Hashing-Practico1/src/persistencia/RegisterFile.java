@@ -5,8 +5,8 @@ package persistencia;
  * longitud, lo cual favorece el seeking. El archivo no permite grabar objetos cuyo tipo (y tamaño) no coincida
  * con los que ya se grabaron en el archivo. Para eso, almacena al principio del archivo los datos de la clase a 
  * la cual pertenecen los objetos cuyos datos se almacenaron en él (esto es, la "clase base" del RegisterFile).
- * @author  Ing. Valerio Frittelli.
- * @version Abril de 2010.
+ * @author Liberal - Peker
+ * @version May de 2011.
  */
 
 import java.io.*;

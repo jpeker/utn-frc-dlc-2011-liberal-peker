@@ -4,7 +4,7 @@ package persistencia;
  * Un NodeRegister es un Register que contiene la dirección del siguiente NodeRegister
  * del archivo. Usado en la implementación de archivos hash con listas de desbrode.
  * 
- * @author Ing. Valerio Frittelli
+ * @author Liberal - Peker
  * @version Abril de 2010
  */
 import java.io.*;

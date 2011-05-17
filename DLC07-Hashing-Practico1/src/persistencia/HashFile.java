@@ -5,7 +5,7 @@ package persistencia;
  * La clase provee una versión simple de la función de dispersión. Las clases derivadas deben
  * decidir la forma final de implementación de la técnica hash que usará el archivo para resolver
  * colisiones.
- * @author  Ing. Valerio Frittelli.
+ * @author Liberal - Peker
  * @version Marzo de 2010.
  */
 
@@ -98,7 +98,6 @@ public abstract class HashFile extends RegisterFile
     protected long h( Grabable obj )
     {
         int k = Math.abs( obj.hashCode() );
-        // System.out.println("tamaño de la tabla "+tableSize());
         return k % this.tableSize();
 
     }

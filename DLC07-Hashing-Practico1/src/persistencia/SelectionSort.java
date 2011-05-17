@@ -4,8 +4,8 @@ package persistencia;
  * Implementa el método de Selección Directa para ordenar un archivo
  * representado por un DirectAccessFile. Seguimos el patrón Strategy.
  * 
- * @author Ing. Valerio Frittelli.
- * @version Abril de 2010.
+ * @author Liberal - Peker
+ * @version May de 2011.
  */
 
 public class SelectionSort implements DirectAccessFileSorter

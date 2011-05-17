@@ -12,7 +12,7 @@ package persistencia;
  * borrado), entonces estado = BORRADO. Otras constantes de la clase sirven para marcar
  * estados válidos en contextos de Hashing, a criterio del programador.
  * 
- * @author Ing. Valerio Frittelli
+ * @author Liberal - Peker
  * @version Abril de 2010
  */
 

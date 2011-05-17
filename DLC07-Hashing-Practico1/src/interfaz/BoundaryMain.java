@@ -5,15 +5,14 @@
 
 /*
  * BoundaryMain.java
- *
+ * @author Liberal - Peker
  * Created on 10/05/2011, 18:45:03
  */
 
 package interfaz;
 import persistencia.*;
 import datos.*;
-import java.util.Random;
-import javax.swing.JOptionPane;
+
 /**
  *
  * @author Peker

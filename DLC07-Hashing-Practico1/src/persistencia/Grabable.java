@@ -8,7 +8,7 @@ package persistencia;
  * El método compareTo() se deja para ser implementado por las clases que implementen
  * Grabable, con lo cual se obliga a todas ellas a contar con ese método.
  * 
- * @author Ing. Valerio Frittelli
+ * @author Liberal - Peker
  * @version Marzo de 2008
  */
 
