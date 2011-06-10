@@ -11,7 +11,15 @@ package utn.frc.dlc.base;
  */
 public class Comentarios {
     private int idComentario;
+    private Usuario user;
 
+    public Usuario getUser() {
+        return user;
+    }
+
+    public void setUser(Usuario user) {
+        this.user = user;
+    }
     public Comentarios() {
     }
 
@@ -31,13 +39,7 @@ public class Comentarios {
         this.idComentario = idComentario;
     }
 
-    public int getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
-    }
+   
 
     public int getIdfoto() {
         return idfoto;
@@ -46,7 +48,7 @@ public class Comentarios {
     public void setIdfoto(int idfoto) {
         this.idfoto = idfoto;
     }
-    private int idUsuario;
+  
     private int idfoto;
     private String comentarios;
 

@@ -40,7 +40,7 @@ SELECT fn_savefoto(3,'prueba.jpg',1,2,'20110120134510');
 -- =============================================================================
 -- Cargo com 1
 SELECT fn_getidcomentario();
-SELECT fn_savecomentario(1,1,1,'livin');
+SELECT fn_savecomentario(1,1,3,'es loco infer');
 -- Cargo com  2 
 SELECT fn_getidcomentario();
-SELECT fn_savecomentario(2,2,1,'tero');
+SELECT fn_savecomentario(2,2,3,' que grosso peker');
