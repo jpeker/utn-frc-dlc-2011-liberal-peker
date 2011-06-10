@@ -93,7 +93,7 @@
                 for (int i=0; i<count; i++) {
                     user = (Usuario)usuarios.get(i);
                     t += "<tr>";
-                    t += "<td>" + user.getId() + "</td>";
+                    t += "<td> <a href=amigos.jsp?dato1="+ user.getId() +"&dato2="+ user.getNombre()+">" + user.getId() + "</a></td>";
                     t += "<td>" + user.getNombre() + "</td>";
                     t += "<td>" + user.getApellido() + "</td>";
                     t += "<td>" + user.getMail() + "</td>";
@@ -101,6 +101,7 @@
                 }
             }
             out.println(t);
+            
 
             %>
 
