@@ -18,7 +18,15 @@ public class Fotos {
     private int idAmigo1;
     private int idAmigo2;
     private int idfoto;
+    private String fecha;
 
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
     public int getIdAmigo1() {
         return idAmigo1;
     }
