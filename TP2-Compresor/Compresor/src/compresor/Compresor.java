@@ -89,7 +89,7 @@ public class Compresor
 
             ruta=arch.getParent();
             //gestor.setTxtArchivo(arch.getAbsolutePath());
-            File f2 = new File(arch.getParent()+"\\"+ nombre + ".AunEnArgentinoA");
+            File f2 = new File(arch.getParent()+"\\"+ nombre + ".clincker");
             comprimido = new RandomAccessFile(f2, "rw");
             long pos, newpos;
             pos=newpos=0;
@@ -109,7 +109,7 @@ public class Compresor
 
     /**
      *  Comprime un archivo usando un Arbol de Huffman para determinar el c�digo de bit de cada signo. Genera un 
-     *  archivo comprimido con el mismo nombre que el original, pero con extensi�n .AunEnArgentinoA
+     *  archivo comprimido con el mismo nombre que el original, pero con extensi�n .clincker
      *  @param fileName el nombre del archivo a comprimir
      */
      public void comprimir (File arch)
