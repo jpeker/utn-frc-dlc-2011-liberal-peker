@@ -11,10 +11,8 @@ import compresor.ThreadDecompress;
 import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-/*import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
-import org.jvnet.substance.skin.*;*/
-
+//import javax.swing.UIManager;
+//import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -34,8 +32,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
     /** Creates new form ventanaPrincipal */
     public ventanaPrincipal() {
         try {
-           // UIManager.setLookAndFeel(new SubstanceOfficeBlue2007LookAndFeel());
-            //UIManager.setLookAndFeel(new SubstanceBusinessLookAndFeel());
+      
             initComponents();
             this.jpbArchivo.setVisible(true);
             this.jpbProceso.setVisible(true);
@@ -369,7 +366,7 @@ this.estado =  accion.comprimir;
 {
         hiloComprimir = new ThreadCompress(f, gestor);
         hiloTiempos = new ThreadTiempos(gestor);
-      //  btnComprimir.setEnabled(false);
+       btnComprimir.setEnabled(false);
         hiloTiempos.start();
         hiloComprimir.start();
         
@@ -380,20 +377,19 @@ this.estado =  accion.comprimir;
         JOptionPane.showMessageDialog(this,"Debe seleccionar un archivo", "Atencion",JOptionPane.INFORMATION_MESSAGE);
         
     }
-//btnComprimir.setEnabled(true);
+btnComprimir.setEnabled(false);
 }//GEN-LAST:event_btnComprimirActionPerformed
 
     private void btnDescomprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDescomprimirActionPerformed
-
        if (f.exists())
         {
            ThreadDecompress hiloDescomprimir = new ThreadDecompress(f, gestor);
-         //  btnDescomprimir.setEnabled(false);
+           btnDescomprimir.setEnabled(false);
            hiloDescomprimir.start();
            
 
        }
-   // btnDescomprimir.setEnabled(true);
+    btnDescomprimir.setEnabled(false);
     }//GEN-LAST:event_btnDescomprimirActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
