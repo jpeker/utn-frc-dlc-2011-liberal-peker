@@ -1,0 +1,12 @@
+Profe:
+
+Se implementó el compresor de archivos con interfaz visual. Al guardar 
+los metadatos del archivo comprimido el arreglo que representa el árbol
+se evitó grabar el valor del índice de los hijos izquierdo y derecho de
+cada hoja.
+
+Se permite no solo comprimir archivos, sino que también directorios.
+
+Integrantes:
+Rodrigo Liberal
+Julian Peker
