@@ -337,7 +337,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                      extension = nombre.substring(inicio, nombre.length());
                 }
 
-                if (extension.compareTo(".cmp") == 0)
+                if (extension.compareTo(".AunEnArgentinoA") == 0)
                 {
                     this.btnComprimir.setEnabled(false);
                     this.btnDescomprimir.setEnabled(true);
