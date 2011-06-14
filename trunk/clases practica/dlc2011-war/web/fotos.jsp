@@ -1,3 +1,4 @@
+
 <%-- 
     Document   : fotos
     Created on : Jun 9, 2011, 7:53:08 PM
@@ -57,16 +58,12 @@
 %>
 <html>
  <head>
-     <title>Fotos del usuario </title>
+     <title>Fotos del usuario </title
      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link href="layout.css" rel="stylesheet" type="text/css" />
  </head>
       <body>
-          <%
-          String p="";
-          p +="<form name=go action='amigos.jsp?dato1='"+ idAm1 +"' >";
-          out.print(p);
-          %>
+        
            <div class="content">
            <h1> Listado de Fotos </h1>
           </div>
@@ -98,8 +95,8 @@
 
 
             %>
-<input type="submit" id="volver" value="volver" onclik="action">
+
           </div>
-            <% out.print("</form>"); %>
+        
       </body>
 </html>
