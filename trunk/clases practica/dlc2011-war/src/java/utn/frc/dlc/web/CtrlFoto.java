@@ -48,9 +48,11 @@ public class CtrlFoto extends HttpServlet {
             sql = Aux.initSql();
             request.getSession().setAttribute("sql", sql);
         }
-           int idAm1 = Integer.parseInt( request.getParameter("ida1"));
-    int idAm2 = Integer.parseInt( request.getParameter("ida2"));
-         String query = "SELECT * FROM foto f where (f.idAmigo1 ="+idAm1+" and idAmigo2 ="+idAm2+")or (f.idAmigo1 ="+idAm2+" and idAmigo2 ="+idAm1+" )";
+        int idAm1 = Integer.parseInt( request.getParameter("ida1"));
+        int idAm2 = Integer.parseInt( request.getParameter("ida2"));
+        request.getSession().setAttribute("idAmigo1", idAm1);
+         request.getSession().setAttribute("idAmigo2", idAm2);
+        String query = "SELECT * FROM foto f where (f.idAmigo1 ="+idAm1+" and idAmigo2 ="+idAm2+")or (f.idAmigo1 ="+idAm2+" and idAmigo2 ="+idAm1+" )";
         String errorMsg = null;
         try {
             errorMsg = "Error en la conexión.";

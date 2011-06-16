@@ -21,10 +21,16 @@
  </head>
       <body>
                    <jsp:include page="cabecera.jsp"/>
+            <table width="100%" border="0">
+                <tr>
+                <td> <a href="CtrlUsuario?action=show"> Usuarios</a></td>
+                <td align="left"> <a href="CtrlAmigo?action=show&id=${id}&nombre=${nombre}"> Amigo de ${nombre}</a> </td>
+               </tr>
+            </table>
            <div class="content">
            <h1> Listado de Fotos </h1>
           </div>
-          
+          ${nombre}
           <br>
           <div>
 

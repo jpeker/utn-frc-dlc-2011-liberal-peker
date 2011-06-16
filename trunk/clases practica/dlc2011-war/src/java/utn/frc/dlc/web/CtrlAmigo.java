@@ -48,8 +48,10 @@ public class CtrlAmigo extends HttpServlet {
             sql = Aux.initSql();
             request.getSession().setAttribute("sql", sql);
         }
-            int id = Integer.parseInt(request.getParameter("id"));
-         String query = "SELECT * FROM usuario u, amigo a where u.idUsuario = a.idAmigo2 AND idAmigo1 = "+ id ;
+        request.getSession().setAttribute("nombre", request.getParameter("nombre"));
+         request.getSession().setAttribute("id", request.getParameter("id"));
+        int id = Integer.parseInt(request.getParameter("id"));
+        String query = "SELECT * FROM usuario u, amigo a where u.idUsuario = a.idAmigo2 AND idAmigo1 = "+ id ;
         String errorMsg = null;
         try {
             errorMsg = "Error en la conexión.";

@@ -21,11 +21,13 @@
     <link href="layout.css" rel="stylesheet" type="text/css" />
  </head>
       <body >
-                   <jsp:include page="cabecera.jsp"/>
-          <form name="go" action="usuario.jsp">
+            <jsp:include page="cabecera.jsp"/>
            <div class="body">
            <div class="content">
-               <h3>Amigos de <%out.print(request.getParameter("nombre")); %></h3>
+            <div>
+                <a href="CtrlUsuario?action=show"> Usuarios </a> 
+             </div>
+          <h3>Amigos de ${nombre}</h3>
           </div>
 
           <br>
@@ -47,10 +49,9 @@
                </c:forEach>
     </table>
     <br/>
-   <input type="submit" id="volver" value="volver" onclik="action">
+   
           </div>
              </div>
-    </form>
-               </body>
+                  </body>
 
 </html>

@@ -44,7 +44,7 @@
                   <tr>
                    <c:set var="index" value="${index+1}"></c:set>
 
-                <td> <a href=CtrlAmigo?action=show&id=${usuario.id}&nombre=${usuario.nombre}"> ${usuario.nombre}</a></td>
+                <td> <a href="CtrlAmigo?action=show&id=${usuario.id}&nombre=${usuario.nombre}"> ${usuario.nombre}</a></td>
                 <td>${usuario.apellido}</td>
                 <td>${usuario.mail}</td>
                   </tr>

@@ -23,6 +23,13 @@
       <body>
            <jsp:include page="cabecera.jsp"/>
            <div class="content">
+               <table width="100%" border="0">
+                <tr>
+                <td> <a href="CtrlUsuario?action=show"> Usuarios</a></td>
+                <td align="left"> <a href="CtrlAmigo?action=show&id=${id}&nombre=${nombre}"> Amigo de ${nombre}</a> </td>
+                 <td align="left"> <a href="CtrlFoto?action=show&ida1=${idAmigo1}&ida2=${idAmigo2}"> Listado de Fotos </a> </td>
+               </tr>
+            </table>
            <h1>Fotos con comentarios</h1>
           </div>
 
