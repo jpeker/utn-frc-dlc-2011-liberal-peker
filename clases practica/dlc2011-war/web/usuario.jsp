@@ -8,57 +8,12 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
 --%>
-<%@page
-    language= "java"
-    import= "utn.frc.dlc.base.Usuario"
-    import= "utn.frc.dlc.db.SqlManager"
-    import= "java.util.List"
-    import= "java.sql.ResultSet"
-    import= "java.util.ArrayList"
-    contentType="text/html"
-    pageEncoding="UTF-8"
-%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
 
-<%
-    String errMsg = null;
-    SqlManager sql = new SqlManager();
-    List usuarios = null;
-    Usuario user = null;
 
-    try {
-        sql.setConnectionMode(SqlManager.POOLCONNECTIONMODE);
-        sql.setResourceName("jdbc/pgdlcdb");
-
-        sql.connect();
-        sql.prepare("SELECT * FROM usuario u ");
-
-        ResultSet rs = sql.executeQuery();
-        if (rs.first()) {
-            usuarios = new ArrayList();
-            do {
-                user = new Usuario();
-                int id = rs.getInt("idUsuario");
-                String nombre = rs.getString("nombre");
-                String apellido = rs.getString("apellido");
-                String mail = rs.getString("mail");
-                user.setId(id);
-                user.setNombre(nombre);
-                user.setApellido(apellido);
-                user.setMail(mail);
-                usuarios.add(user);
-            } while (rs.next());
-        }
-        rs.close();
-        sql.close();
-
-    } catch (Exception e) {
-        errMsg = e.getMessage();
-        out.println(errMsg);
-    }
-
-%>
 
 <html>
  <head>
@@ -67,6 +22,7 @@
     <link href="layout.css" rel="stylesheet" type="text/css" />
  </head>
       <body >
+           <jsp:include page="cabecera.jsp"/>
            <div class="body">
            <div class="content">
            <h3>Usuarios</h3>
@@ -78,34 +34,23 @@
           <div class="table">
                </div>
           <tr>
-	    <th>id Usuario</th>
+	 
 	    <th>Nombre</th>
             <th>Apellido</th>
 	    <th>Mail</th>
           </tr>
-             <%
-            String t = errMsg;
-            if (t != null) {
-                t = "<tr><td colspan=\"1\">" + t + "</td></tr>";
-            } else if (usuarios != null) {
-                t = "";
-                int count = usuarios.size();
-                for (int i=0; i<count; i++) {
-                    user = (Usuario)usuarios.get(i);
-                    t += "<tr>";
-                    t += "<td> <a href=amigos.jsp?dato1="+ user.getId() +"&dato2="+ user.getNombre()+">" + user.getId() + "</a></td>";
-                    t += "<td>" + user.getNombre() + "</td>";
-                    t += "<td>" + user.getApellido() + "</td>";
-                    t += "<td>" + user.getMail() + "</td>";
-                    t += "</tr>";
-                }
-            }
-            out.println(t);
-            
+                <c:set scope="page" var="index" value="-1"></c:set>
+                <c:forEach var="usuario" items="${usuarios}">
+                  <tr>
+                   <c:set var="index" value="${index+1}"></c:set>
 
-            %>
-
- </table>
+                <td> <a href=CtrlAmigo?action=show&id=${usuario.id}&nombre=${usuario.nombre}"> ${usuario.nombre}</a></td>
+                <td>${usuario.apellido}</td>
+                <td>${usuario.mail}</td>
+                  </tr>
+               </c:forEach>
+                
+                </table>
 
                     </div>
              </div>

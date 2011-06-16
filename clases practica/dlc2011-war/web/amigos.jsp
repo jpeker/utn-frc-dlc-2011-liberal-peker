@@ -1,59 +1,19 @@
-<%-- 
-    Document   : amigos
-    Created on : Jun 9, 2011, 6:40:35 PM
+<%--
+    Document   : usuario
+    Created on : Jun 8, 2011, 5:42:58 PM
     Author     : dlcusr
---%>
 
-<%@page
-    language= "java"
-    import= "utn.frc.dlc.base.Amigos"
-    import= "utn.frc.dlc.db.SqlManager"
-    import= "java.util.List"
-    import= "java.sql.ResultSet"
-    import= "java.util.ArrayList"
-    contentType="text/html"
-    pageEncoding="UTF-8"
-%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
-<%
-    String errMsg = null;
-    SqlManager sql = new SqlManager();
-    List amigos = null;
-    Amigos ami = null;
-    int id = Integer.parseInt(request.getParameter("dato1"));
-    try {
-        sql.setConnectionMode(SqlManager.POOLCONNECTIONMODE);
-        sql.setResourceName("jdbc/pgdlcdb");
+--%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
 
-        sql.connect();
-        sql.prepare("SELECT * FROM usuario u, amigo a where u.idUsuario = a.idAmigo2 AND idAmigo1 = "+ id );
 
-        ResultSet rs = sql.executeQuery();
-        if (rs.first()) {
-            amigos = new ArrayList();
-            do {
-                ami = new Amigos();
-               
-                String nombre = rs.getString("nombre");
-                String apellido = rs.getString("apellido");
-                int idAm2 = rs.getInt("idAmigo2");
-                ami.setIdAmigo1(id);
-                ami.setIdAmigo2(idAm2);
-                ami.setNombre1(nombre);
-                ami.setApellido1(apellido);
-                amigos.add(ami);
-            } while (rs.next());
-        }
-        rs.close();
-        sql.close();
-
-    } catch (Exception e) {
-        errMsg = e.getMessage();
-        out.println(errMsg);
-    }
-
-%>
 <html>
  <head>
      <title> Usuarios - AMigos </title>
@@ -61,10 +21,11 @@
     <link href="layout.css" rel="stylesheet" type="text/css" />
  </head>
       <body >
+                   <jsp:include page="cabecera.jsp"/>
           <form name="go" action="usuario.jsp">
            <div class="body">
            <div class="content">
-               <h3>Amigos de <%out.print(request.getParameter("dato2")); %></h3>
+               <h3>Amigos de <%out.print(request.getParameter("nombre")); %></h3>
           </div>
 
           <br>
@@ -76,25 +37,14 @@
 	    <th>Nombre</th>
 	    <th>Apellido </th>
                </tr>
-        <%
-            String t = errMsg;
-            if (t != null) {
-                t = "<tr><td colspan=\"1\">" + t + "</td></tr>";
-            } else if (amigos != null) {
-                t = "";
-                int count = amigos.size();
-                for (int i=0; i<count; i++) {
-                    ami = (Amigos)amigos.get(i);
-                    t += "<tr>";
-                    t += "<td><a href=fotos.jsp?dato1="+ami.getIdAmigo1() +"&dato2="+ami.getIdAmigo2() +">" + ami.getNombre1() + "</a></td>";
-                    t += "<td>" + ami.getApellido1() + "</td>";
-                    t += "</tr>";
-                }
-            }
-            out.println(t);
-
-
-            %>
+       <c:set scope="page" var="index" value="-1"></c:set>
+                <c:forEach var="amigo" items="${amigos}">
+                  <tr>
+                   <c:set var="index" value="${index+1}"></c:set>
+                    <td> <a href="CtrlFoto?action=show&ida1=${amigo.idAmigo1}&ida2=${amigo.idAmigo2}">${amigo.nombre1}</a></td>
+                <td>${amigo.apellido1}</td>
+                  </tr>
+               </c:forEach>
     </table>
     <br/>
    <input type="submit" id="volver" value="volver" onclik="action">

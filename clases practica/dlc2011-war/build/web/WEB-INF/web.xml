@@ -8,6 +8,22 @@
         <servlet-name>Main</servlet-name>
         <servlet-class>utn.frc.dlc.web.Main</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CtrlUsuario</servlet-name>
+        <servlet-class>utn.frc.dlc.web.CtrlUsuario</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CtrlAmigo</servlet-name>
+        <servlet-class>utn.frc.dlc.web.CtrlAmigo</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CtrlFoto</servlet-name>
+        <servlet-class>utn.frc.dlc.web.CtrlFoto</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CtrlComentario</servlet-name>
+        <servlet-class>utn.frc.dlc.web.CtrlComentario</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HelloWord</servlet-name>
         <url-pattern>/HelloWord</url-pattern>
@@ -15,6 +31,22 @@
     <servlet-mapping>
         <servlet-name>Main</servlet-name>
         <url-pattern>/Main</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlUsuario</servlet-name>
+        <url-pattern>/CtrlUsuario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlAmigo</servlet-name>
+        <url-pattern>/CtrlAmigo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlFoto</servlet-name>
+        <url-pattern>/CtrlFoto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlComentario</servlet-name>
+        <url-pattern>/CtrlComentario</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
