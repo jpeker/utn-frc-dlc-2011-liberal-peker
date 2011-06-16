@@ -1,25 +1,25 @@
-package utn.frc.dlc.web;
-
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
 
+package utn.frc.dlc.web;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.ResultSet;
+import java.util.List;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-//import utn.frc.dlc.db.SqlManager;
+import utn.frc.dlc.base.Persona;
+import utn.frc.dlc.db.SqlManager;
+import utn.frc.dlc.web.aux.Aux;
+import utn.frc.dlc.web.db.DBUsuario;
 
-/**
- *
- * @author dlcusr
- */
-public class HelloWord extends HttpServlet {
+
+public class CtrlUsuario extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -30,57 +30,43 @@ public class HelloWord extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-         ResultSet resultado;
-        try {
- 
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet HelloWord</title>");  
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet HelloWord at " + request.getContextPath () + "</h1>");
-//         SqlManager sql = new SqlManager();
-//         sql.setConnectionMode(SqlManager.POOLCONNECTIONMODE);
-//         sql.setResourceName("jdbc/pgdlcdb");
+         RequestDispatcher disp;
+        ServletContext app = this.getServletContext();
+        String dest = "/usuario.jsp";
 
-         try{
-//
-//         sql.connect();
-//         out.println("<h1>Pker </h1>");
-//
-//         resultado = sql.executeQuery("Select * from usuario");
+        String fecha = Aux.getFecha("dd 'de' MMMM 'de' yyyy, H:mm 'hs'");
+        request.getSession().setAttribute("fecha", fecha);
 
-        
-
-          out.println( "<table width=640px border=1>" );
-            out.println("<div class=table>  ");
-          out.println("<tr>");
-           out.print("<th>id Usuario</th>");
-             out.print("<th>Nombre</th>"); 
-              out.print("<th>Apellido</th>"); 
-            out.print("<th>Apellido</th>"); 
-            out.println(" <th>Mail</th> ");
-               out.println(" </tr>");
-           out.println(" <tr>");
-//           resultado.first();
-//             out.println("  <td> "+resultado.getInt(0) +"</td> ");
-//               out.println("  <td> "+resultado.getString(1) +"</td> ");
-//                 out.println("  <td> "+resultado.getString(2) +"</td> ");
-//            out.println("  <td> "+resultado.getString(3) +"</td> ");
-                 out.println(" </body>");
-
-            out.println("</html>");
-          }
-         catch (Exception e)
-         {
-         out.println("imnposible de conectar  "+e.toString());
-          System.out.println("imnposible de conectar  "+e.getMessage());
-         }
-        } finally { 
-            out.close();
+        Persona usr = (Persona) request.getSession().getAttribute("usr");
+        if (usr==null) {
+            usr = Aux.initUsr();
+            request.getSession().setAttribute("usr", usr);
         }
+
+        SqlManager sql = (SqlManager) request.getSession().getAttribute("sql");
+        if (sql==null) {
+            sql = Aux.initSql();
+            request.getSession().setAttribute("sql", sql);
+        }
+            
+        String errorMsg = null;
+        try {
+            errorMsg = "Error en la conexión.";
+            sql.connect();
+            errorMsg = "Error al cargar los clientes.";
+            List usuarios = DBUsuario.loadUsuarios(sql);
+          
+            sql.close();
+            request.getSession().setAttribute("usuarios", usuarios);
+           
+        } catch (Exception e) {
+            errorMsg += e.getMessage();
+            request.getSession().setAttribute("errorMsg", errorMsg);
+            dest = "/error.jsp";
+        }
+
+        disp = app.getRequestDispatcher(dest);
+        disp.forward(request, response);
     } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
