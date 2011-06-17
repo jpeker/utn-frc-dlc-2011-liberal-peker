@@ -261,6 +261,9 @@
         <Component class="javax.swing.JLabel" name="txtArchivo">
         </Component>
         <Component class="javax.swing.JProgressBar" name="jpbProceso">
+          <Events>
+            <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="jpbProcesoPropertyChange"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>

@@ -134,6 +134,12 @@ public class ventanaPrincipal extends javax.swing.JFrame {
 
         jLabel1.setText("Archivo:");
 
+        jpbProceso.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jpbProcesoPropertyChange(evt);
+            }
+        });
+
         jLabel3.setText("Tiempo de Actividad:");
 
         jLabel4.setText("Procesado:");
@@ -433,6 +439,11 @@ btnComprimir.setEnabled(false);
         hiloDescomprimir.stopRequested=true;
         }
     }//GEN-LAST:event_jbtnDetenerActionPerformed
+
+    private void jpbProcesoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jpbProcesoPropertyChange
+        if(jpbProceso.getValue()==100)
+        {jbtnDetener.setEnabled(false);}   
+    }//GEN-LAST:event_jpbProcesoPropertyChange
 public File Explorar()
     {
 
