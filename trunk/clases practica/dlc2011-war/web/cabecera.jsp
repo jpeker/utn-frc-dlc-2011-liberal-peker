@@ -11,7 +11,7 @@
     <tbody>
         <tr>
             <td align="left">
-                <img alt="Logo del sitio" src="face.jpg" width="100" height="100"/>
+                <img alt="Logo del sitio" src="img/face.jpg" width="100" height="100"/>
             </td>
             <td></td>
         </tr>
