@@ -26,7 +26,8 @@ public class ventanaPrincipal extends javax.swing.JFrame {
     private enum accion {comprimir, descomprimir};
     private accion estado;
     ThreadTiempos hiloTiempos;
-
+    ThreadDecompress hiloDescomprimir;
+    private boolean compress_or_descompress;
 
 
     /** Creates new form ventanaPrincipal */
@@ -74,6 +75,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         lblEstado = new javax.swing.JLabel();
         btnComprimir = new javax.swing.JButton();
         btnDescomprimir = new javax.swing.JButton();
+        jbtnDetener = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -213,6 +215,14 @@ public class ventanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jbtnDetener.setText("Detener");
+        jbtnDetener.setPreferredSize(new java.awt.Dimension(117, 27));
+        jbtnDetener.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDetenerActionPerformed(evt);
+            }
+        });
+
         jMenu1.setText("Archivo");
         jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -266,6 +276,8 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jbtnDetener, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnDescomprimir)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnComprimir)
@@ -281,11 +293,13 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnDescomprimir)
-                    .addComponent(btnComprimir))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnDescomprimir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jbtnDetener, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))
+                    .addComponent(btnComprimir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnComprimir, btnDescomprimir});
@@ -338,11 +352,14 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 {
                     this.btnComprimir.setEnabled(false);
                     this.btnDescomprimir.setEnabled(true);
+                    compress_or_descompress=false;
+
                 }
                 else
                 {
                     this.btnComprimir.setEnabled(true);
                     this.btnDescomprimir.setEnabled(false);
+                    compress_or_descompress=true;
                 }
             }
             else
@@ -370,7 +387,6 @@ this.estado =  accion.comprimir;
         hiloTiempos.start();
         hiloComprimir.start();
         
-         
 }
     else
     {
@@ -383,7 +399,7 @@ btnComprimir.setEnabled(false);
     private void btnDescomprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDescomprimirActionPerformed
        if (f.exists())
         {
-           ThreadDecompress hiloDescomprimir = new ThreadDecompress(f, gestor);
+           hiloDescomprimir = new ThreadDecompress(f, gestor);
            btnDescomprimir.setEnabled(false);
            hiloDescomprimir.start();
            
@@ -396,6 +412,22 @@ btnComprimir.setEnabled(false);
  if (JOptionPane.showConfirmDialog(this, "Seguro que desea salir ?", "Confirmacion", JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE) == JOptionPane.YES_OPTION)
             System.exit(1);
     }//GEN-LAST:event_formWindowClosing
+
+    @SuppressWarnings("static-access")
+    private void jbtnDetenerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDetenerActionPerformed
+         try {
+        Thread.sleep(400);
+        } catch (InterruptedException e) {
+        }
+        if(compress_or_descompress){
+        hiloComprimir.stopRequest();
+        hiloComprimir.stopRequested=true;
+        }
+        else{
+        hiloDescomprimir.stopRequest();
+        hiloDescomprimir.stopRequested=true;
+        }
+    }//GEN-LAST:event_jbtnDetenerActionPerformed
 public File Explorar()
     {
 
@@ -436,6 +468,7 @@ public File Explorar()
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JButton jbtnDetener;
     private javax.swing.JLabel jlPath;
     private javax.swing.JProgressBar jpbArchivo;
     private javax.swing.JProgressBar jpbProceso;

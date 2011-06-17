@@ -32,8 +32,8 @@ public class Compresor
     private long tInicio;
     private long tFinal;
     private long tamOriginal;
-    
-  
+    private boolean estado_comp=true;
+    private boolean estado_descomp=true;
 
     /**
      *  Crea un compresor y lo prepara para recibir una tabla de n signos
@@ -69,7 +69,7 @@ public class Compresor
         gestor.setEstado(GestorVentanaPrincipal.Estado.comprimir);
         tamanio=Long.valueOf("0");
         cont = 0;
-    
+        gestor.actualizarJPBArchivos(0, 1); gestor.actualizarJPBProceso(0, 1);
         try
         {
             //abro los archivos..
@@ -100,6 +100,7 @@ public class Compresor
 
             comprimido.close();
             gestor.setEstado(GestorVentanaPrincipal.Estado.iniciado);
+            if(!estado_comp){f2.delete(); gestor.actualizarJPBArchivos(0, 1); gestor.actualizarJPBProceso(0, 1);gestor.setTxEstado("Proceso de compresion detenido");}
 //            tFinal = new Date() - tInicio;
 
         } catch (IOException ex) {
@@ -134,7 +135,7 @@ public class Compresor
             cantSignos = 0;
             int prog = 0;
             int tot= (int)fuente.length();
-            while(fuente.getFilePointer() < fuente.length())
+            while(fuente.getFilePointer() < fuente.length() && estado_comp==true)
             {
                  car = fuente.readByte();            // leo un byte del archivo...
                  short sc = (short) (car & 0x00FF);  // ... lo convierto a short para evitar problemas de desborde
@@ -208,7 +209,7 @@ public class Compresor
             short salida  = 0x0000;  // el valor 0000 0000 0000 0000
             int bit = 0;             // en qu� bit vamos?
             fuente.seek(0);   // vuelvo el fp al principio
-            while(fuente.getFilePointer() < fuente.length())
+            while(fuente.getFilePointer() < fuente.length() && estado_comp==true)
             {
                 car = fuente.readByte();
 
@@ -280,6 +281,7 @@ public class Compresor
     
     public void descomprimir(String fileName)
     {
+        gestor.actualizarJPBArchivos(0, 1); gestor.actualizarJPBProceso(0, 1);
         try
         {
             int pos = fileName.indexOf(".");
@@ -444,13 +446,14 @@ public class Compresor
             comprimido = new RandomAccessFile(f1, "r");
             tamOriginal= comprimido.readLong(); //Nuevo
             //donde esta el file pointer?
-            while(comprimido.getFilePointer() <comprimido.length()){
+            while(comprimido.getFilePointer() <comprimido.length() && estado_descomp==true){
                 long tam=comprimido.readLong();                
                 this.descomprimir(tam,arch);
             }
 
 
             comprimido.close();
+            if(!estado_descomp){gestor.actualizarJPBArchivos(0, 1); gestor.actualizarJPBProceso(0, 1);gestor.setTxEstado("Proceso de descompresion detenido");}
 
         } catch (Exception e) {
 
@@ -550,7 +553,7 @@ public class Compresor
 
             gestor.setTxEstado("Descomprimiendo..");
             // leo byte por byte el archivo comprimido
-            while(comprimido.getFilePointer() < tam)
+            while(comprimido.getFilePointer() < tam && estado_descomp==true)
             {
                 byte  car = comprimido.readByte();
                 short sCar = (short) (car & 0x00FF);  // guardo el byte en un short, pero con todo el primer byte en cero
@@ -614,7 +617,7 @@ public class Compresor
 
 
             nuevo.close();
-
+            if(!estado_descomp){f2.delete();}
         }
 
         catch(IOException e)
@@ -626,6 +629,12 @@ public class Compresor
         
 
         return true;
+    }
+    public void setcomp(boolean estado){
+    estado_comp=estado;
+    }
+    public void setdescomp(boolean estado){
+    estado_descomp=estado;
     }
 }
 

@@ -64,7 +64,7 @@ public class GestorVentanaPrincipal {
      */
      public void actualizarJPBArchivos (int i , long tam)
     {
-         this._jpbArchivo.setValue((int)((i*100/tam)));
+        this._jpbArchivo.setValue((int)((i*100/tam)));
         this._jpbArchivo.setString("Porcentaje: " + this._jpbArchivo.getValue() + "%");
         Float f = (float)tam;
     }
