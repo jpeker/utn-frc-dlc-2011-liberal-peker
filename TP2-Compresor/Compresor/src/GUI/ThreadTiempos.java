@@ -11,6 +11,7 @@ package GUI;
  * @author Liberal, Peker
  */
 public class ThreadTiempos extends Thread{
+    public  boolean stop_tiempos=false;
     private GestorVentanaPrincipal gestor;
     private long tiempoI;
     private long tiempoF;
@@ -27,13 +28,12 @@ public class ThreadTiempos extends Thread{
     @Override
     public void run()
     {
+        if(stop_tiempos==false){
         tiempoI = System.currentTimeMillis();
         try {
         sleep(100);
         while (gestor.getEstado() == GestorVentanaPrincipal.Estado.comprimir)
         {
-            
-
                 sleep(100);
                 tiempoF = System.currentTimeMillis();
                 Float t = (float)((tiempoF - tiempoI)/1000) ;
@@ -45,16 +45,13 @@ public class ThreadTiempos extends Thread{
                 }
                 cont ++;
 
-
-
-           
             }
          } catch (InterruptedException ex) {
                System.out.println("Error: " + ex.getMessage());
 
 
         }
-
+        }
     }
 
 }

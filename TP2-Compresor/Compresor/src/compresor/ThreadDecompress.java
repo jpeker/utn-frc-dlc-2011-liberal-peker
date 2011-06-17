@@ -18,23 +18,31 @@ public class ThreadDecompress extends Thread{
 
     private Compresor compresor;
     private File arch;
-   
-
-
+    public boolean stopRequested=false;
+    private int count = 0;
 
     public ThreadDecompress(File arch, GestorVentanaPrincipal gestor) {
         this.arch=arch;
         compresor = new Compresor(gestor);
-        
-        //this.barra=barra;
-        //this.texto=texto;
     }
 
 
     @Override
     public void run(){
-    compresor.descomprimirRecursivo(arch);
-
+        while (!stopRequested) {
+        try {
+          Thread.sleep(300);
+      }
+      catch (InterruptedException x) {}
+      System.out.println("Running ... count=" + count);
+      count++;
+      compresor.descomprimirRecursivo(arch);
+      stopRequested=true;
     }
+  }
 
-    }
+  public void stopRequest() {
+      compresor.setdescomp(false);
+  }
+
+ }
