@@ -13,10 +13,22 @@ SELECT pr_deletecomentario(4);
 SELECT pr_deletecomentario(5);
 -- Borro una comentario 6
 SELECT pr_deletecomentario(6);
--- Borro una comentario 5
+-- Borro una comentario 7
 SELECT pr_deletecomentario(7);
--- Borro una comentario 6
+-- Borro una comentario 8
 SELECT pr_deletecomentario(8);
+-- Borro una comentario 9
+SELECT pr_deletecomentario(9);
+-- Borro una comentario 10
+SELECT pr_deletecomentario(10);
+-- Borro una comentario 11
+SELECT pr_deletecomentario(11);
+-- Borro una comentario 12
+SELECT pr_deletecomentario(12);
+-- Borro una comentario 13
+SELECT pr_deletecomentario(13);
+-- Borro una comentario 14
+SELECT pr_deletecomentario(14);
 -- =============================================================================
 -- FOTOS
 -- =============================================================================
@@ -28,6 +40,12 @@ SELECT pr_deletefoto(2);
 SELECT pr_deletefoto(3);
 -- Borro una foto 4
 SELECT pr_deletefoto(4);
+-- Borro una foto 5
+SELECT pr_deletefoto(5);
+-- Borro una foto 6
+SELECT pr_deletefoto(6);
+-- Borro una foto 7
+SELECT pr_deletefoto(7);
 -- =============================================================================
 -- AMIGOS
 -- =============================================================================
