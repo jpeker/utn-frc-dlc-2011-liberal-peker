@@ -10,13 +10,13 @@ package GUI;
  *
  * @author Liberal, Peker
  */
+// Hilo manejador de incrementos de tiempo.
 public class ThreadTiempos extends Thread{
     public  boolean stop_tiempos=false;
     private GestorVentanaPrincipal gestor;
     private long tiempoI;
     private long tiempoF;
     private int cont;
-
     public ThreadTiempos(GestorVentanaPrincipal gestor)
     {
 
@@ -48,7 +48,6 @@ public class ThreadTiempos extends Thread{
             }
          } catch (InterruptedException ex) {
                System.out.println("Error: " + ex.getMessage());
-
 
         }
         }
