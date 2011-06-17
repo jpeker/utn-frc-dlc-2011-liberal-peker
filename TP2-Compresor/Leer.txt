@@ -7,6 +7,10 @@ cada hoja.
 
 Se permite no solo comprimir archivos, sino que también directorios.
 
+Se permiten parar los procesos de compresion y descompresion.
+
+Metodo arbol de huffman canonico NO implementado.
+
 Integrantes:
 Rodrigo Liberal
 Julian Peker

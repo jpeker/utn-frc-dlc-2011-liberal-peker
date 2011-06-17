@@ -11,7 +11,7 @@ import javax.swing.*;
  * @author Liberal, Peker
  *
  */
-
+/// Gestor para manejar la gui
 public class GestorVentanaPrincipal {
 
     private JLabel _txtArchivo;

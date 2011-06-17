@@ -320,6 +320,7 @@
     <Component class="javax.swing.JButton" name="jbtnDetener">
       <Properties>
         <Property name="text" type="java.lang.String" value="Detener"/>
+        <Property name="enabled" type="boolean" value="false"/>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[117, 27]"/>
         </Property>

@@ -216,6 +216,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         });
 
         jbtnDetener.setText("Detener");
+        jbtnDetener.setEnabled(false);
         jbtnDetener.setPreferredSize(new java.awt.Dimension(117, 27));
         jbtnDetener.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -378,16 +379,17 @@ public class ventanaPrincipal extends javax.swing.JFrame {
 }//GEN-LAST:event_btnSeleccionarActionPerformed
 
     private void btnComprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComprimirActionPerformed
-this.estado =  accion.comprimir;
+        this.estado =  accion.comprimir;
         if (f.exists())
-{
-        hiloComprimir = new ThreadCompress(f, gestor);
-        hiloTiempos = new ThreadTiempos(gestor);
-       btnComprimir.setEnabled(false);
-        hiloTiempos.start();
-        hiloComprimir.start();
+        {
+            jbtnDetener.setEnabled(true);
+            hiloComprimir = new ThreadCompress(f, gestor);
+            hiloTiempos = new ThreadTiempos(gestor);
+            btnComprimir.setEnabled(false);
+            hiloTiempos.start();
+            hiloComprimir.start();
         
-}
+        }
     else
     {
         JOptionPane.showMessageDialog(this,"Debe seleccionar un archivo", "Atencion",JOptionPane.INFORMATION_MESSAGE);
@@ -399,6 +401,7 @@ btnComprimir.setEnabled(false);
     private void btnDescomprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDescomprimirActionPerformed
        if (f.exists())
         {
+           jbtnDetener.setEnabled(true);
            hiloDescomprimir = new ThreadDecompress(f, gestor);
            btnDescomprimir.setEnabled(false);
            hiloDescomprimir.start();
@@ -415,10 +418,12 @@ btnComprimir.setEnabled(false);
 
     @SuppressWarnings("static-access")
     private void jbtnDetenerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDetenerActionPerformed
-         try {
-        Thread.sleep(400);
-        } catch (InterruptedException e) {
-        }
+        //try {
+        //Thread.sleep(400);
+        //} catch (InterruptedException e) {
+        //}
+        //Detener compresion o descompresion
+        jbtnDetener.setEnabled(false);
         if(compress_or_descompress){
         hiloComprimir.stopRequest();
         hiloComprimir.stopRequested=true;
