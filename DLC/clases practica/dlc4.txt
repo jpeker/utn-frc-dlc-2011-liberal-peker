@@ -1,0 +1,62 @@
+﻿copiar los html y layout a la carpeta web del proyecto dlc2011-war
+ 
+comentario// ir sun-web ir a xml para guardar hacer espacion en el tag xml y volverlo para que se guarde
+
+ahora voy a la carpeta web-inf clik derecho en new - other y creo el standart deployment descriptor
+
+luego hago clik web.xml
+
+en la pestaña page
+
+y pongo la pagina de inicio en welcome file: usuarios
+.html
+
+luego creo un paquete llamado utn.frc.dlc.web  y un servlet llamado HelloWord luego del next 
+
+hago clik add information 
+y finish
+
+descomento el metodo processRequest
+
+luego deploy
+
+voy al navegador y veo lo que hise
+
+http://localhost:8080/dlc2011-war/HelloWord
+
+
+creo otro servlet llamado main
+
+doy de alta el postgre
+entro al glasfi
+
+voy a jdbc al pool
+
+en new
+l
+e pongo de nombre
+
+pgdlcdbpool
+
+siguiente
+
+
+luego del finish
+
+voy al pgdlcdbpool
+
+
+luego voy al consola
+
+pongo stop-domain
+
+
+vuelvo a iniciar el glas  start-domain
+abro la carpeta voy a /home/dlcusr/DbVisualizer-7.1.4/jdbc/postgresql
+
+copio el postgresql
+
+en 
+/home/dlcusr/glassfishv3/glassfish/domains/domain1/lib
+
+luego voy en el glasfish en jdbc en conection pool en pgdlcdbpool y hago clik en ping
