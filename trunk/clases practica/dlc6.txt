@@ -1,3 +1,0 @@
-voy al proyecto  en new creo un jsp llamado usuario 
-
----- hay que escribir SCRIPTLETS---------
