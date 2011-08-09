@@ -1,0 +1,33 @@
+dlcusr usuario
+
+d
+lcpwd password
+
+
+-----------------------
+
+sudo start mysql enter
+
+mysql -u root -p enter $OR$  sudo su-
+ 
+			      mysql -p	
+
+
+show databases;
+
+use mysql;
+
+show tables;
+
+
+////////////////tablas necesarias user, servers//////////
+
+select * from user;
+
+CREATE USER dlcusr IDENTIFIED BY 'dlcpwd';
+
+CREATE DATABASE dlcdb;
+
+GRANT ALL ON dlcdb.* TO dlcusr@'%';
+
+flush privileges;
