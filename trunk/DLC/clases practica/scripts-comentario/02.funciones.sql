@@ -5,11 +5,11 @@ CREATE OR REPLACE FUNCTION fn_Get_Id_Word (
 ) RETURNS INTEGER AS $$
 
     DECLARE
-        var_idusuario               INTEGER         := NULL;
+        var_Id_Word               INTEGER         := NULL;
 
     BEGIN
-        var_idusuario:= NEXTVAL('sq_usuario');
-        RETURN var_idusuario;
+        var_Id_Word:= NEXTVAL('sq_Word');
+        RETURN var_Id_Word;
     END;
 $$ LANGUAGE plpgsql;
 -- La siguiente función "guarda" un usuario en la BBDD.
