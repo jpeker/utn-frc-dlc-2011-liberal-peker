@@ -1,68 +1,45 @@
 -- =============================================================================
--- USUARIO
+-- WORD
 -- =============================================================================
-DROP SEQUENCE IF EXISTS sq_usuario CASCADE;
-CREATE SEQUENCE sq_usuario;
-DROP TABLE IF EXISTS usuario CASCADE;
-CREATE TABLE usuario (
-  idUsuario         	INTEGER                    	NOT NULL,
-  nombre                VARCHAR(32)                     NOT NULL,
-  apellido              VARCHAR(32)                     NOT NULL,
-  mail                   VARCHAR(32),
-  PRIMARY KEY (idUsuario)
+DROP SEQUENCE IF EXISTS sq_Word CASCADE;
+CREATE SEQUENCE sq_Word;
+DROP TABLE IF EXISTS Word CASCADE;
+CREATE TABLE Word (
+  id_Word         	INTEGER                    	NOT NULL,
+  name_Word                VARCHAR(32)                     NOT NULL,
+  nr              INTEGER                     NOT NULL,
+  max_Tf                   INTEGER NOT NULL,
+  PRIMARY KEY (id_Word)
 );
 -- =============================================================================
--- Amigos
+-- WORD
 -- =============================================================================
-DROP SEQUENCE IF EXISTS sq_amigo CASCADE;
-CREATE SEQUENCE sq_amigo;
-DROP TABLE IF EXISTS amigo CASCADE;
-CREATE TABLE amigo (
-  idAmigo1            INTEGER                        NOT NULL,
-  idAmigo2            INTEGER                        NOT NULL,
-
- 
-  PRIMARY KEY (idAmigo1,idAmigo2),
-  FOREIGN KEY (idAmigo1)
-    REFERENCES usuario(idUsuario),
-  FOREIGN KEY (idAmigo2)
-    REFERENCES usuario(idUsuario)
+DROP SEQUENCE IF EXISTS sq_Page CASCADE;
+CREATE SEQUENCE sq_Page;
+DROP TABLE IF EXISTS Page CASCADE;
+CREATE TABLE Page (
+  id_Url         	INTEGER                    	NOT NULL,
+  id_Url_Base                INTEGER                     NOT NULL,
+  url_Name              VARCHAR(32)                     NOT NULL,
+  Modulo                   NUMERIC[6,12] NOT NULL,
+  PRIMARY KEY (id_Url)
+  FOREIGN KEY (id_Url_Base)
+  REFERENCES Page(id_Url)
 );
 -- =============================================================================
--- Fotos
+-- PAGE
 -- =============================================================================
-DROP SEQUENCE IF EXISTS sq_foto CASCADE;
-CREATE SEQUENCE sq_foto;
-DROP TABLE IF EXISTS foto CASCADE;
-CREATE TABLE foto (
-  idfoto	      INTEGER			     NOT NULL,
-  pathfoto            VARCHAR(60)                    NOT NULL,                    
-  idAmigo1            INTEGER                        NOT NULL,
-  idAmigo2            INTEGER                        NOT NULL,
-  fecha               TIMESTAMP                      NOT NULL,
-
+DROP SEQUENCE IF EXISTS sq_PostList CASCADE;
+CREATE SEQUENCE sq_PostList;
+DROP TABLE IF EXISTS PostList CASCADE;
+CREATE TABLE PostList (
+  id_Word            INTEGER                        NOT NULL,
+  id_Url            INTEGER                        NOT NULL,
+  frequency			  INTEGER						 NOT NULL,
  
-  PRIMARY KEY (idfoto),
-  FOREIGN KEY (idAmigo1,idAmigo2)
-    REFERENCES amigo(idAmigo1,idAmigo2)
-
-);
--- =============================================================================
--- Comentarios
--- =============================================================================
-DROP SEQUENCE IF EXISTS sq_comentario CASCADE;
-CREATE SEQUENCE sq_comentario;
-DROP TABLE IF EXISTS comentario CASCADE;
-CREATE TABLE comentario (
-  idcomentario	      INTEGER			     NOT NULL,
-  idUsuario            INTEGER                        NOT NULL,
-  idfoto            INTEGER                        NOT NULL,
-  comentarios         VARCHAR(255), 
- 
-  PRIMARY KEY (idcomentario),
-  FOREIGN KEY (idUsuario)
-    REFERENCES usuario(idUsuario),
-  FOREIGN KEY (idfoto)
-    REFERENCES foto(idfoto)
-
+  PRIMARY KEY (id_Word,id_Url),
+   FOREIGN KEY (id_Word)
+    REFERENCES Word(id_Word)
+  FOREIGN KEY (id_Url)
+    REFERENCES Page(id_Url),
 );

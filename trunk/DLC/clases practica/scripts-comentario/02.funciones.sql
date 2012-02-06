@@ -1,7 +1,7 @@
 -- USUARIO
 -- =============================================================================
 -- La siguiente función obtiene el próximo id de usuario para ser insertado.
-CREATE OR REPLACE FUNCTION fn_getidusuario (
+CREATE OR REPLACE FUNCTION fn_Get_Id_Word (
 ) RETURNS INTEGER AS $$
 
     DECLARE
@@ -17,11 +17,11 @@ $$ LANGUAGE plpgsql;
 -- Entre ellos, el id.
 -- Si existe lo actualiza.
 -- Si no existe lo crea.
-CREATE OR REPLACE FUNCTION fn_saveusuario (
-    pin_idusuario                    INTEGER,
-    pin_nombre                       VARCHAR,
-    pin_apellido                     VARCHAR,
-    pin_mail                         VARCHAR
+CREATE OR REPLACE FUNCTION fn_Save_Word (
+    pin_id_Word                    INTEGER,
+    pin_name_Word                  VARCHAR(32),
+    pin_nr                     	   INTEGER,
+    pin_max_Tf                     INTEGER
    
   
 ) RETURNS SMALLINT AS $$
