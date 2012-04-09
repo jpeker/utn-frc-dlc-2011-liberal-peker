@@ -1,0 +1,74 @@
+    La diferencia entre estado actual y el deseado futuro para el Tomador de
+desiciones﻿ se llama "Estado Problemático". Estas diferencias responden a ciertas
+causas las cuales si sirven para descubrir las diferentes soluciones
+alternativas. Dependiendo de cual es la alternativa es seleccionada en el estado
+generara consecuencias sobre el estado futuro. Es deber del TD considerar esta
+situación ya que es un componente fundamental del proceso racional de toma de
+decisiones que poseen los animales superiores como el hombre.
+    Las situaciones problemáticas se evidencias a través de "efectos indeseables"
+los cuales son parte de la posición relativa del tomador de decisiones.
+    Esta posición relativa es un estado en el tiempo y el espacio del tomador de
+decisiones. Existen dos tipos de soluciones alternativas:
+    
+    * Del Bien: la cual maximiza beneficios y minimiza costos.
+    * Del Mal: Que maximiza Costos y minimiza beneficios.
+
+Para la toma de decisiones estratégica no solo toma la posición relativa, ya que
+lo estratégico no solo toma encuentra el AHORA sino también del ANTES y el
+DESPUÉS.  
+La Gestión estratégica administra personas las cuales depende su rol dentro de
+la organización difiere su imagen de la realidad y manifiestan diferentes
+situaciones problemáticas. Los roles mas identificables son:
+    * Dueño
+    * Empleado.
+
+
+
+Toda situación problemática se transmite entre las personas a través del
+lenguaje. El lenguaje es casi un anticipo del problema, ya que llevan a las 
+personas a imaginar y pre-planificar acciones para contrarrestarlos.
+
+En el caso de la gestión microeconomía estudia el tipo de comportamiento
+económico de cada empresa, grupo de consumidores, trabajadores e inversores o
+los mercados que comprenden las áreas individualmente. Considera las decisiones
+que toma cada uno para cumplir ciertos objetivos propios. Lo anterior, tomando
+en cuenta que se encuentra en el supuesto de libre empresa o mercado libre.
+La microeconomía puede estudiarse desde los siguientes enfoques:
+
+    * La teoría neoclásica del consumidor:
+        La cual define a la microeconomía como condicionada por el consumidor,
+        la restricción presupuestaria de la empresa, la utilidad que tiene la
+        empresa y la curva de demanda. En resumen, ve a la empresa como
+        condicionada primordialmente por factores externos a esta.
+        
+    * La teoría del productor:
+        En el caso de la del productor, se trata de maximizar los beneficios
+        teniendo en cuenta restricciones tecnológicas ( y suponiendo, en
+        principio, que los precios están dados, supuesto este muy fuerte que
+        posteriormente veremos cómo se relaja).
+
+
+En el caso de la gestión macro las reglas de negocio ya son diferentes ya que
+existen N negocios compitiendo por los mismos clientes y se utiliza un mecanismo
+de tomas de decisiones llamado "oferta y demanda" donde los clientes son los que
+realmente deciden que solicitar y la empresa que ofrecer.
+A diferencia de lo micro donde el "QUE" lo decide el jefe, en lo macro lo
+decide el pueblo a través del gobierno que formula leyes.
+Según la wikipedia:
+
+    " La macroeconomía es el estudio global de la economía en términos del monto
+    total de bienes y servicios producidos, el total de los ingresos, el nivel
+    de empleo, de recursos productivos, y el comportamiento general de lo
+    precios. La macroeconomía puede ser utilizada para analizar cuál es la
+    mejor manera de influir en objetivos políticos como por ejemplo hacer crecer
+    la economía, estabilidad de precios, trabajo y la obtención de una
+    sustentable balanza de pagos. La macroeconomía por ejemplo, se enfoca en los
+    fenómenos que afectan las variables indicadoras del Nivel de vida de una
+    sociedad. Además objetiza más al analizador la situación económica de un
+    país propio en el que vive, permitiendo entender los fenómenos que
+    intervienen en ella."
+    
+En resumen la gestion macro estudia se como se organiza, se comportan y
+planifican varios entes independientes compitiendo en el mismo mercado.
+
+
