@@ -1,0 +1,155 @@
+﻿Resumen correspondiente a la unidad temática número 2 de SGe.
+Punto 3.3 Laudon
+
+Autor: Juan B Cabral
+Curso: 5k4
+Fecha: 16/05/09 18:09:54 
+
+Gerentes, Toma de Decisiones y Sistemas de Información.
+
+    El primer punto que se debe tener en cuenta antes de determinar como ayudan
+    los sistemas de información a los gerentes es: "QUE HACEN LOS GERENTES?",
+    "COMO SE TOMAN LAS DECISIONES?" y "QUE TIPOS DE DECISIONES PUEDEN AYUDAR A
+    LOS SISTEMAS DE INFORMACIÓN FORMALES?".
+
+
+EL rol de los gerentes en las Organizaciones.
+
+    Sus responsabilidades van desde tomar decisiones o redactar informes hasta
+    organizar fiestas de cumpleaños. Se puede entender mejor los roles de un
+    gerente analizando los modelos clásicos y contemporáneos.
+    
+
+    Descripciones clásicas de la administración.
+    
+        * Definido por Henry Fayol en 1920.
+        * No sufrió criticas por 70 años.
+        * Define 5 funciones:
+            - Planear.
+            - Organizar.
+            - Coordinar.
+            - Decidir.
+            - Controlas.
+        * El problema es que solo definen funciones administrativas formales.
+
+
+    Descripciones Modernas (Conductuales).
+    
+        * El comportamiento real de un gerente es:
+            - Mas informal que sistemático.
+            - Mas reactivo que reflexivo.
+            - Mas frívolo que organizado.
+        * Se definen 5 atributos que difieren de la descripción clásica.
+            - Se realizan una gran cantidad de actividades diarias (+ 600).
+            - Las actividades están fragmentadas en lapsos menores a 9 min.
+            - Prefieren la especulación el rumor y el chismorreo como
+            alternativa de comunicación.
+            - Prefieren las vías orales de comunicación.
+            - Se da alta prioridad a mantener una red de contactos sociales que
+            ayudan a mantener la agenda a largo plazo.
+              
+        * Por otro lado Mitxberg definió 10 roles administrativos reunidos en 3
+        grandes grupos de roles:
+            - Interpersonales (herramientas: Comunicación electrónica).
+            - Informativos. (mail, blogs, vicios)
+            - Decisorios. (sistemas expertos de soporte de información)
+            
+Los gerentes y la toma de decisiones.
+
+    Este es el rol donde existen menos herramientas informáticas para ayudar al
+    gerente. Sin embargo algunos programadores han logrado penetrar este mercado
+    con relativo éxito.
+    
+    El proceso de la toma de decisiones.
+        Las decisiones pueden clasificarse en:
+            * Jerarquía donde se toman:
+                - Estratégica.
+                - Para control administrativo.
+                - Para el control operativo o del conocimiento.
+            * Otra clasificación es:
+                - Las decisiones no estructuradas: aportan criterio, evaluación
+                y entendimiento a la evaluación de un problema.
+                - Estructuradas: son rutinarias e implican un procedimiento
+                definido.
+            Es muy útil combinar estas dos categorías en un gráfico de dos
+            variables.
+            
+    Etapas en la toma de decisiones.
+        * La de Inteligencia: identificar y entender los problemas que se
+        presentan en la organización.
+        * Diseño: Se generan posibles soluciones.
+        * Selección: Consiste en elegir entre alternativas de solución.
+        * Implementación: Cuando la decisión se pone en practica.
+        
+    Modelos de toma de decisiones:
+        
+        * Modelos individuales (para la decisión de 1 sola persona)
+            
+            * Modelo Racional: esta construido sobre la idea de que el
+            comportamiento humano se compromete a cálculos básicamente
+            congruentes.
+            - Un individuo elige un objetivo, evalúa las metas y las elige bajo
+            un criterio de maximización de beneficios.
+            - Las critica:
+                - Los individuos no pueden ver todas las metas
+                y no todos tienen objetivos individuales.
+                - Hay problemas tan complejos que algunas personas solo eligen
+                la primer alternativa que se les presenta.
+                - La toma de decisión es un proceso continuo, que se va
+                modificando antes de llegar a las decisiones finales.
+                - Es posible manipular a las personas para incrementar las
+                alternativas de decisión de una meta.
+            
+            * Estilo Cognitivo: Describe las inclinaciones subyacentes de la
+            personalidad hacia el tratamiento de la información, la selección de
+            alternativas y la evaluación de consecuencias.
+                - Los tomadores de decisiones sistemáticos: estructuran los
+                problemas que enfrentan con base en algún método formal.
+                - Los tomadores de decisiones: abordan los problemas con
+                distintos métodos y se valen del método de prueba y error para
+                encontrar una solución. No es ni mejor ni peor que el método
+                anterior.
+            
+    * Modelos Grupales.
+    
+        * Modelo Burocrático:
+            - La política suele ser solo modificar un poco las decisiones con
+            respecto a las del pasado.
+            - intentando disminuir la incertidumbre y ser incremental.
+            - La decisión no es propiamente formal sino que son el resultado de
+            los SOP (Procedimientos operativos estandarizados).
+            - Las organizaciones no suelen cambiar las sops.
+            - Las sops restringen en gran medida la toma de decisiones de las 
+            personas. 
+            
+        * Modelo Político:
+            - Estas decisiones son el resultado de negociaciones entre los
+            lideres y los grupos de interés.
+            - El resultado es el reflejo de los problemas políticos internos de
+            la organización.
+            
+        * Modelo del "Recipiente Basura":
+            - Establece que las organizaciones no son racionales.
+            - La toma de decisiones es accidental y en gran parte producto de 
+            problemas y soluciones asociados aleatoriamente.
+            - Explica por que las organizaciones toman decisiones equivocadas.
+            
+            
+Implicaciones del diseño y la comprensión de los sistemas de información.
+    
+    Los factores a tener en cuenta cuando se diseña un nuevo sistema de
+    información son:
+        * El entorno que debe funcionar la organización.
+        * La estructura de la organización.
+        * Cultura y políticas organizacionales.
+        * El tipo de organización y el estilo de liderazgo.
+        * Los principales grupos de interés que afectara el sistema.
+        * Actitud de trabajadores que usaran el sistema.
+        * Los tipos de tareas para los cuales se diseña el sistema.
+    
+    Cuando se diseña el sistema debe tenerse en cuenta que debe tener las
+    siguientes características:
+        * Debe ser flexible y dar muchas opciones en el manejo de datos.
+        * Debe ser capaz de apoyar diferentes estilos de decisiones.
+        * Que sean sensibles a los requisitos burocráticos y políticos de la
+        organización.

@@ -1,0 +1,138 @@
+Principales Tipos de Sistemas en las organizaciones
+    * Dados intereses, especialidades y niveles diferentes de la organización,
+    existen diferentes tipos de sistemas.
+    * Los sistemas se crean para dar servicio a diferentes intereses de la
+    organización.
+
+
+    Diferentes Tipos de Sistemas.
+        * Sistemas a nivel del conocimiento:
+            Ayuda a las empresas a integrar nuevo conocimiento  en los negocios
+            y ayudar a a organización a controlar el flojo del trabajo de
+            oficina.
+            
+        * Sistemas a nivel administrativo:
+            Apoyan las actividades de supervisión, control de toma de decisiones
+            y administrativas a los gerentes de nivel medio.
+            Estos sistemas a veces responde a la pregunta "Que pasaría si?"
+            
+        * Sistemas a nivel estratégico:
+            Apoyan las actividades de plantación a largo plazo de la dirección
+            general de la empresa.
+            Compagina los cambios del entorno externo con la capacidad
+            organizacional existente.
+
+
+    Seis Tipos Principales de Sistemas.
+        1 - Sistemas de Procesamiento de Transacciones(TPS).
+            - Efectúan y registran las transacciones diarias necesarias para
+            dirigir el negocio.
+            - Dan servicio al nivel operativo.
+                - Entradas: Transacciones y eventos.
+                - Procesamiento: Clasificación, listado, fusión y actualización.
+                - Salidas: Informes detallados, listas y resúmenes.
+                - Usuarios: Personal operativo supervisor.
+                
+        2/3 - Sistemas de Trabajo del Conocimiento y de oficina(KWS).
+            - Auxilian a los trabajadores del conocimiento en la creación e
+            integración de conocimiento nuevo en la organización.
+            Del conocimiento:
+                - Entradas: Especificaciones de diseño, base del conocimiento.
+                - Procesamiento: Modelado, simulaciones.
+                - Salidas: Modelo, gráficos.
+                - Usuarios: Profesionales, personal técnico.
+            Oficina:
+                - Entradas: Documentos y programas.
+                - Procesamiento: Admin de documentos, programación y
+                comunicación.
+                - Salidas: Documentos, programas y correos.
+                - Usuarios: Oficinistas.
+                
+        4 - Sistemas de Información Gerencial (MIS).
+            - Dan servicio a las funciones de planeacion, control y toma de
+            decisiones proporcionando informes resumidos y excepcionales de
+            rutina.
+                - Entradas: Datos resumidos de transacciones, datos de alto
+                volumen y modelos simples.
+                - Procesamiento: Informes de rutina, modelos simples y análisis
+                de bajo nivel
+                - Salidas: Informes resumidos y excepciones.
+                - Usuarios: Gerentes de nivel medio.
+                
+        5 - Sistemas de Apoyo a la Toma de Decisiones(DSS).
+            - Combinan datos y modelos analíticos sofisticados o herramientas de
+            análisis de datos para apoyar la toma de decisiones semiestructurada
+            y no estructuradas.
+                - Entradas: Datos de bajo volumen o base de datos masivas
+                optimizadas para el análisis de datos, modelos analíticos y
+                herramientas de análisis de datos.
+                - Procesamiento: Interactivo, simulaciones y análisis.
+                - Salidas: Informes especiales, análisis de decisiones y
+                respuestas a consultas.
+                - Usuarios: Profesionales y gerentes de personal.
+
+        6 - Sistemas de Apoyo a Ejecutivos(ESS).
+            - Aborda el apoyo a decisiones no estructuradas mediante gráficos y
+            comunicaciones avanzadas.
+                - Entradas: Datos acumulados, datos externos y datos internos.
+                - Procesamiento: Graficas, simulaciones e interactivo.
+                - Salidas: Proyecciones y respuestas a consultas.
+                - Usuarios: Directores
+                
+Sistemas Desde una Perspectiva Funcional.
+
+    Sistemas de Ventas y Marqueting.
+        - Ayudan a identificar clientes, productos o servicios de la empresa.
+        - Ayudan a desarrollar productos o servicios para satisfacer a las
+        necesidades de los clientes.
+        - Ayudan a vender productos o servicios.
+        - Dan apoyo continuo a clientes.
+            - A Nivel Estratégico: Están pendientes de las tendencias, y
+            competidores
+            - A Nivel Administrativo: Apoyan las campañas de ventas y marqueting
+            a la investigación de mercado, el desempeño de ventas y al personal
+            encargado de estas ultimas.
+            - A Nivel del Conocimiento: Ayudan a las estaciones de trabajo
+            dedicadas al análisis de mercado.
+            - A Nivel Operativo: Ayudan a localizar y contactar a clientes
+            potenciales, llevar registro de ventas, procesar pedidos y ofrecer
+            apoyo al servicio de clientes.
+            
+    Sistemas de Manufactura y Producción.
+        - Ayudan a la elaboración de productos y de servicios así como al
+        control de flujo de la producción.
+            - A Nivel Estratégico: Planes de manufactura a largo plazo,
+            decisiones sobre donde ubicar plantas nuevas e inversiones en nuevas
+            tecnologías de manufactura.
+            - A Nivel Administrativo: Analizan costos y recursos sobre la
+            manufactura.
+            - A Nivel del Conocimiento: Crean y distribuyen conocimientos sobre
+            como producir.
+            - A Nivel Operativo: Tienen que ver con el estado de las tareas en
+            producción.
+        
+    Sistemas de Finanzas y Contabilidad
+        - Dan seguimiento a los activos financieros de la empresa así como su
+        flujo de fondos.
+            - A Nivel Estratégico: objetivos de  inversión a largo plazo y
+            pronósticos financieros a largo plazo.
+            - A Nivel Administrativo: Ayudan a vigilar y controlar los recursos
+            financieros.
+            - A Nivel del Conocimiento: Proporcionan herramientas analíticas
+            para diseñar la mezcla correcta de inversores.
+            - A Nivel Operativo: Siguen las transacciones como sueldos y pagos.
+            
+    Sistemas de Recursos Humanos.
+        - Llevan registros de los empleados, dan seguimiento a las habilidades y
+        desempeño del trabajo y capacitación y apoyan a la remuneración y
+        desarrollo profesional de los empleados.
+            - A Nivel Estratégico: Identifican los requerimientos de mano de
+            obra de la empresa.
+            - A Nivel Administrativo: Ayudan a supervisar el reclutamiento,
+            remuneración y colocación de los empleados.
+            - A Nivel del Conocimiento: Seguimiento de capacitación,
+            trayectorias profesionales diseño de empleo e informe de relaciones.
+            - A Nivel Operativo: Hacen el seguimiento de reclutamiento y
+            colocación de empleados en la empresa.
+
+            

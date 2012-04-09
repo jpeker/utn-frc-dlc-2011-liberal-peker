@@ -1,0 +1,165 @@
+Resumen correspondiente a la unidad temática número 2 de SGe.
+Punto 7 Laudon﻿.
+
+Autor: Juan B Cabral
+Curso: 5k4
+Fecha: 16/05/09 18:09:54 
+
+
+Administración de los Recursos de Datos.
+
+Retos para la administración con DB.
+    * Obstáculos Organizacionales para un entorno de DB.
+        Un entorno DBMS desafía las estructuras de poder dentro de la
+        Organización ya que los datos no se guardan para una sola ares sino para
+        todos.
+        Es necesario realizar los cambios Organizacionales requeridos para el
+        correcto funcionamiento de un entorno de DB.
+    * Integrar y garantizar la calidad de datos.
+        Se debe consumir un tiempo  en integrar datos de diferentes áreas que 
+        pueden pisarse o redundar.
+        
+Organización de datos en un entorno tradicional de archivos.
+
+    Términos y conceptos de la organización de archivos.
+        * Bit: Unidad mas pequeña de datos que puede manejar una pc.
+        * Byte: Conjunto de bits, representan un caracter.
+        * Campo: Agrupación de caracteres en una palabra, oración o numero
+        completo.
+        * Registro: Grupos de campos relacionados bajo algún criterio.
+        * Archivo: Grupo de registros del mismo tipo.
+        * Base de Datos: Grupo de archivos interrelacionados y ordenados de
+        alguna manera.
+        * Entidad: Cosa o evento sobre la cual se debe conservar información.
+        * Atributo: pieza de información que describe a una entidad en
+        particular.
+        * Campo Clave: campo en un registro que identifica únicamente a un
+        registro en una entidad.
+    
+    Problemas en el entorno tradicional de archivos.
+        * Redundancia de datos y confusión.
+        * Dependencia de datos del programa.
+        * Carencia de Flexibilidad.
+        * Seguridad escasa.
+        * Carencia de compartición y disponibilidad de datos.
+
+Las DB y la Administración de Datos.
+
+    Definición rigurosa de DB.
+        Conjunto de datos organizados para abastecer a varias
+        aplicaciones al mismo tiempo, almacenando y administrando datos de
+        manera que aparezcan en un solo lugar.
+    
+    DBMS.
+        Software especial para crear y mantener una DB y permitir el acceso
+        a las aplicaciones para la extracción de los datos necesarios sin tener
+        archivos separados o definiciones de datos en sus programas de
+        computadora.
+        Un DBMS posee:
+            * un lenguaje de definición de datos (DDL)
+            * un lenguaje de manipulación de datos (DML) (SQL)
+            * un diccionario de datos.
+        Un DBMS:
+            * reduce la dependencia de datos de la aplicación.
+            * Aumenta la disponibilidad.
+            * Centraliza las políticas de seguridad.
+            * Aumenta la flexibilidad.
+            
+    Tipos de DB.
+        * RDBMS.
+            Trata a los datos almacenados como si estuvieran en tablas de dos
+            dimensiones llamadas relaciones.
+            Los datos son fácilmente extraíbles y combinables si poseen un 
+            elemento en común.
+            A cada registro/fila de una relación se le asigna el nombre de 
+            tupla.
+            Este modelo es el utilizado por los principales desarrolladores de
+            DB.
+            
+        * DBMS jerárquico o de Red.
+            Modelo lógico antiguo que organiza a los datos en una estructura
+            tipo árbol. Se organiza en pieza de registros llamadas segmentos las
+            cuales están unidas a sus hijos en relaciones de uno a muchos.
+            En el caso de modelo de red esta relación es de mucho a muchos.
+            
+        * OODBMS.
+            Almacena tanto datos como procedimientos que actúan sobre los
+            datos(sic). Muy útil para datos no estructurados como multimedia,
+            datos provenientes de herramientas CAD o datos muy recursivos.
+            Son relativamente mas lentos que los RDBMS para grandes
+            transacciones.
+            Existen sistemas híbridos que mezclan características de RDBM y de 
+            OODBMS.
+            
+
+Creación de un entorno de DB.
+
+    Diseño.
+        Se debe tener en cuenta dos factores clave.
+            * Diseño Conceptual (lógico).
+                - Describe como deben organizarse los elementos datos en la BD
+                - Identifica las relaciones entre los datos.
+                - Se utiliza la herramienta conocida como DER para diseñar.
+                - Para mejorar el proceso de diseño se utiliza la normalización.
+            * Diseño Físico.
+                Este aspecto ya suele estar diseñado en el DBMS.
+                
+    Distribución de DB.
+        - Es aquella que se almacena en mas de un lugar físico, o existen copias
+        de ellas sincronizadas en diferentes lugares.
+        - Sirve para administrar cada lugar de manera local.
+        - Reducen la vulnerabilidad de un solo sitio central.
+        - Dependen de las lineas de telecomunicación.
+        
+    Requisitos Administrativos en un sistema de DB.
+        * Administración de datos.
+            Una función especial dentro de la organización para manejar los
+            recursos de datos de la empresa concernientes a las políticas de
+            información, la planeación de datos, el mantenimiento de los
+            diccionarios de datos y los estándares de calidad de los datos.
+        * Metodología para la planeación y modelado de datos.
+            Es determinar los requerimientos de la organización concernientes
+            a los datos y sus relaciones.
+        * La tecnología de bases de datos administración y los usuarios.
+            Las db modernas requieren soft y hard nuevo así como correcta
+            capacitación de usuarios.
+            Los lenguajes modernos junto con las DBMS modernas permiten a una
+            mayor cantidad de usuarios acceder y manipular los datos.
+   
+                
+Tendencias de las Bases de Datos.
+    
+    Análisis multidimensional de datos.
+        - Es un análisis de manera que los modelos tradicionales no pueden.
+        - Cada aspecto de los datos corresponde a una dimensión.
+        - Se realizan gráficos 'cruzando' diferentes datos generando gráficos
+        o valores.
+        
+    Almacenes de Datos.
+        Es un conjunto de datos extraídos de varios sistemas autónomos actuales
+        o históricos los cuales están consolidados en la elaboración de informes
+        y análisis.
+        Se pueden extraer datos de los cuales surgen patrones los cuales pueden
+        servir para guiar las decisiones de los gerentes.
+        Los almacenes de datos permiten el acceso a datos sin que estos
+        perjudiquen el rendimiento de sistemas subyacentes.
+        
+    Bases de Datos y la Web.
+        - La web esta estructurada como una base de datos de hiper medios, por lo
+        tanto enlaza nodos vinculados en un patrón especificado y estos nodos
+        pueden ser: vídeos, texto, imágenes o sonido.
+        - Se han desarrollados una serie de middleware para obtener datos de la
+        organización a través  de la web. (como app servers o cgi).
+          
+          
+    
+        
+            
+        
+      
+    
+    
+            
+       
+        
+        
