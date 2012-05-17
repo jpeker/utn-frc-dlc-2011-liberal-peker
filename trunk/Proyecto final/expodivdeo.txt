@@ -1,55 +1,79 @@
+          un sistema de información para la captura y procesamiento de imágenes, 
+          para implementarlo sobre una nueva plataforma de software publicitario y de análisis de mercado.
+
+
+
 Proyecto a Desarrollar.	Que Quienes Como Con Que Donde
+
+
 	
 	  	Propuesta a Desarrollar
-          un sistema de información para la captura y procesamiento de imágenes, 
-          para implementarlo sobre una nueva plataforma de software publicitario y de análisis de mercado.		
+
+			Optical solutions pretende desarrollar un sistema de información que permita una emisión de publicidad personalizada e interactiva a fin de 				mejorar la percepcion pautas publicitarias y generar informacion relevante empleada en analisis de mercado directo.
+		
 		Metodologia a aplicar
-		Se aplicará metodologia agil , por que se trata de un proyecto investigacion que requiere que sea controlado en n etapas de desarrollo ya que
-		 tiene que ser refinado constantemente. como Herramienta(FrameWork) se implementara scrum. 
-		Scrum
-		cada Sprint dura 28 dias.
-		sprint 1: *Captura eficiente de imagenes permite realizar una entrada eficiente para el procesamiento. 
-		          *Mejoramiento de imagenes y Filtrado permiten facilitar el procesamiento posterior de las imagenes.
+
+			Se aplicará metodologia agil, debido a que se trata de un proyecto investigacion que requiere control en varias etapas de desarrollo ya que
+			debe ser refinado constantemente. Para ello se implementara el framework Scrum. 
+		
+
+		
+		Etapas de desarrollo involucradas en el proyecto		
+		
+		Aplicando Scrum con 7 sprints de 28 dias, tenemos las siguientes etapas de desarrollo asociadas a cada sprint:
+
+		Sprint 1: *Epicas Captura eficiente de imagenes permite realizar una entrada eficiente para el procesamiento. 
+		          *Epicas Mejoramiento de imagenes y Filtrado permiten facilitar el procesamiento posterior de las imagenes.
 				  Entregable: Captura de imagenes y procesamiento inicial de imagenes
-		sprint 2: *Deteccion de areas significativas, recortes de imagenes.
+		Sprint 2: *Deteccion de areas significativas, recortes de imagenes.
 		          Entregable: Segmentancion de Imagenes
 				  *Manejo de video sampling y deteccion de movimientos de video
 				  Entregable: Procesamiento inicial de video.
-        sprint 3: la transformación de los datos en bruto en una forma
+        	Sprint 3: la transformación de los datos en bruto en una forma
                   adecuada para el tratamiento informático		
 				  Entregable:Transformacion y descripcion de imagenes procesadas como objetos
-        sprint 4: *Reconocer los objetos asignandole una etiqueta y clasificando
+        	Sprint 4: *Reconocer los objetos asignandole una etiqueta y clasificando
                   según su informacion 
                   Entregable: Reconocimiento y Clasificacion de los objetos en funcion de su uso
-        sprint 5:  *Al poder combinar la interraccion de video con el procesamiento y clasificacion
+        	
+		Sprint 5:  *Al poder combinar la interraccion de video con el procesamiento y clasificacion
                    de imagenes se permite mejorar realizar la interaccion publicitaria
                   Entregable: Combinar la interaccion de video con acciones de vision por computador
-        sprint 6: *Mejora en la captura de imagenes adaptando asi al sistema a un ambiente implementacion
+        
+		Sprint 6: *Mejora en la captura de imagenes adaptando asi al sistema a un ambiente implementacion
                   Entregable: Mejoramiento en tecnicas de captura
                  *Luego de realizar una correcta captura de imagenes se realiza el correcto
                  Procesamiento de la informacion generando valor de la misma
 				 Entregable:Bases de datos con informacion procesada
-        sprint 7: *Al aplicar tecnicas de datamining se obtienen resultadados relevantes de la informacion
+
+        	Sprint 7: *Al aplicar tecnicas de datamining se obtienen resultadados relevantes de la informacion
                   capturada que luego puede ser empleada para la elaboracion de informes
 				  Entregable: Mejoramiento en los resultados de la informacion procesada
                  * Los informes con descripciones, tendencias y valores significativos
                  Entregable: Informes con resultados relevantes
-		Equipo de Trabajo
+	
+	Equipo de Trabajo
+		  
 		  -Lider de Proyecto
 		  -Scrum Master
 		  -Product Owner
-		  -Team Members
-		  -ing de software
-          -investigador de software
-          -arquitecto de software
+		  -Ing de software
+          	  -Investigador de software
+		  -Desarrollador de software
+		  -Ingeniero de software
+          	  -Arquitecto de software
+
          Modulos
-         -Image Acquisition
-         -Preprocesing
-         -Segmentacion
-         -Representacion & Descripcion
-         -Reconocimiento & Interpretacion
-         -Staditics  		 
-		  -Explicar las etapas de desarrollo. Como.
+         
+		-Image Acquisition 
+         	-Preprocesing
+         	-Segmentacion
+         	-Representacion & Descripcion
+         	-Reconocimiento & Interpretacion
+         	-Staditics
+
+
+		-Explicar las etapas de desarrollo. Como.
 		-Explicar la division en sprints. Como.	
 		-Explicar los plazos de entrega. Como.
 		-Explicar sobre las tecnologias utilizadas. Con Que
