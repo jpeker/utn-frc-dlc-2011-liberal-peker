@@ -22,18 +22,22 @@ Video
 	Nombre del Producto: Optical Marketing.	
 	Nombre del Proyecto: Marketing Digital - Reconocimiento Optico Publicitario.
 			
-	Explicar la Solucion: (que es, que soluciona, que ventajas tiene respecto a la solucion, 
+	Explicar la Solucion: (que es, que soluciona, que ventajas tiene respecto a la solucion)
+			
 			- Que es.
 			Optical marketing es una herramienta de software que involucra la captura, analisis y procesamiento de informacion
 			empleando medios opticos, vision por computador y tecnicas de data mining. 
 						
 			- Que soluciona. Para que sirve optical marketing
-				Optical marketing permite mejorar los servicios de las pautas publicitarias.
+				Optical marketing permite mejorar los servicios de las pautas publicitarias, brindando publicidades interactivas con 
+				los receptores y capturando datos que brindan los mismos. Estos datos capturados 
+				pueden ser empleados luego para realizar una analisis directo de mercado y obtener informacion de marketing 
+				pertinente para las empresas.
 				
 		
 			- Que ventajas tiene. 	- Que ventaja competitiva brinda la solucion.
 	
-				-Genera un mecanismo de interaccion publicitaria que genera un impacto  mas efectivo de la pauta a los receptores.
+				-Genera un mecanismo de interaccion publicitaria que genera un impacto mas efectivo de la pauta a los receptores.
 				-Evita realizar tediosos analisis  de datos a travez de procesos manuales.
 			        -Reduce costos de analisis de informacion en cuanto al contrato de personal, 
 					por ejemplo encuestadores, comunicadores sociales y analistas de mercado.				
@@ -54,9 +58,9 @@ Video
 				-En eventos especiales de promocion de nuevo producto o servicio.				
 			       	
 			- Features de la solucion con respecto a la competencia.
-				-Es economica con respecto a realizar un gran estudio de mercado realizado por una empresa.
+				-Es economica, con respecto a realizar un gran estudio de mercado contratando los servicios de otra empresa.
 				-Presenta informacion real y actualizada.
-				-Puede realizar un analisis distribuido de un mismo topico.				
+				-Puede realizar un analisis distribuido geograficamente.				
 
 				
 
