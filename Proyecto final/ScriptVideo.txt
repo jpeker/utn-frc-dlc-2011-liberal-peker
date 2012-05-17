@@ -1,0 +1,27 @@
+Intro
+	Video Introductorio Presentando el Problema y la Necesidad.
+			-Que es lo que sucede.
+			-Que se buscar solucionar.
+			-Que beneficio podriamos obtener solucionanndo este problema                                                                    	
+	
+	Nombre de la Empresa: Optical Solutions.
+			Quien es optical solucions.
+			Que busca optical solutions. Mision y Vision.
+
+	Nombre del Producto: Optical Marketing.	
+	Nombre del Proyecto: Marketing Digital - Reconocimiento Optico Publicitario.
+			
+	
+	Explicar la Solucion:			
+			- Que soluciona
+			- Que ventajas tiene
+			- Quienes pueden emplearlo.			       	
+
+
+
+Proyecto a Desarrollar.	
+		
+	Explicar sobre el proyecto, metodologia empleada.
+	Explicar sobre las tecnologias utilizadas.
+	
+	
