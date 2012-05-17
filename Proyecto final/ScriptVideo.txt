@@ -6,7 +6,8 @@ Video
 	Nombre de la Empresa: Optical Solutions.
 			Quien es optical solucions.
 			Que busca optical solutions. Mision y Vision.
-	
+	[Aniadir logo para ambas]	
+
 	Optical solutions se dedica a proveer soluciones de software involucrando servicios opticos.
 	
 	Es por ello que Optical Solutions evaluando las necesidades de demanda de un software que involucre
@@ -22,32 +23,42 @@ Video
 	Nombre del Proyecto: Marketing Digital - Reconocimiento Optico Publicitario.
 			
 	Explicar la Solucion: (que es, que soluciona, que ventajas tiene respecto a la solucion, 
-			
 			- Que es.
-			Optical marketing es una herramienta de software donde implica de captura, analisis y procesamiento de informacion
+			Optical marketing es una herramienta de software que involucra la captura, analisis y procesamiento de informacion
 			empleando medios opticos, vision por computador y tecnicas de data mining. 
 						
-			- Que soluciona.
-			
-			- Que ventajas tiene.
-
+			- Que soluciona. Para que sirve optical marketing
+				Optical marketing permite mejorar los servicios de las pautas publicitarias.
+				
+		
+			- Que ventajas tiene. 	- Que ventaja competitiva brinda la solucion.
+	
+				-Genera un mecanismo de interaccion publicitaria que genera un impacto  mas efectivo de la pauta a los receptores.
 				-Evita realizar tediosos analisis  de datos a travez de procesos manuales.
 			        -Reduce costos de analisis de informacion en cuanto al contrato de personal, 
-					por ejemplo encuestadores o comunicadores sociales.				
-				-Recolecta grandes cantidades de informacion en periodos de tiempos reducidos.
+					por ejemplo encuestadores, comunicadores sociales y analistas de mercado.				
+				-Recolecta grandes cantidades de informacion independiente del lapso de tiempo.
 				-Permite generar informacion de nichos de mercado en forma continua.
 								
 
 			- Quienes pueden emplearlo.
-			  	-Cualquier empresa del sector que desea estudiar un nicho de mercado.
-				-Cualquier empresa del sector que desea analizar la competencia.
-				-Cualquier empresa que desea contratar 
+			  	-Cualquier empresa que desea analizar un nicho de mercado.
+				-Cualquier empresa que desea analizar la competencia.
+				-Cualquier empresa que desea establecer una nueva sucursal de negocio.
+				-Organismos estatales para realizar planificacion urbana. 
+				-Empresas publicitarias que deseen analizar cierto comportamiento de los receptores.
 
 			- Donde puede ubicarse.
-			- Beneficios economicos.			       	
+				-En areas de concentracion masiva de receptores (tanto abiertas como cerradas).
+				-En lugares tales como comercios, (personalizando el servicio).
+				-En eventos especiales de promocion de nuevo producto o servicio.				
+			       	
 			- Features de la solucion con respecto a la competencia.
-			- Que ventaja competitiva brinda la solucion.
-			- Que capacidad integradora posee.
+				-Es economica con respecto a realizar un gran estudio de mercado realizado por una empresa.
+				-Presenta informacion real y actualizada.
+				-Puede realizar un analisis distribuido de un mismo topico.				
+
+				
 
 
 	Proyecto a Desarrollar.	Que Quienes Como Con Que Donde
