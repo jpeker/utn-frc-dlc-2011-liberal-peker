@@ -13,15 +13,18 @@ Intro
 			
 	
 	Explicar la Solucion:			
-			- Que soluciona
-			- Que ventajas tiene
-			- Quienes pueden emplearlo.			       	
-
+			- Que soluciona.
+			- Que ventajas tiene.
+			- Quienes pueden emplearlo.
+			- Donde puede ubicarse.
+			- Beneficios economicos.			       	
+			- Features de la solucion.
+			- Que capacidad integradora posee.
 
 
 Proyecto a Desarrollar.	
 		
-	Explicar sobre el proyecto, metodologia empleada.
-	Explicar sobre las tecnologias utilizadas.
-	
+	-Explicar sobre el proyecto, metodologia empleada.
+	-Explicar sobre las tecnologias utilizadas.
+
 	
