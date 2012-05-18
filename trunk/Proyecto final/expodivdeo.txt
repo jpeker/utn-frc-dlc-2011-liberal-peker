@@ -9,7 +9,8 @@ Proyecto a Desarrollar.	Que Quienes Como Con Que Donde
 	
 	  	Propuesta a Desarrollar
 
-			Optical solutions pretende desarrollar un sistema de información que permita una emisión de publicidad personalizada e interactiva a fin de 				mejorar la percepcion pautas publicitarias y generar informacion relevante empleada en analisis de mercado directo.
+			Optical solutions pretende desarrollar un sistema de información que permita una emisión de publicidad personalizada e interactiva a fin de 				
+			mejorar la percepcion pautas publicitarias y generar informacion relevante empleada en analisis de mercado directo.
 		
 		Metodologia a aplicar
 
@@ -29,10 +30,10 @@ Proyecto a Desarrollar.	Que Quienes Como Con Que Donde
 		          Entregable: Segmentancion de Imagenes
 				  *Manejo de video sampling y deteccion de movimientos de video
 				  Entregable: Procesamiento inicial de video.
-        	Sprint 3: la transformación de los datos en bruto en una forma
+        	Sprint 3:*Epicas la transformación de los datos en bruto en una forma
                   adecuada para el tratamiento informático		
 				  Entregable:Transformacion y descripcion de imagenes procesadas como objetos
-        	Sprint 4: *Reconocer los objetos asignandole una etiqueta y clasificando
+        	Sprint 4: *Epicas Reconocer los objetos asignandole una etiqueta y clasificando
                   según su informacion 
                   Entregable: Reconocimiento y Clasificacion de los objetos en funcion de su uso
         	
@@ -66,15 +67,26 @@ Proyecto a Desarrollar.	Que Quienes Como Con Que Donde
          Modulos
          
 		-Image Acquisition 
+		Captura imagenes digital Determinando el dispositivo de video
          	-Preprocesing
-         	-Segmentacion
+			Mejora  la imagen, definiendo constraste,limpiando la imagen para facilitar los otros procesos sobre la imagen
+         	Aplica Filtros a la imagen
+			-Segmentacion
+			Limita las areas de interes de la imagen,Diminuyendo el tiempo de procesamiento
          	-Representacion & Descripcion
+			Representar los valores de la imagen en objetos diferenciando una clase de objeto de otra, extrayendo las caracteristicas que resulta cuantitamente de interes; en objetos
          	-Reconocimiento & Interpretacion
+			Clasifica los objetos definido por el modulo Representacion & Descripcion basandose en la informacion.
          	-Staditics
-
-
-		-Explicar las etapas de desarrollo. Como.
-		-Explicar la division en sprints. Como.	
-		-Explicar los plazos de entrega. Como.
-		-Explicar sobre las tecnologias utilizadas. Con Que
-		-Explicar sobre el ambiente de implementacion. Como
+			Genera Estadisticas 
+			Consultas sobre determinados valores como por ejemplo personas
+        Fecha de Entrega
+		En Base a las estimaciones realizadas, teniendo en cuenta el estado academico, horarios de cada miembro del grupo.
+		Se Estimo que la fecha de entrega seria en diciembre del 2013
+		Tecnologias de desarrollo 
+		Motor de Base de datos: PostgreSql, por que es el sistema de gestión de bases de datos de código abierto más potente del mercado 
+		C/C++ por que la libreria de Computer Vision esta desarrollada en estos lenguajes, tambien por que flexible en cuanto al manejo de los 
+	          dispositivos de video
+			  
+	      ambiente de implementacion. 
+		
