@@ -37,13 +37,14 @@ Proyecto a Desarrollar.	Que Quienes Como Con Que Donde
                   según su informacion 
                   Entregable: Reconocimiento y Clasificacion de los objetos en funcion de su uso
         	
-		Sprint 5:  *Al poder combinar la interraccion de video con el procesamiento y clasificacion
-                   de imagenes se permite mejorar realizar la interaccion publicitaria
+		Sprint 5:  *Combinar la interraccion de video con el procesamiento y clasificacion
+                   de imagenes se permite realizar la interaccion publicitaria.
                   Entregable: Combinar la interaccion de video con acciones de vision por computador
         
-		Sprint 6: *Mejora en la captura de imagenes adaptando asi al sistema a un ambiente implementacion
-                  Entregable: Mejoramiento en tecnicas de captura
-                 *Luego de realizar una correcta captura de imagenes se realiza el correcto
+		Sprint 6:
+				*Mejora en la captura de imagenes adaptando asi al sistema a un ambiente implementacion
+                 Entregable: Mejoramiento en tecnicas de captura
+                *Luego de realizar una correcta captura de imagenes se realiza el correcto
                  Procesamiento de la informacion generando valor de la misma
 				 Entregable:Bases de datos con informacion procesada
 
@@ -84,9 +85,26 @@ Proyecto a Desarrollar.	Que Quienes Como Con Que Donde
 		En Base a las estimaciones realizadas, teniendo en cuenta el estado academico, horarios de cada miembro del grupo.
 		Se Estimo que la fecha de entrega seria en diciembre del 2013
 		Tecnologias de desarrollo 
-		Motor de Base de datos: PostgreSql, por que es el sistema de gestión de bases de datos de código abierto más potente del mercado 
+		
+		Motor de Base de datos: 
+		
+		PostgreSql, por que es el sistema de gestión de bases de datos de código abierto más potente del mercado 
 		C/C++ por que la libreria de Computer Vision esta desarrollada en estos lenguajes, tambien por que flexible en cuanto al manejo de los 
-	          dispositivos de video
-			  
-	      ambiente de implementacion. 
+	    dispositivos de video
+		Ubuntu Linux 10.04, porque es la mejor version de ubuntu linux.
+		C/C++ Netbeans
+		gcc
+		g++ 
+		C/C++ OpenCV 2.0
+		C/C++ OpenFrameworks
+		C/C++ Wt Library
+		C/C++ SFML
+		OOFILE C++Report Writer
+		RapidMiner
+		MSWord 2007
+		MSExcel 2007
+		MSProyect 2007
+		Prezi
+	  
+	    ambiente de implementacion. 
 		
