@@ -68,19 +68,31 @@ Proyecto a Desarrollar.	Que Quienes Como Con Que Donde
          Modulos
          
 		-Image Acquisition 
-		Captura imagenes digital Determinando el dispositivo de video
+		Configura  el dispositivo de video
+		Captura personas, objetos mediante un dispositivo de video transformando en un formato de imagen digital
+		Seleccion de tecnica de captura
+		Guardar en la base de datos la imagen
          	-Preprocesing
 			Mejora  la imagen, definiendo constraste,limpiando la imagen para facilitar los otros procesos sobre la imagen
          	Aplica Filtros a la imagen
-			-Segmentacion
+			Selecciona niveles de Grises, colores
+			
+	    -Segmentacion
+		    crea areas de interes
 			Limita las areas de interes de la imagen,Diminuyendo el tiempo de procesamiento
-         	-Representacion & Descripcion
-			Representar los valores de la imagen en objetos diferenciando una clase de objeto de otra, extrayendo las caracteristicas que resulta cuantitamente de interes; en objetos
-         	-Reconocimiento & Interpretacion
+			Seleccionar areas
+			representa la imagenes en pixeles
+        -Representacion & Descripcion
+			Representa matricial los valores de la imagen en objetos diferenciando una clase de objeto de otra, 
+			extraer las caracteristicas que resulta cuantitamente de interes; en objetos
+			Guarda en la base de datos los objetos creados
+        -Reconocimiento & Interpretacion
+			Identifica que tipo de informacion hay en los objetos
 			Clasifica los objetos definido por el modulo Representacion & Descripcion basandose en la informacion.
-         	-Staditics
+        -Staditics
 			Genera Estadisticas 
 			Consultas sobre determinados valores como por ejemplo personas
+			Genera informe en base a los esquema publicitario
         Fecha de Entrega
 		En Base a las estimaciones realizadas, teniendo en cuenta el estado academico, horarios de cada miembro del grupo.
 		Se Estimo que la fecha de entrega seria en diciembre del 2013
