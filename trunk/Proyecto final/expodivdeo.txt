@@ -23,17 +23,17 @@ Proyecto a Desarrollar.	Que Quienes Como Con Que Donde
 		
 		Aplicando Scrum con 7 sprints de 28 dias, tenemos las siguientes etapas de desarrollo asociadas a cada sprint:
 
-		Sprint 1: *Epicas Captura eficiente de imagenes permite realizar una entrada eficiente para el procesamiento. 
-		          *Epicas Mejoramiento de imagenes y Filtrado permiten facilitar el procesamiento posterior de las imagenes.
-				  Entregable: Captura de imagenes y procesamiento inicial de imagenes
+		Sprint 1: * Captura eficiente de imagenes permite realizar una entrada eficiente para el procesamiento. 
+		          * Mejoramiento de imagenes y Filtrado permiten facilitar el procesamiento posterior de las imagenes.
+				  Entregable: Captura procesamiento inicial de imagenes
 		Sprint 2: *Deteccion de areas significativas, recortes de imagenes.
 		          Entregable: Segmentancion de Imagenes
 				  *Manejo de video sampling y deteccion de movimientos de video
 				  Entregable: Procesamiento inicial de video.
-        	Sprint 3:*Epicas la transformación de los datos en bruto en una forma
+        	Sprint 3:* la transformación de los datos en bruto en una forma
                   adecuada para el tratamiento informático		
 				  Entregable:Transformacion y descripcion de imagenes procesadas como objetos
-        	Sprint 4: *Epicas Reconocer los objetos asignandole una etiqueta y clasificando
+        Sprint 4: *Ep Reconocer los objetos asignandole una etiqueta y clasificarlo
                   según su informacion 
                   Entregable: Reconocimiento y Clasificacion de los objetos en funcion de su uso
         	
@@ -51,7 +51,7 @@ Proyecto a Desarrollar.	Que Quienes Como Con Que Donde
         	Sprint 7: *Al aplicar tecnicas de datamining se obtienen resultadados relevantes de la informacion
                   capturada que luego puede ser empleada para la elaboracion de informes
 				  Entregable: Mejoramiento en los resultados de la informacion procesada
-                 * Los informes con descripciones, tendencias y valores significativos
+                 * Generar Los informes con descripciones, tendencias y valores significativos para la pauta publicitaria
                  Entregable: Informes con resultados relevantes
 	
 	Equipo de Trabajo
@@ -60,9 +60,7 @@ Proyecto a Desarrollar.	Que Quienes Como Con Que Donde
 		  -Scrum Master
 		  -Product Owner
 		  -Ing de software
-          	  -Investigador de software
 		  -Desarrollador de software
-		  -Ingeniero de software
           	  -Arquitecto de software
 
          Modulos
@@ -83,7 +81,7 @@ Proyecto a Desarrollar.	Que Quienes Como Con Que Donde
 			Seleccionar areas
 			representa la imagenes en pixeles
         -Representacion & Descripcion
-			Representa matricial los valores de la imagen en objetos diferenciando una clase de objeto de otra, 
+			Representa matricialmente los valores(RGB) de la imagen en objetos diferenciando una clase de objeto de otra, 
 			extraer las caracteristicas que resulta cuantitamente de interes; en objetos
 			Guarda en la base de datos los objetos creados
         -Reconocimiento & Interpretacion
@@ -93,6 +91,7 @@ Proyecto a Desarrollar.	Que Quienes Como Con Que Donde
 			Genera Estadisticas 
 			Consultas sobre determinados valores como por ejemplo personas
 			Genera informe en base a los esquema publicitario
+			
         Fecha de Entrega
 		En Base a las estimaciones realizadas, teniendo en cuenta el estado academico, horarios de cada miembro del grupo.
 		Se Estimo que la fecha de entrega seria en diciembre del 2013
@@ -100,7 +99,7 @@ Proyecto a Desarrollar.	Que Quienes Como Con Que Donde
 		
 		Motor de Base de datos: 
 		
-		PostgreSql, por que es el sistema de gestión de bases de datos de código abierto más potente del mercado 
+		MySql, por que es el sistema de gestión de bases de datos de código abierto más potente del mercado 
 		C/C++ por que la libreria de Computer Vision esta desarrollada en estos lenguajes, tambien por que flexible en cuanto al manejo de los 
 	    dispositivos de video
 		Ubuntu Linux 10.04, porque es la mejor version de ubuntu linux.
@@ -119,4 +118,9 @@ Proyecto a Desarrollar.	Que Quienes Como Con Que Donde
 		Prezi
 	  
 	    ambiente de implementacion. 
+		Se realizara en el Laboratorio de investigacion de Software(Lis) considerando los siguientes aspectos
+		o	Incidencia de luz: ángulo y dirección de luz 
+        o	Intensidad lumínica: cantidad de luz que incide sobre el ambiente de pruebas durante la implementación del proyecto.
+        o	Temperatura del ambiente: que puede influir en la incidencia de fotones. 
+
 		
