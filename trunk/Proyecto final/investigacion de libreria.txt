@@ -1,0 +1,11 @@
+Probar libreria openCV con SKeleton, Usando distancia de la tranformada la distancia
+                                     usando la transformado de laplace
+user : Julian Peker
+Probar openFramework con poco exito user infernal
+
+probar openCV generando un mouse empleando color rojo usando la mano
+                                            
+ 
+  user Rodrigo
+
+invetigar openNI
