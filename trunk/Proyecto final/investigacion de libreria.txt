@@ -1,11 +1,24 @@
-Probar libreria openCV con SKeleton, Usando distancia de la tranformada la distancia
-                                     usando la transformado de laplace
+Investigacion
+libreria openCV con SKeleton, 
+Paso 1:   convertimos la imagen de entrada para la imagen gris de si la entrada es una imagen 3-canal. 
+convertimos la imagen gris en la imagen binaria utilizando el umbral:
+            cvThreshold (src, src, 1, 255, CV_THRESH_BINARY);
+ 
+Paso 2: el uso de funciones de transformación a distancia para obtener la  distancia de transformar las imágenes.
+            cvDistTransform (src_img, dist_img, CV_DIST_L2, 3, NULL, NULL);
+Notas:   dist_img es una imagen de bits con punto flotante de 32 años, por lo que si es que la pantalla por cvShowImage (), vamos a encontrar que es lo mismo que src_im. Es mejor convertir una imagen 32F a 8U imagen (cvConvertScale (dist_img, dist_img_8u, 1,0) ;), y luego mostrarlo.
+ 
+Paso 3: Tome Laplaciano (2 ª derivada) de distancia de la imagen transformada.     
+cvLaplace (dist_img, dist_img_laplac, 3);
+Paso 4:   el umbral del resultado del paso 3. esto es muy importante. De lo contrario, no se puede conseguir el esqueleto.
+Se supone que la distancia central en la transformada de distancia debe ser la misma que te eje medial o   esqueleto.
 user : Julian Peker
 Probar openFramework con poco exito user infernal
 
-probar openCV generando un mouse empleando color rojo usando la mano
-                                            
- 
+investigacion de openCV realizando pruebas:
+generando un mouse empleando color rojo en la mano
+capturando el movimiento de la mano
+capturando el color rojo
   user Rodrigo
-
-invetigar openNI
+invetigar instalar openNI
+          driver sensor kinecr
