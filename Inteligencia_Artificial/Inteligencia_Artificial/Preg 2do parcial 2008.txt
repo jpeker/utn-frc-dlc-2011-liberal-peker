@@ -1,0 +1,5 @@
+1) ventajas y desventajas en metodos de busqueda no informados
+2) Arquitectura de sistemas expertos
+3) Cláusula de Horm
+4) Heurística
+5) Procedimiento mediante pila de objetivos
