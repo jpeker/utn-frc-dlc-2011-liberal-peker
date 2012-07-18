@@ -1,0 +1,21 @@
+Teorico
+
+Vecindad
+Filtro (qué es y para que se usa)
+Transf. de Hough
+Qué es un patrón
+Función de decision lineal
+Redes neurales. Concepto.
+Funcion de activacion.
+Red Neuronal. Concepto. Clasificiacion
+Explicar algun algoritmo (adaline o percepton)
+Diferencia entre Percepton y Adaline. Como se calculan los errores.
+
+
+Practico
+
+Histograma
+Tanrsf. de Hough
+Reconoc. de Partones
+Percepton o Adeline
+
