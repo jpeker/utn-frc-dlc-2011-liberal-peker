@@ -1,0 +1,16 @@
+product backlog por cada sprint meeting
+Acta de sprint review
+informe reliminar
+arquitectura
+RQs a travez de use case o como se quiera plasmar
+Diag Clase
+Arquitectura paq y diag de paquetes
+dia despliegue componentes e implementacion(puede que no)
+CODIGO: Generar infrmcion en formato textual NOMENCLATURA DEL CODIGO(glosario: QUE ES UN GESTO, POSTURA,y como se trabaja
+Nombre de componentes clases y funciones
+DTE
+MAtriz de trazabilidad de rqs a codigo (readme)
+
+Propuesta de Manual de usuario(video)
+
+
