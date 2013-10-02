@@ -1,0 +1,19 @@
+var searchData=
+[
+  ['impressions',['Impressions',['../class_game_memory_1_1_interactions.html#a34268d69790879d63853fb1ab5b72f21',1,'GameMemory::Interactions']]],
+  ['inboxes',['Inboxes',['../class_game_memory_1_1_o_m_k_t_d_b_entities.html#a0097ac435c8cf12e633cba5d3416830e',1,'GameMemory.OMKTDBEntities.Inboxes()'],['../class_game_memory_1_1_users.html#a612925fd6d50f8624a9067e930bcbe37',1,'GameMemory.Users.Inboxes()']]],
+  ['inboxid',['InboxId',['../class_game_memory_1_1_inboxes.html#ad8f869d6ea30424629d6ee2e041316fc',1,'GameMemory::Inboxes']]],
+  ['interactionid',['InteractionId',['../class_game_memory_1_1_interactions.html#a1f644eb88ea4634d1760257a2017016a',1,'GameMemory::Interactions']]],
+  ['interactions',['Interactions',['../class_game_memory_1_1_o_m_k_t_d_b_entities.html#a90bece0c772b8feda0e88ac32ae0ac27',1,'GameMemory.OMKTDBEntities.Interactions()'],['../class_game_memory_1_1_advert_campaign_details.html#aed4bd9e4877c0af4c00f36a578213ac0',1,'GameMemory.AdvertCampaignDetails.Interactions()'],['../class_game_memory_1_1_snapshots.html#a24c7654eba40312f235c515e732088dc',1,'GameMemory.Snapshots.Interactions()']]],
+  ['invoicedetails',['InvoiceDetails',['../class_game_memory_1_1_o_m_k_t_d_b_entities.html#a43ee16477b00b7f5df26049a7d1f7995',1,'GameMemory.OMKTDBEntities.InvoiceDetails()'],['../class_game_memory_1_1_invoices.html#a5ae6f975426aa0a9f86af85e03e23f10',1,'GameMemory.Invoices.InvoiceDetails()']]],
+  ['invoicedetailsid',['InvoiceDetailsID',['../class_game_memory_1_1_invoice_details.html#aca50c426114254633fd034bc5a64854d',1,'GameMemory::InvoiceDetails']]],
+  ['invoiceid',['InvoiceID',['../class_game_memory_1_1_invoice_details.html#a67999662697ed10076327e47bba74611',1,'GameMemory.InvoiceDetails.InvoiceID()'],['../class_game_memory_1_1_invoices.html#a5e354613497aec5c10ef302d9d9e7258',1,'GameMemory.Invoices.InvoiceID()']]],
+  ['invoicenumber',['InvoiceNumber',['../class_game_memory_1_1_invoices.html#ae1338eba0dcd9ebfc1ae59ee289c9c15',1,'GameMemory::Invoices']]],
+  ['invoices',['Invoices',['../class_game_memory_1_1_o_m_k_t_d_b_entities.html#a5f476d54b5516d130b85937f55d63fbd',1,'GameMemory.OMKTDBEntities.Invoices()'],['../class_game_memory_1_1_customers.html#a6348f6d374057879900c399c52a57f02',1,'GameMemory.Customers.Invoices()'],['../class_game_memory_1_1_invoice_details.html#a992833a86798d5b67073419b0106d7ec',1,'GameMemory.InvoiceDetails.Invoices()']]],
+  ['invoicesreference',['InvoicesReference',['../class_game_memory_1_1_invoice_details.html#addfc996d0bd6283ba9558d5f84a8c781',1,'GameMemory::InvoiceDetails']]],
+  ['isactive',['IsActive',['../class_game_memory_1_1_customers.html#a24e171b530ecc8d281c609bb105e993f',1,'GameMemory::Customers']]],
+  ['isapproved',['IsApproved',['../class_game_memory_1_1_users.html#a112ee494edcaeda109a5ea967b60273c',1,'GameMemory::Users']]],
+  ['islockedout',['IsLockedOut',['../class_game_memory_1_1_users.html#a4def29e0222bfd127b6859ade7a5ca87',1,'GameMemory::Users']]],
+  ['isover',['IsOver',['../class_game_memory_1_1_adverts.html#aef114b2666c933d5bba90f6a5def6e29',1,'GameMemory::Adverts']]],
+  ['isup',['isUp',['../class_game_memory_1_1_advert_hosts.html#a8d5395f4cef95ff9558134b2c37feb6b',1,'GameMemory::AdvertHosts']]]
+];
