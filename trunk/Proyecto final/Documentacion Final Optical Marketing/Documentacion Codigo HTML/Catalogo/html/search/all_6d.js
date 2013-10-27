@@ -1,0 +1,19 @@
+var searchData=
+[
+  ['basicinteractions',['BasicInteractions',['../namespace_microsoft_1_1_samples_1_1_kinect_1_1_basic_interactions.html',1,'Microsoft::Samples::Kinect']]],
+  ['kinect',['Kinect',['../namespace_microsoft_1_1_samples_1_1_kinect.html',1,'Microsoft::Samples']]],
+  ['main',['Main',['../class_microsoft_1_1_samples_1_1_kinect_1_1_basic_interactions_1_1_app.html#ac8c63a882ab489c31c76aa0da9a058ea',1,'Microsoft.Samples.Kinect.BasicInteractions.App.Main()'],['../class_microsoft_1_1_samples_1_1_kinect_1_1_basic_interactions_1_1_app.html#ac8c63a882ab489c31c76aa0da9a058ea',1,'Microsoft.Samples.Kinect.BasicInteractions.App.Main()'],['../class_microsoft_1_1_samples_1_1_kinect_1_1_basic_interactions_1_1_app.html#ac8c63a882ab489c31c76aa0da9a058ea',1,'Microsoft.Samples.Kinect.BasicInteractions.App.Main()']]],
+  ['mainwindow',['MainWindow',['../class_microsoft_1_1_samples_1_1_kinect_1_1_basic_interactions_1_1_main_window.html',1,'Microsoft::Samples::Kinect::BasicInteractions']]],
+  ['message',['Message',['../class_microsoft_1_1_samples_1_1_kinect_1_1_basic_interactions_1_1_alerts.html#ab04d0ef02aabf1f3c600ee8a2063e6bb',1,'Microsoft.Samples.Kinect.BasicInteractions.Alerts.Message()'],['../class_microsoft_1_1_samples_1_1_kinect_1_1_basic_interactions_1_1_inboxes.html#af7cafc1901910df731064251598c2f8e',1,'Microsoft.Samples.Kinect.BasicInteractions.Inboxes.Message()']]],
+  ['microsoft',['Microsoft',['../namespace_microsoft.html',1,'']]],
+  ['migrationid',['MigrationId',['../class_microsoft_1_1_samples_1_1_kinect_1_1_basic_interactions_1_1_c_____migration_history.html#a4f7d46a893bdcb60c23fc9f347293413',1,'Microsoft::Samples::Kinect::BasicInteractions::C__MigrationHistory']]],
+  ['millisecondstodurationconverter',['MillisecondsToDurationConverter',['../class_microsoft_1_1_samples_1_1_kinect_1_1_basic_interactions_1_1_milliseconds_to_duration_converter.html',1,'Microsoft::Samples::Kinect::BasicInteractions']]],
+  ['millisecondstokeytimeconverter',['MillisecondsToKeyTimeConverter',['../class_microsoft_1_1_samples_1_1_kinect_1_1_basic_interactions_1_1_milliseconds_to_key_time_converter.html',1,'Microsoft::Samples::Kinect::BasicInteractions']]],
+  ['model',['Model',['../class_microsoft_1_1_samples_1_1_kinect_1_1_basic_interactions_1_1_model.html',1,'Microsoft::Samples::Kinect::BasicInteractions']]],
+  ['model',['Model',['../class_microsoft_1_1_samples_1_1_kinect_1_1_basic_interactions_1_1_c_____migration_history.html#a0e2dee1d4a21289499ebcf7943854e39',1,'Microsoft::Samples::Kinect::BasicInteractions::C__MigrationHistory']]],
+  ['monitoringid',['MonitoringID',['../class_microsoft_1_1_samples_1_1_kinect_1_1_basic_interactions_1_1_monitorings.html#aae8415243643475b974fb453546020b8',1,'Microsoft::Samples::Kinect::BasicInteractions::Monitorings']]],
+  ['monitorings',['Monitorings',['../class_microsoft_1_1_samples_1_1_kinect_1_1_basic_interactions_1_1_o_m_k_t_d_b_entities.html#a100bb03b5b9c80556f2ceb10b7006192',1,'Microsoft.Samples.Kinect.BasicInteractions.OMKTDBEntities.Monitorings()'],['../class_microsoft_1_1_samples_1_1_kinect_1_1_basic_interactions_1_1_advert_hosts.html#a721bcdfcb2bdbf22dcdb82a684d707b4',1,'Microsoft.Samples.Kinect.BasicInteractions.AdvertHosts.Monitorings()']]],
+  ['monitorings',['Monitorings',['../class_microsoft_1_1_samples_1_1_kinect_1_1_basic_interactions_1_1_monitorings.html',1,'Microsoft::Samples::Kinect::BasicInteractions']]],
+  ['properties',['Properties',['../namespace_microsoft_1_1_samples_1_1_kinect_1_1_basic_interactions_1_1_properties.html',1,'Microsoft::Samples::Kinect::BasicInteractions']]],
+  ['samples',['Samples',['../namespace_microsoft_1_1_samples.html',1,'Microsoft']]]
+];
