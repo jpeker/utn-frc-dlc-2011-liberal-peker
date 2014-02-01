@@ -34,13 +34,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ArrivalsForQueuesRLiberal">
+    <Reference Include="ArrivalsForQueuesRLiberal, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Librerias\Ejercicio260Logica\Ejercicio260Logica\bin\Debug\ArrivalsForQueuesRLiberal.dll</HintPath>
     </Reference>
-    <Reference Include="Ejercicio260Logica">
+    <Reference Include="Ejercicio260Logica, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Librerias\Ejercicio260Logica\Ejercicio260Logica\bin\Debug\Ejercicio260Logica.dll</HintPath>
     </Reference>
-    <Reference Include="RNDGenDistRLiberal">
+    <Reference Include="RNDGenDistRLiberal, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Librerias\Ejercicio260Logica\Ejercicio260Logica\bin\Debug\RNDGenDistRLiberal.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -84,6 +87,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

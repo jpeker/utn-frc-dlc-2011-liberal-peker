@@ -3,3 +3,7 @@ D:\Facultad\FinalSimulacion\Librerias\LibreriaDeRandoms\RNDGenDistRLiberal\RNDGe
 D:\Facultad\FinalSimulacion\Librerias\LibreriaDeRandoms\RNDGenDistRLiberal\RNDGenDistRLiberal\obj\Debug\ResolveAssemblyReference.cache
 D:\Facultad\FinalSimulacion\Librerias\LibreriaDeRandoms\RNDGenDistRLiberal\RNDGenDistRLiberal\obj\Debug\RNDGenDistRLiberal.dll
 D:\Facultad\FinalSimulacion\Librerias\LibreriaDeRandoms\RNDGenDistRLiberal\RNDGenDistRLiberal\obj\Debug\RNDGenDistRLiberal.pdb
+D:\Tesis\SimulacionFinal\Librerias\LibreriaDeRandoms\RNDGenDistRLiberal\RNDGenDistRLiberal\bin\Debug\RNDGenDistRLiberal.dll
+D:\Tesis\SimulacionFinal\Librerias\LibreriaDeRandoms\RNDGenDistRLiberal\RNDGenDistRLiberal\bin\Debug\RNDGenDistRLiberal.pdb
+D:\Tesis\SimulacionFinal\Librerias\LibreriaDeRandoms\RNDGenDistRLiberal\RNDGenDistRLiberal\obj\Debug\RNDGenDistRLiberal.dll
+D:\Tesis\SimulacionFinal\Librerias\LibreriaDeRandoms\RNDGenDistRLiberal\RNDGenDistRLiberal\obj\Debug\RNDGenDistRLiberal.pdb
