@@ -1,0 +1,101 @@
+Exporting package to 'D:\ProyectoFinal\Proyecto final\DiagramaDeClasesDeProyecto\modelodedatos.xml'
+Retrieving data for export: diagram elements
+Retrieving data for export: links
+Retrieving data for export: constraints
+Retrieving data for export: attribute tagged values
+Retrieving data for export: operation tagged values
+Retrieving data for export: operation parameter tagged values
+Retrieving data for export: connector tagged values
+Completed data retrieval
+Pre-processing export tree...
+Completed pre-processing
+Processing package: OpticalMarketingUML
+Element:0: CommunicatorManagerClientSide
+Element:1: FaceDescripter
+Element:2: Device
+Element:3: RGBMatrix
+Element:4: xmlHaarCascadeFile
+Element:5: AdverdQueue
+Element:6: HumanDescripter
+Element:7: TCPServerSocket
+Element:8: Kinect
+Element:9: IRProjector
+Element:10: Preprocessor
+Element:11: OpticalMarketingPackages
+Element:12: MessageCommand
+Element:13: Adverd
+Element:14: Capture
+Element:15: AdverdStats
+Element:16: AdverdList
+Element:17: Microphone
+Element:18: Format
+Element:19: Matrix
+Element:20: RGBCamera
+Element:21: FTP
+Element:22: Motor
+Element:23: LowPassFilter
+Element:24: Filter
+Element:25: MessageParserClientSide
+Element:26: CommunicatorClient
+Element:27: CommunicatorServer
+Element:28: Viewer
+Element:29: KinectHardwareService
+Element:30: MessageParserServerSide
+Element:31: AdverdManager
+Element:32: Skeleton
+Element:33: ObjectDescripter
+Element:34: VideoCapture
+Element:35: Video
+Element:36: HaarCascadeFaceDetection
+Element:37: GreyScaleMatrix
+Element:38: Accelerometer
+Element:39: ConnectionAdverd
+Element:40: EdgeFilter
+Element:41: ImageCapture
+Element:42: TCPClientSocket
+Element:43: IRCamera
+Element:44: HighPassFilter
+Element:45: Game
+Element:46: CommunicatorManagerServerSide
+Element:47: ColorImage
+Diagram: ClassDesingMasterDiagram
+Processing package: ColorImage
+Element:48: ImageStream
+Element:49: ColorImageStream
+Element:50: ColorImageFrame
+Element:51: ImageFrame
+Diagram: ColorImage
+Processing package: OpticalMarketingPackages
+Element:52: InterpreterPackage
+Element:53: SegmentationPackage
+Element:54: PreprocessingPackage
+Element:55: InteractionPackage
+Element:56: DataBasePackage
+Element:57: CapturePackage
+Diagram: PackageRelations
+Processing package: CapturePackage
+Diagram: PackageCaptureDesignClassDiagram
+Processing package: DataBasePackage
+Processing package: InteractionPackage
+Diagram: InteractionPackageDesignClassDiagram
+Processing package: InterpreterPackage
+Processing package: PreprocessingPackage
+Element:58: 
+Diagram: PreprocessingPackageDesignClassDiagrama
+Processing package: SegmentationPackage
+Diagram: PackageSegmentationDesingClassDiagram
+Processing package: Skeleton
+Element:59: Skeleton
+Element:60: JointTrackingState
+Element:61: 
+Element:62: Joint
+Element:63: SkeletonTrackingState
+Element:64: JointCollection
+Element:65: SkeletonTrackingState
+Element:66: FrameEdges
+Element:67: SkeletonStream
+Element:68: SkeletonFrame
+Element:69: SkeletonPoint
+Diagram: Skeleton
+Formatting output XML...please wait
+XMI Document Export Complete!
