@@ -41,12 +41,12 @@ namespace ArrivalsForQueuesRLiberal
             if ((list[0].GetType() == typeof(string)) 
                     && list[0].Equals(serverList[0]))
             {
-                serverList[1] = list[1]; //serverList [1] llegada,
-                //serverList [2] proxima llegada
                 //list [0] event name ,list[1] random, list[2] clock
-                if (firstTime) { serverList[3] = (double)list[1]; 
-                    firstTime = false; }
-                else { serverList[3] = (double)serverList[2]; }
+                //serverList2 valor de random generado + clock actual
+                serverList[1] = list[1]; 
+                //if (firstTime) { serverList[3] = (double)list[1]; 
+                //    firstTime = false; }
+                //else { serverList[3] = (double)serverList[2]; }
                 serverList[2] = (double)list[1] + (double)list[2];               
             }
         }
