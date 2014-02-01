@@ -1,9 +1,0 @@
-D:\Facultad\FinalSimulacion\Librerias\ProgramLogicEjercicio242\ProgramLogicEjercicio242\bin\Debug\ProgramLogicEjercicio242.dll
-D:\Facultad\FinalSimulacion\Librerias\ProgramLogicEjercicio242\ProgramLogicEjercicio242\bin\Debug\ProgramLogicEjercicio242.pdb
-D:\Facultad\FinalSimulacion\Librerias\ProgramLogicEjercicio242\ProgramLogicEjercicio242\bin\Debug\ArrivalsForQueuesRLiberal.dll
-D:\Facultad\FinalSimulacion\Librerias\ProgramLogicEjercicio242\ProgramLogicEjercicio242\bin\Debug\RNDGenDistRLiberal.dll
-D:\Facultad\FinalSimulacion\Librerias\ProgramLogicEjercicio242\ProgramLogicEjercicio242\bin\Debug\ArrivalsForQueuesRLiberal.pdb
-D:\Facultad\FinalSimulacion\Librerias\ProgramLogicEjercicio242\ProgramLogicEjercicio242\bin\Debug\RNDGenDistRLiberal.pdb
-D:\Facultad\FinalSimulacion\Librerias\ProgramLogicEjercicio242\ProgramLogicEjercicio242\obj\Debug\ResolveAssemblyReference.cache
-D:\Facultad\FinalSimulacion\Librerias\ProgramLogicEjercicio242\ProgramLogicEjercicio242\obj\Debug\ProgramLogicEjercicio242.dll
-D:\Facultad\FinalSimulacion\Librerias\ProgramLogicEjercicio242\ProgramLogicEjercicio242\obj\Debug\ProgramLogicEjercicio242.pdb
