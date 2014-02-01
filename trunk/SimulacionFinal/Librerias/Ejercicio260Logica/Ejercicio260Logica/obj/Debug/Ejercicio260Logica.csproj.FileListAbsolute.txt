@@ -8,3 +8,12 @@ D:\Tesis\SimulacionFinal\Librerias\Ejercicio260Logica\Ejercicio260Logica\bin\Deb
 D:\Tesis\SimulacionFinal\Librerias\Ejercicio260Logica\Ejercicio260Logica\obj\Debug\Ejercicio260Logica.csprojResolveAssemblyReference.cache
 D:\Tesis\SimulacionFinal\Librerias\Ejercicio260Logica\Ejercicio260Logica\obj\Debug\Ejercicio260Logica.dll
 D:\Tesis\SimulacionFinal\Librerias\Ejercicio260Logica\Ejercicio260Logica\obj\Debug\Ejercicio260Logica.pdb
+D:\Repositorios\ProyectoFinal\SimulacionFinal\Librerias\Ejercicio260Logica\Ejercicio260Logica\bin\Debug\Ejercicio260Logica.dll
+D:\Repositorios\ProyectoFinal\SimulacionFinal\Librerias\Ejercicio260Logica\Ejercicio260Logica\bin\Debug\Ejercicio260Logica.pdb
+D:\Repositorios\ProyectoFinal\SimulacionFinal\Librerias\Ejercicio260Logica\Ejercicio260Logica\bin\Debug\ArrivalsForQueuesRLiberal.dll
+D:\Repositorios\ProyectoFinal\SimulacionFinal\Librerias\Ejercicio260Logica\Ejercicio260Logica\bin\Debug\RNDGenDistRLiberal.dll
+D:\Repositorios\ProyectoFinal\SimulacionFinal\Librerias\Ejercicio260Logica\Ejercicio260Logica\bin\Debug\ArrivalsForQueuesRLiberal.pdb
+D:\Repositorios\ProyectoFinal\SimulacionFinal\Librerias\Ejercicio260Logica\Ejercicio260Logica\bin\Debug\RNDGenDistRLiberal.pdb
+D:\Repositorios\ProyectoFinal\SimulacionFinal\Librerias\Ejercicio260Logica\Ejercicio260Logica\obj\Debug\ResolveAssemblyReference.cache
+D:\Repositorios\ProyectoFinal\SimulacionFinal\Librerias\Ejercicio260Logica\Ejercicio260Logica\obj\Debug\Ejercicio260Logica.dll
+D:\Repositorios\ProyectoFinal\SimulacionFinal\Librerias\Ejercicio260Logica\Ejercicio260Logica\obj\Debug\Ejercicio260Logica.pdb

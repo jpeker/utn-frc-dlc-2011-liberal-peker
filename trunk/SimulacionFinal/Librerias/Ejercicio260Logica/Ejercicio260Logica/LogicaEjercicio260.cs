@@ -15,21 +15,18 @@ namespace Ejercicio260Logica
         //Reloj
         public ProblemColumn reloj =
             new ProblemColumn(new List<object> { "Reloj", 0.0 }, 'd');
-        
+
         //Columna random llegada paquete
         public ProblemColumn rnd_pck_val =
-            new ProblemColumn(new List<object>
-            { "Rnd Llegada Paquete", 0.0 }, 'd');
+            new ProblemColumn(new List<object> { "Rnd Llegada Paquete", 0.0 }, 'd');
 
         //Columna random procesamiento paquete
-        public ProblemColumn rnd_prp_val = 
-            new ProblemColumn(new List<object> 
-            { "Rnd Procesamiento Paquete", 0.0 }, 'd');
+        public ProblemColumn rnd_prp_val =
+            new ProblemColumn(new List<object> { "Rnd Procesamiento Paquete", 0.0 }, 'd');
 
         //Columna evento actual
-        public ProblemColumn eventoActual = 
-            new ProblemColumn(new List<object> 
-                        {"Evento Actual Ejecutandose", "ninguno"} ,'s');
+        public ProblemColumn eventoActual =
+            new ProblemColumn(new List<object> { "Evento Actual Ejecutandose", "ninguno" }, 's');
         //Columna evento siguiente
         public ProblemColumn eventoSiguiente =
             new ProblemColumn(new List<object> { "Evento Actual Siguiente", "ninguno" }, 's');
@@ -37,23 +34,23 @@ namespace Ejercicio260Logica
 
         //Columna total paquetes informacion a ser procesados
         public ProblemColumn cantidadPaquetesSimulados
-            = new ProblemColumn(new 
+            = new ProblemColumn(new
             List<object> { "Total Paquetes Simulados", 0 }, 'i');
 
         //Cola de paquetes de paquetes de informacion a ser procesados
         //Todos los paquetes vienen con el valor en falso descartado
         //Es decir no descartado.
         //Si el paquete es descartado se lo setea para contar los descartados
-        
+
         //Cola de paquetes que se van almacenando en la memoria
         //y se van sacando para ser procesados
         public List<PaqueteInformacion> colaPaquetesInformacion =
             new List<PaqueteInformacion>();
-       
+
         //Columna total paquetes informacion a ser procesados
         public List<PaqueteInformacion> colaPaquetesAProcesar
-            = new List<PaqueteInformacion>(); 
-            
+            = new List<PaqueteInformacion>();
+
 
         //Cola de descartados para contar los paquetes descartados
         //y en funcion de eso obtener el nivel de confianza
@@ -62,9 +59,8 @@ namespace Ejercicio260Logica
 
         //Columna total paquetes informacion descartados
         public ProblemColumn cantidadPaquetesDescartados
-            = new ProblemColumn(new List<object> 
-            { "Total Paquetes Descardados", 0 }, 'i');
-  
+            = new ProblemColumn(new List<object> { "Total Paquetes Descardados", 0 }, 'i');
+
         //Cola de procesados para contar la cantidad de paquetes procesados
         //y en funcion de eso obtener el nivel de confianza
         public List<PaqueteInformacion> colaPaqueteInformacionProcesados =
@@ -72,8 +68,7 @@ namespace Ejercicio260Logica
 
         //Columna total paquetes informacion procesados
         public ProblemColumn cantidadPaquetesProcesados
-            = new ProblemColumn(new List<object> 
-            { "Total Paquetes Procesados", 0 }, 'i');
+            = new ProblemColumn(new List<object> { "Total Paquetes Procesados", 0 }, 'i');
 
         #endregion relojYCola
 
@@ -94,26 +89,25 @@ namespace Ejercicio260Logica
 
         // Llegada paquete
         public Event llegadaPaquete =
-        new Event(new List<object> 
-                    { "Llegada Paquete", 0.0, 0.0, 0.0, "Libre" });
+        new Event(new List<object> { "Llegada Paquete", 0.0, 0.0, 0.0, "Libre" });
         private CStrategy_NegExpDist
             rnd_pck = new CStrategy_NegExpDist(0.1);
         // 125 paquetes por minuto lamba = 60/125
         // cada 0.48 segundos llega un paquete
-        
+
         // Procesamiento paquete
         public Event procesamientoPaquete =
-        new Event(new List<object> 
-                    { "Procesamiento Paquete", 0.0, 0.0, 0.0, "Libre" });
+        new Event(new List<object> { "Procesamiento Paquete", 0.0, 0.0, 0.0, "Libre" });
         private CStrategy_NegExpDist
             rnd_prp = new CStrategy_NegExpDist(0.9);
-        
+
         // Cada paquete se procesa cada 0.002 segundos
         #endregion distribucionesDeProbabilidad
         #endregion Atributos
 
-        // Metodo Llegada Paquetes
+        #region Metodos
 
+        #region DisparadoresDeSiguienteEvento
 
         public void packageArrival()
         {
@@ -143,7 +137,70 @@ namespace Ejercicio260Logica
                 procesamientoPaquete.getObjectListEvent(1));
         }
 
-        //Metodos de procesamiento
+
+
+        private void askNextEvent()
+        {
+            // Si el tiempo de llegada de paquete es menor que tiempo
+            // de tiempo de procesamiento disparo evento llegada
+            // paquete
+            if (eventoActual.getObjectProblemColumn(1).
+                ToString().Equals("LLegada Paquete"))
+            {
+                //Disparo evento
+                packageArrival();
+                debugPAR();
+                //colaPaquetesAProcesar.
+                //setObjectProblemColumn(1, colaPaquetesInformacion.Count);
+                colaPaquetesAProcesar.Add(new
+                    PaqueteInformacion((double)
+                    llegadaPaquete.getObjectListEvent(2)));
+            }
+            // Si hay paquetes en la cola para procesar y
+            // Si el tiempo de procesamiento es que el tiempo de llegada
+            // es menor que el tiempo de procesamiento del paquete
+            // disparo el procesamiento del paquete
+            if (colaPaquetesInformacion.Count > 0)
+            {
+                {
+                    //Disparo evento
+                    packageProcess();
+                    debugPPR();
+
+                }
+            }
+
+            //ERROR
+
+            //Cual es el evento a ejecutar y seteo con el valor del
+            //evento a ejecutar
+
+            //El sig es un llegada
+            if (colaPaquetesAProcesar.Count > 0 ||
+                (double)llegadaPaquete.getObjectListEvent(2) <
+                (double)procesamientoPaquete.getObjectListEvent(2)
+                )
+            {
+                reloj.setObjectProblemColumn
+                    (1, llegadaPaquete.getObjectListEvent(2));
+
+            }
+
+            //el siguiente es un proc
+            if (colaPaquetesInformacion.Count > 0 &&
+                (double)procesamientoPaquete.getObjectListEvent(2)
+                <
+                (double)llegadaPaquete.getObjectListEvent(2)
+                )
+            {
+                reloj.setObjectProblemColumn
+                   (1, procesamientoPaquete.getObjectListEvent(2));
+            }
+
+        }
+        #endregion DisparadoresDeSiguienteEvento
+
+        #region ProcesamientoDeEventoActual
 
         private void contarTotalPaquetes()
         {
@@ -186,86 +243,29 @@ namespace Ejercicio260Logica
         }
 
         //Eventos ejecucion
-        private void executeCurrentEvent() { 
-          if ((double)llegadaPaquete.getObjectListEvent(2)
-              == (double) reloj.getObjectProblemColumn (1))
-          {
-              //Indico evento a ejecutar 
-              eventoActual.setObjectProblemColumn
-              (1, llegadaPaquete.getObjectListEvent(0).ToString());  
-              paqueteEntrante();  
-          }
+        private void executeCurrentEvent()
+        {
+            if ((double)llegadaPaquete.getObjectListEvent(2)
+                == (double)reloj.getObjectProblemColumn(1))
+            {
+                //Indico evento a ejecutar 
+                eventoActual.setObjectProblemColumn
+                (1, llegadaPaquete.getObjectListEvent(0).ToString());
+                paqueteEntrante();
+            }
 
-          if ((double)procesamientoPaquete.getObjectListEvent(2)
-              == (double)reloj.getObjectProblemColumn(1)) 
-          {
-              //Indico evento a ejecutar 
-              eventoActual.setObjectProblemColumn
-              (1, procesamientoPaquete.getObjectListEvent(0).ToString());
-              paqueteProcesado();
-          }
+            if ((double)procesamientoPaquete.getObjectListEvent(2)
+                == (double)reloj.getObjectProblemColumn(1))
+            {
+                //Indico evento a ejecutar 
+                eventoActual.setObjectProblemColumn
+                (1, procesamientoPaquete.getObjectListEvent(0).ToString());
+                paqueteProcesado();
+            }
         }
+        #endregion ProcesamientoDeEventoActual
 
-        private void askNextEvent() {
-            // Si el tiempo de llegada de paquete es menor que tiempo
-            // de tiempo de procesamiento disparo evento llegada
-            // paquete
-            if (eventoActual.getObjectProblemColumn(1).
-                ToString().Equals("LLegada Paquete"))
-            {
-                    //Disparo evento
-                    packageArrival();
-                    debugPAR();
-                    //colaPaquetesAProcesar.
-                    //setObjectProblemColumn(1, colaPaquetesInformacion.Count);
-                    colaPaquetesAProcesar.Add(new 
-                        PaqueteInformacion((double)
-                        llegadaPaquete.getObjectListEvent(2)));
-            }
-            // Si hay paquetes en la cola para procesar y
-            // Si el tiempo de procesamiento es que el tiempo de llegada
-            // es menor que el tiempo de procesamiento del paquete
-            // disparo el procesamiento del paquete
-            if (colaPaquetesInformacion.Count > 0)
-            {
-                {
-                    //Disparo evento
-                    packageProcess();
-                    debugPPR();
-
-                }              
-            }
-
-            //ERROR
-
-            //Cual es el evento a ejecutar y seteo con el valor del
-            //evento a ejecutar
-
-            //El sig es un llegada
-            if ( colaPaquetesAProcesar.Count > 0 ||
-                (double)llegadaPaquete.getObjectListEvent(2) <
-                (double)procesamientoPaquete.getObjectListEvent(2)
-                ) 
-            {
-                reloj.setObjectProblemColumn
-                    (1, llegadaPaquete.getObjectListEvent(2));
-               
-            }
-
-            //el siguiente es un proc
-            if ( colaPaquetesInformacion.Count > 0 &&
-                (double)procesamientoPaquete.getObjectListEvent(2)
-                < 
-                (double)llegadaPaquete.getObjectListEvent(2)
-                )
-            {    
-                reloj.setObjectProblemColumn
-                   (1, procesamientoPaquete.getObjectListEvent(2));
-            }
-
-        }
-
-        #region LogicaDelPrograma
+        #region BucleDeEjecucion
         public void execute_logic(double initTime, double endTime)
         {
             reloj.setObjectProblemColumn(1, initTime);
@@ -273,7 +273,7 @@ namespace Ejercicio260Logica
             while (true)
             {
                 limiteColaPaquetesInformacion = 100;
-                
+
                 if (secondRow == false)
                 {
                     //Primera Fila.
@@ -291,7 +291,7 @@ namespace Ejercicio260Logica
                     //(1, llegadaPaquete.getObjectListEvent(0).ToString());
                     //debugOutputs();
                     //Seteo inicio de procesamiento en 0 
-                    procesamientoPaquete.setObjectListEvent(2,(double)0);
+                    procesamientoPaquete.setObjectListEvent(2, (double)0);
                     //De ahora en mas todo el bucle se limita a next event
                 }
                 else
@@ -306,13 +306,11 @@ namespace Ejercicio260Logica
                 }
             }
         }
+        #endregion BucleDeEjecucion
 
-
-
-        //Metodos de debug
-
-        private void debugOutputs() {
-            //DEBUG
+        #region MetodosDeDebug
+        private void debugOutputs()
+        {
             Debug.WriteLine(
             "Cantidad de paquetes totales = "
              + cantidadPaquetesSimulados.getObjectProblemColumn(1));
@@ -329,10 +327,11 @@ namespace Ejercicio260Logica
             "Valor reloj = "
             + reloj.getObjectProblemColumn(1));
             Debug.WriteLine(
-            "Evento actual ejecutandose = " 
+            "Evento actual ejecutandose = "
             + eventoActual.getObjectProblemColumn(1));
         }
-        private void debugPAR() {
+        private void debugPAR()
+        {
             Debug.WriteLine(
                 "Evento disparado PAR");
             Debug.WriteLine(
@@ -342,18 +341,20 @@ namespace Ejercicio260Logica
             Debug.WriteLine(
                 "PAR " + (double)llegadaPaquete.getObjectListEvent(2));
         }
-        private void debugPPR() {
+        private void debugPPR()
+        {
             Debug.WriteLine(
                 "Evento disparado PPR");
             Debug.WriteLine(
-                "PPR Actual " 
+                "PPR Actual "
                 + (double)procesamientoPaquete.getObjectListEvent(2));
             Debug.WriteLine(
                 "RNDPPR " + rnd_prp_val.getObjectProblemColumn(1));
             Debug.WriteLine(
                 "PPR " + (double)procesamientoPaquete.getObjectListEvent(2));
         }
-
-        #endregion LogicaDelPrograma
+        #endregion MetodosDeDebug
+        
+        #endregion Metodos
     }
 }
