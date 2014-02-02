@@ -94,7 +94,7 @@ namespace Ejercicio260Logica
         public Event llegadaPaquete =
         new Event(new List<object> { "Llegada Paquete", 0.0, 0.0, 0.0, "Libre" });
         private CStrategy_NegExpDist
-            rnd_pck = new CStrategy_NegExpDist(0.2);
+            rnd_pck = new CStrategy_NegExpDist(0.48);
         // 125 paquetes por minuto lamba = 60/125
         // cada 0.48 segundos llega un paquete
 
@@ -102,7 +102,7 @@ namespace Ejercicio260Logica
         public Event procesamientoPaquete =
         new Event(new List<object> { "Procesamiento Paquete", 0.0, 0.0, 0.0, "Libre" });
         private CStrategy_NegExpDist
-            rnd_prp = new CStrategy_NegExpDist(0.6);
+            rnd_prp = new CStrategy_NegExpDist(0.002);
 
         // Cada paquete se procesa cada 0.002 segundos
         #endregion distribucionesDeProbabilidad
@@ -257,12 +257,11 @@ namespace Ejercicio260Logica
             reloj.setObjectProblemColumn(1, initTime);
             Debug.WriteLine("Inicio");
 
-            limiteColaPaquetesInformacion = 3;
-            while (maxpaquetesSim <= 50)
+            limiteColaPaquetesInformacion = 100;
+            while ( (int) cantidadPaquetesSimulados
+                    .getObjectProblemColumn(1) < 1000000
+                    )
             {
-                maxpaquetesSim++;
-             
-
                 if (secondRow == false)
                 {
                     //Primera Fila.
@@ -286,10 +285,10 @@ namespace Ejercicio260Logica
                     //debugOutputs();
                     // Averiguar proximo evento
                     askNextEvent();
-                    //Cuento la cantidad de paquetes ya procesados
-                    contarTotalPaquetes();
                     debugOutputs();
                 }
+                //Cuento la cantidad de paquetes ya procesados
+                contarTotalPaquetes();
             }
         }
         #endregion BucleDeEjecucion
