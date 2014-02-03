@@ -27,6 +27,21 @@ namespace ArrivalsForQueuesRLiberal
           return pcList;
       }
 
+      public void clearList() 
+      {
+          pcList.Clear();
+      }
+
+      public void restartProblemColumm(char value) {
+          switch (value)
+          { 
+              //Data type, string s, integer i, double d
+              case 's': { pcList[1] = (string)"ninguno"; break; }
+              case 'i': { pcList[1] = (int)0; break; }
+              case 'd': { pcList[1] = (double)0.0; break; }
+          }
+      }
+
       public object getObjectProblemColumn(int index)
       {
           return pcList[index];
@@ -36,5 +51,7 @@ namespace ArrivalsForQueuesRLiberal
       {
           pcList[index] = value;
       }
+
+      
     }
 }

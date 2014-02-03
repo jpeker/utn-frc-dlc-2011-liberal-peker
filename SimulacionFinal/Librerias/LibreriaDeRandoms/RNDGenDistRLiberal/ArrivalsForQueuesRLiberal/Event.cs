@@ -15,7 +15,7 @@ namespace ArrivalsForQueuesRLiberal
             serverList.Add((double) list[1]);//RandomValueForNext
             serverList.Add((double) list[2]);//NextValue
             serverList.Add((double) list[3]);//CurrentValue
-            serverList.Add((string) list[4]);//State
+            //serverList.Add((string) list[4]);//State
       }
       public Event() { }
       public List<object> getListEvent() {
@@ -25,6 +25,12 @@ namespace ArrivalsForQueuesRLiberal
       public object getObjectListEvent(int index)
       {
           return serverList[index];
+      }
+
+      public void restartEvent(List<object> list) {
+          serverList[1] = (double)list[1];//RandomValueForNext
+          serverList[2] = (double)list[1];//NextValue
+          serverList[3] = (double)list[2];//CurrentValue
       }
 
       public void setObjectListEvent(int index, object value)
