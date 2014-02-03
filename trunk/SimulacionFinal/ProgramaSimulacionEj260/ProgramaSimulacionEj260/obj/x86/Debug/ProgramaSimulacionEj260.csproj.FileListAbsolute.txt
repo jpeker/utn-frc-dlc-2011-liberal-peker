@@ -27,11 +27,6 @@ D:\Tesis\SimulacionFinal\ProgramaSimulacionEj260\ProgramaSimulacionEj260\obj\x86
 D:\Tesis\SimulacionFinal\ProgramaSimulacionEj260\ProgramaSimulacionEj260\obj\x86\Debug\ProgramaSimulacionEj260.csproj.GenerateResource.Cache
 D:\Tesis\SimulacionFinal\ProgramaSimulacionEj260\ProgramaSimulacionEj260\obj\x86\Debug\ProgramaSimulacionEj260.exe
 D:\Tesis\SimulacionFinal\ProgramaSimulacionEj260\ProgramaSimulacionEj260\obj\x86\Debug\ProgramaSimulacionEj260.pdb
-D:\Repositorios\ProyectoFinal\SimulacionFinal\ProgramaSimulacionEj260\ProgramaSimulacionEj260\obj\x86\Debug\ResolveAssemblyReference.cache
-D:\Repositorios\ProyectoFinal\SimulacionFinal\ProgramaSimulacionEj260\ProgramaSimulacionEj260\obj\x86\Debug\ProgramaSimulacionEj260.Form1.resources
-D:\Repositorios\ProyectoFinal\SimulacionFinal\ProgramaSimulacionEj260\ProgramaSimulacionEj260\obj\x86\Debug\ProgramaSimulacionEj260.Properties.Resources.resources
-D:\Repositorios\ProyectoFinal\SimulacionFinal\ProgramaSimulacionEj260\ProgramaSimulacionEj260\obj\x86\Debug\GenerateResource.read.1.tlog
-D:\Repositorios\ProyectoFinal\SimulacionFinal\ProgramaSimulacionEj260\ProgramaSimulacionEj260\obj\x86\Debug\GenerateResource.write.1.tlog
 D:\Repositorios\ProyectoFinal\SimulacionFinal\ProgramaSimulacionEj260\ProgramaSimulacionEj260\bin\Debug\ProgramaSimulacionEj260.exe
 D:\Repositorios\ProyectoFinal\SimulacionFinal\ProgramaSimulacionEj260\ProgramaSimulacionEj260\bin\Debug\ProgramaSimulacionEj260.pdb
 D:\Repositorios\ProyectoFinal\SimulacionFinal\ProgramaSimulacionEj260\ProgramaSimulacionEj260\bin\Debug\ArrivalsForQueuesRLiberal.dll
@@ -40,5 +35,10 @@ D:\Repositorios\ProyectoFinal\SimulacionFinal\ProgramaSimulacionEj260\ProgramaSi
 D:\Repositorios\ProyectoFinal\SimulacionFinal\ProgramaSimulacionEj260\ProgramaSimulacionEj260\bin\Debug\ArrivalsForQueuesRLiberal.pdb
 D:\Repositorios\ProyectoFinal\SimulacionFinal\ProgramaSimulacionEj260\ProgramaSimulacionEj260\bin\Debug\Ejercicio260Logica.pdb
 D:\Repositorios\ProyectoFinal\SimulacionFinal\ProgramaSimulacionEj260\ProgramaSimulacionEj260\bin\Debug\RNDGenDistRLiberal.pdb
+D:\Repositorios\ProyectoFinal\SimulacionFinal\ProgramaSimulacionEj260\ProgramaSimulacionEj260\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\Repositorios\ProyectoFinal\SimulacionFinal\ProgramaSimulacionEj260\ProgramaSimulacionEj260\obj\x86\Debug\ProgramaSimulacionEj260.Form1.resources
+D:\Repositorios\ProyectoFinal\SimulacionFinal\ProgramaSimulacionEj260\ProgramaSimulacionEj260\obj\x86\Debug\ProgramaSimulacionEj260.Properties.Resources.resources
+D:\Repositorios\ProyectoFinal\SimulacionFinal\ProgramaSimulacionEj260\ProgramaSimulacionEj260\obj\x86\Debug\GenerateResource.read.1.tlog
+D:\Repositorios\ProyectoFinal\SimulacionFinal\ProgramaSimulacionEj260\ProgramaSimulacionEj260\obj\x86\Debug\GenerateResource.write.1.tlog
 D:\Repositorios\ProyectoFinal\SimulacionFinal\ProgramaSimulacionEj260\ProgramaSimulacionEj260\obj\x86\Debug\ProgramaSimulacionEj260.exe
 D:\Repositorios\ProyectoFinal\SimulacionFinal\ProgramaSimulacionEj260\ProgramaSimulacionEj260\obj\x86\Debug\ProgramaSimulacionEj260.pdb
