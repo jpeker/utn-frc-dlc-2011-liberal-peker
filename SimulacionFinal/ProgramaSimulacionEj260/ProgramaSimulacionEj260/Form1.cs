@@ -23,7 +23,7 @@ namespace ProgramaSimulacionEj260
             // Añadir columnas a la grilla
             addColumns();
             // Ejecutar simulacion
-            logicaSimEjer.execute_logic(0, 0);
+            logicaSimEjer.execute_logic();
         }
         
         
@@ -41,9 +41,9 @@ namespace ProgramaSimulacionEj260
                 getObjectProblemColumn(0).ToString());
             //Eventos
             dataGridSim.Columns.Add(
-                logicaSimEjer.rnd_pck_val.
+                logicaSimEjer.rnd_llp_val.
                 getObjectProblemColumn(0).ToString(),
-                logicaSimEjer.rnd_pck_val.
+                logicaSimEjer.rnd_llp_val.
                 getObjectProblemColumn(0).ToString());
             dataGridSim.Columns.Add(
                 logicaSimEjer.llegadaPaquete.
