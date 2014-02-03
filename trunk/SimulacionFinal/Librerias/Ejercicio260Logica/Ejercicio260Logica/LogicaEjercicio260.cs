@@ -16,7 +16,8 @@ namespace Ejercicio260Logica
         //Reloj
         public ProblemColumn reloj =
             new ProblemColumn(new List<object> { "Reloj", 0.0 }, 'd');
-
+        public ProblemColumn reloj_anterior =
+            new ProblemColumn(new List<object> { "Reloj", 0.0 }, 'd');
         //Columna random llegada paquete
         public ProblemColumn rnd_llp_val =
             new ProblemColumn(new 
@@ -103,7 +104,7 @@ namespace Ejercicio260Logica
         new Event(new 
             List<object> { "Procesamiento Paquete", 0.0, 0.0, 0.0, "Libre" });
         private CStrategy_NegExpDist
-            rnd_prp = new CStrategy_NegExpDist(0.35);
+            rnd_prp = new CStrategy_NegExpDist(0.38);
 
         // Cada paquete se procesa cada 0.002 segundos
         #endregion distribucionesDeProbabilidad
@@ -153,6 +154,8 @@ namespace Ejercicio260Logica
                 )
             {
                 //Ejecuto llegada de paquete como siguiente evento
+                reloj_anterior.setObjectProblemColumn(1,
+                        (double)reloj.getObjectProblemColumn(1));
                 reloj.
                     setObjectProblemColumn
                     (1, (double)llegadaPaquete.getObjectListEvent(2));
@@ -160,6 +163,8 @@ namespace Ejercicio260Logica
             else 
             {
                 //Ejecuto procesamiento de paquete como proximo evento
+                reloj_anterior.setObjectProblemColumn(1,
+                        (double)reloj.getObjectProblemColumn(1));
                 reloj.
                     setObjectProblemColumn
                     (1, (double)procesamientoPaquete.getObjectListEvent(2));
@@ -269,7 +274,7 @@ namespace Ejercicio260Logica
             //Seteo el limite de la cola
             limiteColaPaquetesInformacion = 1;
             while ( (int) cantidadPaquetesSimulados
-                    .getObjectProblemColumn(1) < 10
+                    .getObjectProblemColumn(1) < 1000
                     )
             {
                 if (secondRow == false)
@@ -283,6 +288,8 @@ namespace Ejercicio260Logica
                     //Seteo inicio de procesamiento en 0 
                     procesamientoPaquete.setObjectListEvent(2, (double)0);
                     //Seteo el reloj
+                    reloj_anterior.setObjectProblemColumn(1, 
+                        (double) reloj.getObjectProblemColumn(1));
                     reloj.setObjectProblemColumn
                       (1, llegadaPaquete.getObjectListEvent(2));
                     //De ahora en mas todo el bucle se limita a next event
@@ -317,13 +324,16 @@ namespace Ejercicio260Logica
             + colaPaqueteInformacionProcesados.Count);
             Debug.WriteLine(
             "Actual Valor reloj = "
-            + reloj.getObjectProblemColumn(1));
+            + reloj_anterior.getObjectProblemColumn(1));
             Debug.WriteLine(
             "Evento actual ejecutandose = "
             + eventoActual.getObjectProblemColumn(1));
             Debug.WriteLine(
             "Cantidad de elementos en cola "
             + colaPaquetesASerProcesados.Count);
+            Debug.WriteLine(
+            "Estado servidor "
+            + estadoServidor.getObjectProblemColumn(1).ToString());
             Debug.WriteLine(
             " ");
         }
