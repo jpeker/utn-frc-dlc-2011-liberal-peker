@@ -18,7 +18,9 @@ namespace ProgramaSimulacionEj260
         {
             InitializeComponent();
             lblError.Text = "";
-            addColumns();
+            //addColumnsToDataGridView();
+            tabControlResultadosSimulacion.TabPages.RemoveAt(0);
+            tabControlResultadosSimulacion.TabPages.RemoveAt(0);
         }
 
         private void buttonRunSim_Click(object sender, EventArgs e)
@@ -33,6 +35,22 @@ namespace ProgramaSimulacionEj260
                 buttonRunSim.Enabled = false;
                 lblError.Text = "Datos ingresados correctamente Ejecutandose simulacion";
                 // logicaSimEjer.execute_logic();
+                int cantidadTabs = Convert.ToInt32(txtNroSims.Text);
+                for (int i = 0; i < cantidadTabs; i++)
+                {
+                    tabControlResultadosSimulacion.TabPages.Add(
+                        "Resultados Simulacion " + Convert.ToString(i+1));
+                    DataGridView dg = new DataGridView();
+                    dg.Height = 443;
+                    dg.Width = 1256;
+                    dg.Location = new Point(7, 14);
+                    dg.ReadOnly = true;
+                    dg.MultiSelect = false;
+                    dg.AllowUserToAddRows = false;
+                    dg.AllowUserToDeleteRows = false;
+                    addColumnsToDataGridView(dg);
+                    tabControlResultadosSimulacion.TabPages[i].Controls.Add(dg);
+                }
             }
             btnBorrar.Enabled = true;
             btnCorrerSimPorNro.Enabled = true;
@@ -89,67 +107,67 @@ namespace ProgramaSimulacionEj260
             txtNroSims.ResetText();
             txtProcesamientoPaquete.ResetText();
         }
-        private void addColumns()
+        private void addColumnsToDataGridView(DataGridView dg)
         {
             //Col particulares
-            dataGridSim.Columns.Add(
+            dg.Columns.Add(
                 logicaSimEjer.eventoActual.
                 getObjectProblemColumn(0).ToString(),
                 logicaSimEjer.eventoActual.
                 getObjectProblemColumn(0).ToString());
-            dataGridSim.Columns.Add(
+            dg.Columns.Add(
                 logicaSimEjer.reloj.
                 getObjectProblemColumn(0).ToString(),
                 logicaSimEjer.reloj.
                 getObjectProblemColumn(0).ToString());
             //Eventos
-            dataGridSim.Columns.Add(
+            dg.Columns.Add(
                 logicaSimEjer.rnd_llp_raw.
                 getObjectProblemColumn(0).ToString(),
                 logicaSimEjer.rnd_llp_raw.
                 getObjectProblemColumn(0).ToString());
-            dataGridSim.Columns.Add(
+            dg.Columns.Add(
                 logicaSimEjer.rnd_llp_val.
                 getObjectProblemColumn(0).ToString(),
                 logicaSimEjer.rnd_llp_val.
                 getObjectProblemColumn(0).ToString());
-            dataGridSim.Columns.Add(
+            dg.Columns.Add(
                 logicaSimEjer.llegadaPaquete.
                 getObjectListEvent(0).ToString(),
                 logicaSimEjer.llegadaPaquete.
                 getObjectListEvent(0).ToString());
-            dataGridSim.Columns.Add(
+            dg.Columns.Add(
                 logicaSimEjer.rnd_prp_raw.
                 getObjectProblemColumn(0).ToString(),
                 logicaSimEjer.rnd_prp_raw.
                 getObjectProblemColumn(0).ToString());
-            dataGridSim.Columns.Add(
+            dg.Columns.Add(
                 logicaSimEjer.rnd_prp_val.
                 getObjectProblemColumn(0).ToString(),
                 logicaSimEjer.rnd_prp_val.
                 getObjectProblemColumn(0).ToString());
-            dataGridSim.Columns.Add(
+            dg.Columns.Add(
                 logicaSimEjer.procesamientoPaquete.
                 getObjectListEvent(0).ToString(),
                 logicaSimEjer.procesamientoPaquete.
                 getObjectListEvent(0).ToString());
             //Col Particulares
-            dataGridSim.Columns.Add(
+            dg.Columns.Add(
                 logicaSimEjer.cantidadPaquetesASerProcesados.
                 getObjectProblemColumn(0).ToString(),
                 logicaSimEjer.cantidadPaquetesASerProcesados.
                 getObjectProblemColumn(0).ToString());
-            dataGridSim.Columns.Add(
+            dg.Columns.Add(
                 logicaSimEjer.cantidadPaquetesProcesados.
                 getObjectProblemColumn(0).ToString(),
                 logicaSimEjer.cantidadPaquetesProcesados.
                 getObjectProblemColumn(0).ToString());
-            dataGridSim.Columns.Add(
+            dg.Columns.Add(
                 logicaSimEjer.cantidadPaquetesDescartados.
                 getObjectProblemColumn(0).ToString(),
                 logicaSimEjer.cantidadPaquetesDescartados.
                 getObjectProblemColumn(0).ToString());
-            dataGridSim.Columns.Add(
+            dg.Columns.Add(
                 logicaSimEjer.cantidadPaquetesSimulados.
                 getObjectProblemColumn(0).ToString(),
                 logicaSimEjer.cantidadPaquetesSimulados.
@@ -159,6 +177,7 @@ namespace ProgramaSimulacionEj260
         private void btnBorrar_Click(object sender, EventArgs e)
         {
             clearTxt();
+            tabControlResultadosSimulacion.TabPages.Clear();
             lblError.Text = "";
         }
 

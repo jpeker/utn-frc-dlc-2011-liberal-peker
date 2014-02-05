@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.dataGridSim = new System.Windows.Forms.DataGridView();
             this.buttonRunSim = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnBorrar = new System.Windows.Forms.Button();
@@ -50,29 +48,20 @@
             this.txtNroSims = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridSim)).BeginInit();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.tabControlResultadosSimulacion = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.tabControlResultadosSimulacion.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.dataGridSim);
-            this.panel1.Location = new System.Drawing.Point(17, 147);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1312, 141);
-            this.panel1.TabIndex = 0;
-            // 
-            // dataGridSim
-            // 
-            this.dataGridSim.AllowUserToAddRows = false;
-            this.dataGridSim.AllowUserToDeleteRows = false;
-            this.dataGridSim.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridSim.Location = new System.Drawing.Point(13, 14);
-            this.dataGridSim.Name = "dataGridSim";
-            this.dataGridSim.ReadOnly = true;
-            this.dataGridSim.Size = new System.Drawing.Size(1287, 105);
-            this.dataGridSim.TabIndex = 0;
             // 
             // buttonRunSim
             // 
@@ -253,28 +242,86 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Confianza = 0.99";
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.tabControlResultadosSimulacion);
+            this.panel3.Location = new System.Drawing.Point(17, 141);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1312, 519);
+            this.panel3.TabIndex = 3;
+            // 
+            // tabControlResultadosSimulacion
+            // 
+            this.tabControlResultadosSimulacion.Controls.Add(this.tabPage1);
+            this.tabControlResultadosSimulacion.Controls.Add(this.tabPage2);
+            this.tabControlResultadosSimulacion.Location = new System.Drawing.Point(7, 14);
+            this.tabControlResultadosSimulacion.Name = "tabControlResultadosSimulacion";
+            this.tabControlResultadosSimulacion.SelectedIndex = 0;
+            this.tabControlResultadosSimulacion.Size = new System.Drawing.Size(1276, 491);
+            this.tabControlResultadosSimulacion.TabIndex = 0;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.dataGridView1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1268, 465);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Resultados Simulacion 1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(7, 14);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(1256, 443);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.dataGridView2);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1268, 465);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Resultados Simulacion 2";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(7, 14);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(1256, 443);
+            this.dataGridView2.TabIndex = 1;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1354, 334);
+            this.ClientSize = new System.Drawing.Size(1354, 683);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Ejercicio 260 Simulacion";
-            this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridSim)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.tabControlResultadosSimulacion.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView dataGridSim;
         private System.Windows.Forms.Button buttonRunSim;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox txtCantPaquetes;
@@ -294,6 +341,12 @@
         private System.Windows.Forms.Button btnEjecutarSigNroSim;
         private System.Windows.Forms.Label lblError;
         private System.Windows.Forms.Button btnBorrar;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.TabControl tabControlResultadosSimulacion;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.DataGridView dataGridView2;
     }
 }
 
