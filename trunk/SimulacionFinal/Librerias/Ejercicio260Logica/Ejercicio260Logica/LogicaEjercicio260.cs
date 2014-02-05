@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 using RNDGenDistRLiberal;
 using ArrivalsForQueuesRLiberal;
 using System.Diagnostics;
@@ -18,11 +19,22 @@ namespace Ejercicio260Logica
             new ProblemColumn(new List<object> { "Reloj", 0.0 }, 'd');
         public ProblemColumn reloj_anterior =
             new ProblemColumn(new List<object> { "Reloj", 0.0 }, 'd');
+        
+        //Columna random raw llegada paquete
+        public ProblemColumn rnd_llp_raw =
+            new ProblemColumn(new
+            List<object> { "Rnd Generado Llegada Paquete", 0.0 }, 'd');
+        
         //Columna random llegada paquete
         public ProblemColumn rnd_llp_val =
             new ProblemColumn(new
             List<object> { "Rnd Llegada Paquete", 0.0 }, 'd');
 
+        //Columna random raw procesamiento paquete
+        public ProblemColumn rnd_prp_raw =
+            new ProblemColumn(new
+            List<object> { "Rnd Generado Procesamiento Paquete", 0.0 }, 'd');
+        
         //Columna random procesamiento paquete
         public ProblemColumn rnd_prp_val =
             new ProblemColumn(new
@@ -47,6 +59,10 @@ namespace Ejercicio260Logica
         //Todos los paquetes vienen con el valor en falso descartado
         //Es decir no descartado.
         //Si el paquete es descartado se lo setea para contar los descartados
+
+        public ProblemColumn cantidadPaquetesASerProcesados
+           = new ProblemColumn(new
+           List<object> { "Total Paquetes A Ser Procesados", 0 }, 'i');
 
         //Columna total paquetes informacion procesados
         public ProblemColumn cantidadPaquetesProcesados
@@ -104,8 +120,9 @@ namespace Ejercicio260Logica
         new Event(new
             List<object> { "Procesamiento Paquete", 0.0, 0.0, 0.0, "Libre" });
         private CStrategy_NegExpDist
-            rnd_prp = new CStrategy_NegExpDist(0.75);
-
+            rnd_prp = new CStrategy_NegExpDist(0.002);
+        // Se procesa un paquete cada 0.002
+        //0.75
         // Cada paquete se procesa cada 0.002 segundos
         #endregion distribucionesDeProbabilidad
         #region Estadisticas
@@ -114,6 +131,8 @@ namespace Ejercicio260Logica
         public double valorVarianzaTotal = 0;
         public int cantidadPaquetesASimularPorSimulacion = 0;
         public int nroDeSimulacionesARealizar = 0;
+        public int gradosDeLibertad = 0;
+
         #endregion Estadisticas
         #endregion Atributos
 
@@ -200,14 +219,8 @@ namespace Ejercicio260Logica
             //cuando finaliza el procesamiento del paquete.
             if (estadoServidor.getObjectProblemColumn(1).Equals("Libre"))
             {
-                //if (colaPaquetesASerProcesados.Count > 0) 
-                //{
-                //    colaPaquetesASerProcesados.RemoveAt(0);
-                //}
-                // proceso el unico paquete
                 dispararProcesamientoDePaquete();
                 estadoServidor.setObjectProblemColumn(1, "Ocupado");
-                //return;
             }
             if (colaPaquetesASerProcesados.Count <=
                 limiteColaPaquetesInformacion)
@@ -264,10 +277,7 @@ namespace Ejercicio260Logica
                 else
                 {
                     estadoServidor.setObjectProblemColumn(1, "Libre");
-                    //Nuevalinea
-                    //dispararLlegadaDePaquete();
                 }
-
                 return;
             }
         }
@@ -277,11 +287,12 @@ namespace Ejercicio260Logica
         public void execute_logic(double initTime = 0.0,
             double endTime = 0.0, int tamanioDeCola = 0)
         {
-            int cantidadSimulaciones = 10;
+            int cantidadSimulaciones = 20;
             cantidadPaquetesASimularPorSimulacion = 100;
+            GradosDeLibertad.llenarListaGradosLibertad();
             reloj.setObjectProblemColumn(1, initTime);
             Debug.WriteLine("Inicio");
-            //Seteo el limite de la cola
+            // Seteo el limite de la cola
             limiteColaPaquetesInformacion = 1;
             //colaPaqueteInformacionProcesados.Count
             while (nroDeSimulacionesARealizar < cantidadSimulaciones)
@@ -296,31 +307,29 @@ namespace Ejercicio260Logica
                 {
                     if (secondRow == false)
                     {
-                        //Primera Fila.
+                        // Primera Fila.
                         Debug.WriteLine("Primera Fila");
-                        //Disparo llegada de paquete
+                        // Disparo llegada de paquete
                         dispararLlegadaDePaquete();
-                        //Muestro salidas
-                        //debugOutputs();
-                        //Seteo inicio de procesamiento en 0 
+                        // Seteo inicio de procesamiento en 0 
                         procesamientoPaquete.setObjectListEvent(2, (double)0);
-                        //Seteo el reloj
+                        // Seteo el reloj
                         reloj_anterior.setObjectProblemColumn(1,
                             (double)reloj.getObjectProblemColumn(1));
                         reloj.setObjectProblemColumn
                           (1, llegadaPaquete.getObjectListEvent(2));
-                        //De ahora en mas todo el bucle se limita a next event
+                        // De ahora en mas todo el bucle se limita al else
                         secondRow = true;
                     }
                     else
                     {
                         Debug.WriteLine("Segunda Fila");
-                        // evento a ejecutar ahora
+                        // Evento a ejecutar ahora
                         executeCurrentEvent();
                         // Averiguar proximo evento
                         siguienteEvento();
                     }
-                    //Cuento la cantidad de paquetes (descartados + procesados)
+                    // Cuento la cantidad de paquetes (descartados + procesados)
                     contarTotalPaquetes();
                     debugOutputs();
 
@@ -332,6 +341,11 @@ namespace Ejercicio260Logica
                 "Valor de media obtenida por simulacion = "
                 + listaDeMediasPorSimulacion[listaDeMediasPorSimulacion.Count - 1]);
             }
+            // Grados de libertad con distribucion ji-cuadrado y conf 0,99
+            // Grados de libertad ji-cuadrado con normal v=n-1
+            // Si n es 20 el grado de libertad es 19
+            // Va de 1 a 19. Es decir n de 2 a 20.
+            double gradoLibertad = GradosDeLibertad.valorGradosLibertad[nroDeSimulacionesARealizar - 2];
             valorMediaTotal = listaDeMediasPorSimulacion.Average();
             valorVarianzaTotal = calcularVarianzaTotal();
             Debug.WriteLine(
@@ -370,14 +384,14 @@ namespace Ejercicio260Logica
         private double calcularVarianzaTotal()
         {
             double _valorVarianzaTotal = 0;
-            foreach (double media in listaDeMediasPorSimulacion) 
+            foreach (double media in listaDeMediasPorSimulacion)
             {
-                _valorVarianzaTotal = _valorVarianzaTotal + 
-                Math.Pow((media - 
-                listaDeMediasPorSimulacion.Average()),2);
+                _valorVarianzaTotal = _valorVarianzaTotal +
+                Math.Pow((media -
+                listaDeMediasPorSimulacion.Average()), 2);
             }
             _valorVarianzaTotal = _valorVarianzaTotal / (listaDeMediasPorSimulacion.Count - 1);
-            return  _valorVarianzaTotal;
+            return _valorVarianzaTotal;
         }
         #endregion MetodosEstadisticos
 
