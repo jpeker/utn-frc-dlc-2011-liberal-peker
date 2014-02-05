@@ -10,7 +10,7 @@ namespace RNDGenDistRLiberal
     public abstract class Strategy_AleatoryNumberDistribution
     {
         public virtual double implementAleatoryNumberDistribution
-            (Random rnd){
+            (double rnd){
             return  0;
         }
     }

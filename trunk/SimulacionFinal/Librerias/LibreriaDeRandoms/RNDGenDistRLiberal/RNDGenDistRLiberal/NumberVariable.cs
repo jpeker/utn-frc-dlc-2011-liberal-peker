@@ -8,8 +8,8 @@ namespace RNDGenDistRLiberal
     public class NumberVariable
     {
         private int value;
-        public NumberVariable(Random rnd) {
-            value = 16 + (int)((rnd.NextDouble() * 100) / 20);
+        public NumberVariable(double rnd) {
+            value = 16 + (int)((rnd * 100) / 20);
         }
         public int getValue() { 
             return value;

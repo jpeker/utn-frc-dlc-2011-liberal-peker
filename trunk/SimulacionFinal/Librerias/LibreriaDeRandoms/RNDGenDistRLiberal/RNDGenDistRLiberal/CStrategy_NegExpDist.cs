@@ -12,10 +12,13 @@ namespace RNDGenDistRLiberal
         public CStrategy_NegExpDist(double _medval) {
             medval = _medval;
         } 
-        public override double implementAleatoryNumberDistribution(Random rnd)
+        public override double implementAleatoryNumberDistribution(double rnd)
         {
-            return -1 * medval * Math.Log(1-rnd.NextDouble());
+            return -1 * medval * Math.Log(1-rnd);
         }
 
+        public void setMedVal(double _medval) {
+            medval = _medval;
+        }
     }
 }

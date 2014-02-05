@@ -13,7 +13,10 @@ namespace Ejercicio260Logica
     {
         #region Atributos
         #region relojYColas
-
+        //RNDS
+        Random r1 = new Random();
+        Random r2 = new Random();
+        
         //Reloj
         public ProblemColumn reloj =
             new ProblemColumn(new List<object> { "Reloj", 0.0 }, 'd');
@@ -111,7 +114,7 @@ namespace Ejercicio260Logica
         new Event(new
             List<object> { "Llegada Paquete", 0.0, 0.0, 0.0, "Libre" });
         private CStrategy_NegExpDist
-            rnd_llp = new CStrategy_NegExpDist(0.48);
+            rnd_llp = new CStrategy_NegExpDist(0.00);
         // 125 paquetes por minuto lamba = 60/125
         // cada 0.48 segundos llega un paquete
 
@@ -120,16 +123,15 @@ namespace Ejercicio260Logica
         new Event(new
             List<object> { "Procesamiento Paquete", 0.0, 0.0, 0.0, "Libre" });
         private CStrategy_NegExpDist
-            rnd_prp = new CStrategy_NegExpDist(0.002);
+            rnd_prp = new CStrategy_NegExpDist(0.00);
         // Se procesa un paquete cada 0.002
-        //0.75
         // Cada paquete se procesa cada 0.002 segundos
         #endregion distribucionesDeProbabilidad
         #region Estadisticas
         public List<double> listaDeMediasPorSimulacion = new List<double>();
         public double valorMediaTotal = 0;
         public double valorVarianzaTotal = 0;
-        public int cantidadPaquetesASimularPorSimulacion = 0;
+        //public int cantidadPaquetesASimularPorSimulacion = 0;
         public int nroDeSimulacionesARealizar = 0;
         public int gradosDeLibertad = 0;
 
@@ -143,10 +145,13 @@ namespace Ejercicio260Logica
         public void dispararLlegadaDePaquete()
         {
             //Seteo valor del siguente evento de llegada
+            
+            double valor = r1.NextDouble();
+            rnd_llp_raw.setObjectProblemColumn(1, valor);
             llegadaPaquete.setNextRow(
             new List<object> { "Llegada Paquete",
                                 rnd_llp.implementAleatoryNumberDistribution
-                                (new Random()),
+                                (valor),
                                 reloj.getObjectProblemColumn(1)
                                 });
             //Seteo random de procesamiento de paquete
@@ -157,10 +162,13 @@ namespace Ejercicio260Logica
         public void dispararProcesamientoDePaquete()
         {
             //Seteo el valor del siguiente evento de procesamiento
+            
+            double valor = r2.NextDouble();
+            rnd_prp_raw.setObjectProblemColumn(1, valor);
             procesamientoPaquete.setNextRow(
             new List<object> { "Procesamiento Paquete",
                                 rnd_prp.implementAleatoryNumberDistribution
-                                (new Random()),
+                                (valor),
                                 reloj.getObjectProblemColumn(1)
                                 });
             //Seteo random de procesamiento de paquete
@@ -284,15 +292,24 @@ namespace Ejercicio260Logica
         #endregion ProcesamientoDeEventoActual
 
         #region BucleDeEjecucionDeSimulacion
-        public void ejecutarSimulacion(int cantidadDePaquetesASimularPorSimulacion)
+        public void ejecutarSimulacion(double lamdallp, double lamdaprp,int cantidadDePaquetesASimularPorSimulacion
+            , int tamanioDeCola, ref DataGridView dg)
         {
+            dg = addColumnsToDataGridView(dg);
+            rnd_llp.setMedVal(lamdallp);
+            rnd_prp.setMedVal(lamdaprp);
+            limiteColaPaquetesInformacion = tamanioDeCola;
+            iniciarNuevaSimulacion();
+            estadoServidor.setObjectProblemColumn(1, "Libre");
+            secondRow = false;
+            
             while ((int)cantidadPaquetesSimulados.getObjectProblemColumn(1)
-                    < cantidadPaquetesASimularPorSimulacion)
+                    < cantidadDePaquetesASimularPorSimulacion)
             {
                 if (secondRow == false)
                 {
                     // Primera Fila.
-                    Debug.WriteLine("Primera Fila");
+                    //Debug.WriteLine("Primera Fila");
                     // Disparo llegada de paquete
                     dispararLlegadaDePaquete();
                     // Seteo inicio de procesamiento en 0 
@@ -307,7 +324,7 @@ namespace Ejercicio260Logica
                 }
                 else
                 {
-                    Debug.WriteLine("Segunda Fila");
+                    //Debug.WriteLine("Segunda Fila");
                     // Evento a ejecutar ahora
                     executeCurrentEvent();
                     // Averiguar proximo evento
@@ -315,52 +332,30 @@ namespace Ejercicio260Logica
                 }
                 // Cuento la cantidad de paquetes (descartados + procesados)
                 contarTotalPaquetes();
-                debugOutputs();
+                //Pasar datos gui
+                dg.Rows.Add(new object[]
+                           {eventoActual.getObjectProblemColumn(1), 
+                            reloj_anterior.getObjectProblemColumn(1),
+                            rnd_llp_raw.getObjectProblemColumn(1),
+                            rnd_llp_val.getObjectProblemColumn(1),
+                            llegadaPaquete.getObjectListEvent(2),
+                            rnd_llp_raw.getObjectProblemColumn(1),
+                            rnd_llp_val.getObjectProblemColumn(1),
+                            procesamientoPaquete.getObjectListEvent(2),
+                            estadoServidor.getObjectProblemColumn(1),
+                            colaPaquetesASerProcesados.Count,
+                            colaPaqueteInformacionProcesados.Count,
+                            colaPaqueteInformacionDescartados.Count,
+                            cantidadPaquetesSimulados.getObjectProblemColumn(1)
+                           });
+                //debugOutputs();
             }
-
+            listaDeMediasPorSimulacion.Add(
+            (double)((double)colaPaqueteInformacionDescartados.Count /
+            (double)((int)cantidadPaquetesSimulados.getObjectProblemColumn(1))));
         }
 
-        public void execute_logic(int cantidadSimulaciones, 
-                                  int cantidadPaquetesASimularPorSimulacion,
-                                  double lambaLlegada,
-                                  double lambaProcesamiento, 
-                                  int tamanioDeCola)
-        {
-            Debug.WriteLine("Inicio");
-            //Seteo grados de libertad
-            GradosDeLibertad.llenarListaGradosLibertad();
-            //Seteo el reloj en 0
-            //reloj.setObjectProblemColumn(1, (double)0.0);
-            // Seteo el limite de la cola
-            limiteColaPaquetesInformacion = tamanioDeCola;
-            while (nroDeSimulacionesARealizar < cantidadSimulaciones)
-            {
-                Debug.WriteLine("Nro de Simulacion " + nroDeSimulacionesARealizar);
-                nroDeSimulacionesARealizar++;
-                iniciarNuevaSimulacion();
-                estadoServidor.setObjectProblemColumn(1, "Libre");
-                ejecutarSimulacion(cantidadPaquetesASimularPorSimulacion);
-                listaDeMediasPorSimulacion.Add(
-                (double)((double)colaPaqueteInformacionDescartados.Count /
-                (double)((int)cantidadPaquetesSimulados.getObjectProblemColumn(1))));
-                Debug.WriteLine(
-                "Valor de media obtenida por simulacion = "
-                + listaDeMediasPorSimulacion[listaDeMediasPorSimulacion.Count - 1]);
-            }
-            // Grados de libertad con distribucion ji-cuadrado y conf 0,99
-            // Grados de libertad ji-cuadrado con normal v=n-1
-            // Si n es 20 el grado de libertad es 19
-            // Va de 1 a 19. Es decir n de 2 a 20.
-            double gradoLibertad = GradosDeLibertad.valorGradosLibertad[nroDeSimulacionesARealizar - 2];
-            valorMediaTotal = listaDeMediasPorSimulacion.Average();
-            valorVarianzaTotal = calcularVarianzaTotal();
-            Debug.WriteLine(
-                "Valor de la media total = "
-                + listaDeMediasPorSimulacion.Average());
-            Debug.WriteLine(
-                "Valor de la varianza total = "
-                + valorVarianzaTotal);
-        }
+        
         #endregion BucleDeEjecucionDeSimulacion
 
         #region BorrarListas
@@ -376,6 +371,8 @@ namespace Ejercicio260Logica
             reloj_anterior.restartProblemColumm('d');
             rnd_llp_val.restartProblemColumm('d');
             rnd_prp_val.restartProblemColumm('d');
+            rnd_llp_raw.restartProblemColumm('d');
+            rnd_prp_raw.restartProblemColumm('d');
             eventoActual.restartProblemColumm('s');
             estadoServidor.restartProblemColumm('s');
             llegadaPaquete.restartEvent(new
@@ -401,8 +398,130 @@ namespace Ejercicio260Logica
             _valorVarianzaTotal = _valorVarianzaTotal / (listaDeMediasPorSimulacion.Count - 1);
             return _valorVarianzaTotal;
         }
+        public void aniadirEstadisticas(ref DataGridView dg)
+        {
+            valorMediaTotal = listaDeMediasPorSimulacion.Average();
+            valorVarianzaTotal = calcularVarianzaTotal();
+            double confIzq = valorMediaTotal + 2.33*
+                Math.Sqrt(Math.Pow(valorVarianzaTotal,2)/listaDeMediasPorSimulacion.Count);
+            double confDer = valorMediaTotal - 2.33 *
+                Math.Sqrt(Math.Pow(valorVarianzaTotal, 2) / listaDeMediasPorSimulacion.Count);
+            dg = addColumsToStatsDataGridView(dg);
+            dg.Rows.Add(new object[]
+                           {"-", 
+                            valorMediaTotal,
+                            valorVarianzaTotal,
+                            confIzq,
+                            confDer,
+                           });
+            foreach (double d in listaDeMediasPorSimulacion)
+            {
+                dg.Rows.Add(new object[]
+                           {d, 
+                            "-",
+                            "-",
+                            "-",
+                            "-"
+                           });
+            }
+            listaDeMediasPorSimulacion.Clear();
+        }
         #endregion MetodosEstadisticos
 
+        #region MetodosDataGridView
+        private DataGridView addColumsToStatsDataGridView(DataGridView dg)
+        {
+            dg.Columns.Add(
+                "Medias Simuladas",
+                "Medias Simuladas");
+            dg.Columns.Add(
+                "Medias Total",
+                "Medias Total");
+            dg.Columns.Add(
+                "Varianza Total",
+                "Varianza Total");
+            dg.Columns.Add(
+                "Extremo Izq Intervarlo",
+                "Extremo Izq Intervarlo");
+            dg.Columns.Add(
+                "Extremo Der Intervarlo",
+                "Extremo Der Intervarlo");
+            return dg;
+        }
+
+        private DataGridView addColumnsToDataGridView(DataGridView dg)
+        {
+            //Col particulares
+            dg.Columns.Add(
+                eventoActual.
+                getObjectProblemColumn(0).ToString(),
+                eventoActual.
+                getObjectProblemColumn(0).ToString());
+            dg.Columns.Add(
+                reloj.
+                getObjectProblemColumn(0).ToString(),
+                reloj.
+                getObjectProblemColumn(0).ToString());
+            //Eventos
+            dg.Columns.Add(
+                rnd_llp_raw.
+                getObjectProblemColumn(0).ToString(),
+                rnd_llp_raw.
+                getObjectProblemColumn(0).ToString());
+            dg.Columns.Add(
+                rnd_llp_val.
+                getObjectProblemColumn(0).ToString(),
+                rnd_llp_val.
+                getObjectProblemColumn(0).ToString());
+            dg.Columns.Add(
+                llegadaPaquete.
+                getObjectListEvent(0).ToString(),
+                llegadaPaquete.
+                getObjectListEvent(0).ToString());
+            dg.Columns.Add(
+                rnd_prp_raw.
+                getObjectProblemColumn(0).ToString(),
+                rnd_prp_raw.
+                getObjectProblemColumn(0).ToString());
+            dg.Columns.Add(
+               rnd_prp_val.
+                getObjectProblemColumn(0).ToString(),
+                rnd_prp_val.
+                getObjectProblemColumn(0).ToString());
+            dg.Columns.Add(
+                procesamientoPaquete.
+                getObjectListEvent(0).ToString(),
+                procesamientoPaquete.
+                getObjectListEvent(0).ToString());
+            //Col Particulares
+            dg.Columns.Add(
+                 estadoServidor.
+                 getObjectProblemColumn(0).ToString(),
+                 estadoServidor.
+                 getObjectProblemColumn(0).ToString());
+            dg.Columns.Add(
+                cantidadPaquetesASerProcesados.
+                getObjectProblemColumn(0).ToString(),
+                cantidadPaquetesASerProcesados.
+                getObjectProblemColumn(0).ToString());
+            dg.Columns.Add(
+                cantidadPaquetesProcesados.
+                getObjectProblemColumn(0).ToString(),
+                cantidadPaquetesProcesados.
+                getObjectProblemColumn(0).ToString());
+            dg.Columns.Add(
+                cantidadPaquetesDescartados.
+                getObjectProblemColumn(0).ToString(),
+                cantidadPaquetesDescartados.
+                getObjectProblemColumn(0).ToString());
+            dg.Columns.Add(
+                cantidadPaquetesSimulados.
+                getObjectProblemColumn(0).ToString(),
+                cantidadPaquetesSimulados.
+                getObjectProblemColumn(0).ToString());
+            return dg;
+        }
+        #endregion MetodosDataGridView
         #region MetodosDeDebug
         private void debugOutputs()
         {

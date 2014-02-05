@@ -14,9 +14,9 @@ namespace RNDGenDistRLiberal
             maxIntervalValue = _maxIntervalValue;
             minIntervalValue = _minIntervalValue;
         }
-        public override double implementAleatoryNumberDistribution(Random rnd)
+        public override double implementAleatoryNumberDistribution(double rnd)
         {
-           return rnd.NextDouble() * (maxIntervalValue - minIntervalValue) + maxIntervalValue;
+           return rnd * (maxIntervalValue - minIntervalValue) + maxIntervalValue;
         }
     }
 }
