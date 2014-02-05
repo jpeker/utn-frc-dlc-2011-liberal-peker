@@ -18,7 +18,6 @@ namespace ProgramaSimulacionEj260
         {
             InitializeComponent();
             lblError.Text = "";
-            //addColumnsToDataGridView();
             tabControlResultadosSimulacion.TabPages.RemoveAt(0);
             tabControlResultadosSimulacion.TabPages.RemoveAt(0);
         }
@@ -30,17 +29,23 @@ namespace ProgramaSimulacionEj260
             {
                 // Ejecutar simulacion
                 btnBorrar.Enabled = false;
-                btnCorrerSimPorNro.Enabled = false;
-                btnEjecutarSigNroSim.Enabled = false;
                 buttonRunSim.Enabled = false;
-                lblError.Text = "Datos ingresados correctamente Ejecutandose simulacion";
-                // logicaSimEjer.execute_logic();
+                lblError.Text = "Datos ingresados correctamente, simulacion terminada";
                 int cantidadTabs = Convert.ToInt32(txtNroSims.Text);
                 for (int i = 0; i < cantidadTabs; i++)
                 {
                     tabControlResultadosSimulacion.TabPages.Add(
-                        "Resultados Simulacion " + Convert.ToString(i+1));
+                        "Resultados Simulacion " + Convert.ToString(i + 1));
                     DataGridView dg = new DataGridView();
+                    logicaSimEjer.
+                        ejecutarSimulacion(
+                        Convert.ToDouble(txtLlegadaPaquete.Text.
+                        Replace(",", "."), CultureInfo.InvariantCulture),
+                        Convert.ToDouble(txtProcesamientoPaquete.Text.
+                        Replace(",", "."), CultureInfo.InvariantCulture),
+                        Convert.ToInt32(txtCantPaquetes.Text),
+                        Convert.ToInt32(txtLimiteCola.Text), 
+                        ref dg);
                     dg.Height = 443;
                     dg.Width = 1256;
                     dg.Location = new Point(7, 14);
@@ -48,13 +53,24 @@ namespace ProgramaSimulacionEj260
                     dg.MultiSelect = false;
                     dg.AllowUserToAddRows = false;
                     dg.AllowUserToDeleteRows = false;
-                    addColumnsToDataGridView(dg);
                     tabControlResultadosSimulacion.TabPages[i].Controls.Add(dg);
                 }
+                tabControlResultadosSimulacion.TabPages.Add(
+                "Estadisticas");
+                DataGridView dgstat = new DataGridView();
+                logicaSimEjer.aniadirEstadisticas(ref dgstat);
+                dgstat.Height = 443;
+                dgstat.Width = 1256;
+                dgstat.Location = new Point(7, 14);
+                dgstat.ReadOnly = true;
+                dgstat.MultiSelect = false;
+                dgstat.AllowUserToAddRows = false;
+                dgstat.AllowUserToDeleteRows = false;
+                tabControlResultadosSimulacion.
+                    TabPages[tabControlResultadosSimulacion.TabCount -1]
+                    .Controls.Add(dgstat);
             }
             btnBorrar.Enabled = true;
-            btnCorrerSimPorNro.Enabled = true;
-            btnEjecutarSigNroSim.Enabled = true;
             buttonRunSim.Enabled = true;
         }
 
@@ -74,11 +90,14 @@ namespace ProgramaSimulacionEj260
                         if (Convert.ToInt32(test) >= 1 && Convert.ToInt32(test) <= 1000)
                         {
                             test = txtLlegadaPaquete.Text;
-                            double value = Convert.ToDouble(test.Replace(",", "."), CultureInfo.InvariantCulture);
+                            double value = Convert.ToDouble
+                                (test.Replace(",", "."), CultureInfo.InvariantCulture);
                             if (value < (double)1.00)
                             {
                                 test = txtProcesamientoPaquete.Text;
-                                if (Convert.ToDouble(test.Replace(",", "."), CultureInfo.InvariantCulture) < (double)1.00)
+                                if (Convert.
+                                    ToDouble(test.Replace(",", "."),
+                                    CultureInfo.InvariantCulture) < (double)1.00)
                                 {
                                     validate = true;
                                 }
@@ -107,72 +126,7 @@ namespace ProgramaSimulacionEj260
             txtNroSims.ResetText();
             txtProcesamientoPaquete.ResetText();
         }
-        private void addColumnsToDataGridView(DataGridView dg)
-        {
-            //Col particulares
-            dg.Columns.Add(
-                logicaSimEjer.eventoActual.
-                getObjectProblemColumn(0).ToString(),
-                logicaSimEjer.eventoActual.
-                getObjectProblemColumn(0).ToString());
-            dg.Columns.Add(
-                logicaSimEjer.reloj.
-                getObjectProblemColumn(0).ToString(),
-                logicaSimEjer.reloj.
-                getObjectProblemColumn(0).ToString());
-            //Eventos
-            dg.Columns.Add(
-                logicaSimEjer.rnd_llp_raw.
-                getObjectProblemColumn(0).ToString(),
-                logicaSimEjer.rnd_llp_raw.
-                getObjectProblemColumn(0).ToString());
-            dg.Columns.Add(
-                logicaSimEjer.rnd_llp_val.
-                getObjectProblemColumn(0).ToString(),
-                logicaSimEjer.rnd_llp_val.
-                getObjectProblemColumn(0).ToString());
-            dg.Columns.Add(
-                logicaSimEjer.llegadaPaquete.
-                getObjectListEvent(0).ToString(),
-                logicaSimEjer.llegadaPaquete.
-                getObjectListEvent(0).ToString());
-            dg.Columns.Add(
-                logicaSimEjer.rnd_prp_raw.
-                getObjectProblemColumn(0).ToString(),
-                logicaSimEjer.rnd_prp_raw.
-                getObjectProblemColumn(0).ToString());
-            dg.Columns.Add(
-                logicaSimEjer.rnd_prp_val.
-                getObjectProblemColumn(0).ToString(),
-                logicaSimEjer.rnd_prp_val.
-                getObjectProblemColumn(0).ToString());
-            dg.Columns.Add(
-                logicaSimEjer.procesamientoPaquete.
-                getObjectListEvent(0).ToString(),
-                logicaSimEjer.procesamientoPaquete.
-                getObjectListEvent(0).ToString());
-            //Col Particulares
-            dg.Columns.Add(
-                logicaSimEjer.cantidadPaquetesASerProcesados.
-                getObjectProblemColumn(0).ToString(),
-                logicaSimEjer.cantidadPaquetesASerProcesados.
-                getObjectProblemColumn(0).ToString());
-            dg.Columns.Add(
-                logicaSimEjer.cantidadPaquetesProcesados.
-                getObjectProblemColumn(0).ToString(),
-                logicaSimEjer.cantidadPaquetesProcesados.
-                getObjectProblemColumn(0).ToString());
-            dg.Columns.Add(
-                logicaSimEjer.cantidadPaquetesDescartados.
-                getObjectProblemColumn(0).ToString(),
-                logicaSimEjer.cantidadPaquetesDescartados.
-                getObjectProblemColumn(0).ToString());
-            dg.Columns.Add(
-                logicaSimEjer.cantidadPaquetesSimulados.
-                getObjectProblemColumn(0).ToString(),
-                logicaSimEjer.cantidadPaquetesSimulados.
-                getObjectProblemColumn(0).ToString());
-        }
+
 
         private void btnBorrar_Click(object sender, EventArgs e)
         {

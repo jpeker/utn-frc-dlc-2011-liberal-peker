@@ -33,10 +33,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnBorrar = new System.Windows.Forms.Button();
             this.lblError = new System.Windows.Forms.Label();
-            this.btnEjecutarSigNroSim = new System.Windows.Forms.Button();
-            this.lblNroSimActual = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.btnCorrerSimPorNro = new System.Windows.Forms.Button();
             this.txtLimiteCola = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -77,10 +73,6 @@
             // 
             this.panel2.Controls.Add(this.btnBorrar);
             this.panel2.Controls.Add(this.lblError);
-            this.panel2.Controls.Add(this.btnEjecutarSigNroSim);
-            this.panel2.Controls.Add(this.lblNroSimActual);
-            this.panel2.Controls.Add(this.label7);
-            this.panel2.Controls.Add(this.btnCorrerSimPorNro);
             this.panel2.Controls.Add(this.txtLimiteCola);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.label5);
@@ -100,9 +92,9 @@
             // 
             // btnBorrar
             // 
-            this.btnBorrar.Location = new System.Drawing.Point(922, 56);
+            this.btnBorrar.Location = new System.Drawing.Point(922, 60);
             this.btnBorrar.Name = "btnBorrar";
-            this.btnBorrar.Size = new System.Drawing.Size(111, 31);
+            this.btnBorrar.Size = new System.Drawing.Size(111, 33);
             this.btnBorrar.TabIndex = 18;
             this.btnBorrar.Text = "Borrar Datos";
             this.btnBorrar.UseVisualStyleBackColor = true;
@@ -116,42 +108,6 @@
             this.lblError.Size = new System.Drawing.Size(28, 13);
             this.lblError.TabIndex = 17;
             this.lblError.Text = "error";
-            // 
-            // btnEjecutarSigNroSim
-            // 
-            this.btnEjecutarSigNroSim.Location = new System.Drawing.Point(1058, 52);
-            this.btnEjecutarSigNroSim.Name = "btnEjecutarSigNroSim";
-            this.btnEjecutarSigNroSim.Size = new System.Drawing.Size(126, 35);
-            this.btnEjecutarSigNroSim.TabIndex = 16;
-            this.btnEjecutarSigNroSim.Text = "Ejecutar Siguiente Nro de Simulacion";
-            this.btnEjecutarSigNroSim.UseVisualStyleBackColor = true;
-            // 
-            // lblNroSimActual
-            // 
-            this.lblNroSimActual.AutoSize = true;
-            this.lblNroSimActual.Location = new System.Drawing.Point(86, 70);
-            this.lblNroSimActual.Name = "lblNroSimActual";
-            this.lblNroSimActual.Size = new System.Drawing.Size(13, 13);
-            this.lblNroSimActual.TabIndex = 15;
-            this.lblNroSimActual.Text = "0";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 70);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(77, 13);
-            this.label7.TabIndex = 14;
-            this.label7.Text = "Nro Sim Actual";
-            // 
-            // btnCorrerSimPorNro
-            // 
-            this.btnCorrerSimPorNro.Location = new System.Drawing.Point(1058, 8);
-            this.btnCorrerSimPorNro.Name = "btnCorrerSimPorNro";
-            this.btnCorrerSimPorNro.Size = new System.Drawing.Size(126, 35);
-            this.btnCorrerSimPorNro.TabIndex = 13;
-            this.btnCorrerSimPorNro.Text = "Correr Simulacion Por Nro De Simulacion";
-            this.btnCorrerSimPorNro.UseVisualStyleBackColor = true;
             // 
             // txtLimiteCola
             // 
@@ -245,7 +201,7 @@
             // panel3
             // 
             this.panel3.Controls.Add(this.tabControlResultadosSimulacion);
-            this.panel3.Location = new System.Drawing.Point(17, 141);
+            this.panel3.Location = new System.Drawing.Point(17, 152);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1312, 519);
             this.panel3.TabIndex = 3;
@@ -335,10 +291,6 @@
         private System.Windows.Forms.TextBox txtProcesamientoPaquete;
         private System.Windows.Forms.TextBox txtLimiteCola;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label lblNroSimActual;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button btnCorrerSimPorNro;
-        private System.Windows.Forms.Button btnEjecutarSigNroSim;
         private System.Windows.Forms.Label lblError;
         private System.Windows.Forms.Button btnBorrar;
         private System.Windows.Forms.Panel panel3;
