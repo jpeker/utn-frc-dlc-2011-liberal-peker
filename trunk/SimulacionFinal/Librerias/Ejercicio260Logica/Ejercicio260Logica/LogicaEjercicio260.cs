@@ -19,12 +19,12 @@ namespace Ejercicio260Logica
             new ProblemColumn(new List<object> { "Reloj", 0.0 }, 'd');
         public ProblemColumn reloj_anterior =
             new ProblemColumn(new List<object> { "Reloj", 0.0 }, 'd');
-        
+
         //Columna random raw llegada paquete
         public ProblemColumn rnd_llp_raw =
             new ProblemColumn(new
             List<object> { "Rnd Generado Llegada Paquete", 0.0 }, 'd');
-        
+
         //Columna random llegada paquete
         public ProblemColumn rnd_llp_val =
             new ProblemColumn(new
@@ -34,7 +34,7 @@ namespace Ejercicio260Logica
         public ProblemColumn rnd_prp_raw =
             new ProblemColumn(new
             List<object> { "Rnd Generado Procesamiento Paquete", 0.0 }, 'd');
-        
+
         //Columna random procesamiento paquete
         public ProblemColumn rnd_prp_val =
             new ProblemColumn(new
@@ -284,56 +284,62 @@ namespace Ejercicio260Logica
         #endregion ProcesamientoDeEventoActual
 
         #region BucleDeEjecucionDeSimulacion
-        public void execute_logic(double initTime = 0.0,
-            double endTime = 0.0, int tamanioDeCola = 0)
+        public void ejecutarSimulacion(int cantidadDePaquetesASimularPorSimulacion)
         {
-            int cantidadSimulaciones = 20;
-            cantidadPaquetesASimularPorSimulacion = 100;
-            GradosDeLibertad.llenarListaGradosLibertad();
-            reloj.setObjectProblemColumn(1, initTime);
+            while ((int)cantidadPaquetesSimulados.getObjectProblemColumn(1)
+                    < cantidadPaquetesASimularPorSimulacion)
+            {
+                if (secondRow == false)
+                {
+                    // Primera Fila.
+                    Debug.WriteLine("Primera Fila");
+                    // Disparo llegada de paquete
+                    dispararLlegadaDePaquete();
+                    // Seteo inicio de procesamiento en 0 
+                    procesamientoPaquete.setObjectListEvent(2, (double)0);
+                    // Seteo el reloj
+                    reloj_anterior.setObjectProblemColumn(1,
+                        (double)reloj.getObjectProblemColumn(1));
+                    reloj.setObjectProblemColumn
+                      (1, llegadaPaquete.getObjectListEvent(2));
+                    // De ahora en mas todo el bucle se limita al else
+                    secondRow = true;
+                }
+                else
+                {
+                    Debug.WriteLine("Segunda Fila");
+                    // Evento a ejecutar ahora
+                    executeCurrentEvent();
+                    // Averiguar proximo evento
+                    siguienteEvento();
+                }
+                // Cuento la cantidad de paquetes (descartados + procesados)
+                contarTotalPaquetes();
+                debugOutputs();
+            }
+
+        }
+
+        public void execute_logic(int cantidadSimulaciones, 
+                                  int cantidadPaquetesASimularPorSimulacion,
+                                  double lambaLlegada,
+                                  double lambaProcesamiento, 
+                                  int tamanioDeCola)
+        {
             Debug.WriteLine("Inicio");
+            //Seteo grados de libertad
+            GradosDeLibertad.llenarListaGradosLibertad();
+            //Seteo el reloj en 0
+            //reloj.setObjectProblemColumn(1, (double)0.0);
             // Seteo el limite de la cola
-            limiteColaPaquetesInformacion = 1;
-            //colaPaqueteInformacionProcesados.Count
+            limiteColaPaquetesInformacion = tamanioDeCola;
             while (nroDeSimulacionesARealizar < cantidadSimulaciones)
             {
                 Debug.WriteLine("Nro de Simulacion " + nroDeSimulacionesARealizar);
                 nroDeSimulacionesARealizar++;
                 iniciarNuevaSimulacion();
                 estadoServidor.setObjectProblemColumn(1, "Libre");
-                while ((int)cantidadPaquetesSimulados.getObjectProblemColumn(1)
-                    < cantidadPaquetesASimularPorSimulacion
-                    )
-                {
-                    if (secondRow == false)
-                    {
-                        // Primera Fila.
-                        Debug.WriteLine("Primera Fila");
-                        // Disparo llegada de paquete
-                        dispararLlegadaDePaquete();
-                        // Seteo inicio de procesamiento en 0 
-                        procesamientoPaquete.setObjectListEvent(2, (double)0);
-                        // Seteo el reloj
-                        reloj_anterior.setObjectProblemColumn(1,
-                            (double)reloj.getObjectProblemColumn(1));
-                        reloj.setObjectProblemColumn
-                          (1, llegadaPaquete.getObjectListEvent(2));
-                        // De ahora en mas todo el bucle se limita al else
-                        secondRow = true;
-                    }
-                    else
-                    {
-                        Debug.WriteLine("Segunda Fila");
-                        // Evento a ejecutar ahora
-                        executeCurrentEvent();
-                        // Averiguar proximo evento
-                        siguienteEvento();
-                    }
-                    // Cuento la cantidad de paquetes (descartados + procesados)
-                    contarTotalPaquetes();
-                    debugOutputs();
-
-                }
+                ejecutarSimulacion(cantidadPaquetesASimularPorSimulacion);
                 listaDeMediasPorSimulacion.Add(
                 (double)((double)colaPaqueteInformacionDescartados.Count /
                 (double)((int)cantidadPaquetesSimulados.getObjectProblemColumn(1))));
@@ -384,6 +390,8 @@ namespace Ejercicio260Logica
         private double calcularVarianzaTotal()
         {
             double _valorVarianzaTotal = 0;
+            //Realizo el calculo de la varianza total en funcion de las medias
+            //muestrales obtenidas
             foreach (double media in listaDeMediasPorSimulacion)
             {
                 _valorVarianzaTotal = _valorVarianzaTotal +
