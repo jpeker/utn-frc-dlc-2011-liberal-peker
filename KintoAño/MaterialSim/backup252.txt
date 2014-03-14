@@ -1,0 +1,242 @@
+        //private bool seleccionJuego = false;
+        private bool vuelveAJugar = false;
+        
+        //Reloj
+        private ProblemColumn reloj =
+            new ProblemColumn(new List<object> {"Reloj", 0.0 }, 'd');
+        
+        //Cola seleccion juego
+        private ProblemColumn colaSelectGame = new ProblemColumn();
+
+        // Llegada Cliente
+        private Event llegadaCliente = 
+        new Event(new List<object> { "Llegada Cliente", 0, 0, 0, "Libre" });
+        private CStrategy_UniformDist 
+            rnd_cli = new CStrategy_UniformDist(35, 5);
+        
+        // Cliente Selecciona Juego
+        private TupleAnswerDistribution eleccionJuegoCli =
+            new TupleAnswerDistribution(new List<Tuple<string, double>> 
+                {new Tuple<string,double>("Laberinto",0.6),
+                new Tuple<string,double>("Espejos",0.4)}, 2);
+
+        // Atencion Cliente
+        private Event atencionCliente = 
+        new Event(new List<object> { "Atencion Cliente", 0, 0, 0, "Libre" });
+        private CStrategy_UniformDist 
+            rnd_cla = new CStrategy_UniformDist(10, 30);
+
+        // Llegada Juego
+        private Event llegadaJuego =
+        new Event(new List<object> { "Llegada Juego", 0, 0, 0, "Libre" });
+        private CStrategy_UniformDist
+            rnd_jue = new CStrategy_UniformDist(15, 25);
+
+        // Juego Espejo
+        private QueueEvent juegoEspejo =
+        new QueueEvent(new List<object> { "Juego Espejo", 0, 0, 0, "Libre" }, 14);
+        private CStrategy_UniformDist
+            rnd_esp = new CStrategy_UniformDist(160, 200);
+
+        // Juego Laberinto
+        private QueueEvent juegoLaberinto =
+        new QueueEvent(new List<object> { "Juego Laberinto", 0, 0, 0, "Libre" }, 20);
+        private CStrategy_UniformDist
+            rnd_lab = new CStrategy_UniformDist(60, 180);
+
+        // Cliente Vuelve Nuevamente
+        private TupleAnswerDistribution clienteVuelve =
+            new TupleAnswerDistribution(new List<Tuple<string, double>> 
+                {new Tuple<string,double>("Si",0.6),
+                new Tuple<string,double>("No",0.4)}, 2);
+
+        // Metodo Llegada Cliente
+        public void clientArrival() {
+            llegadaCliente.setNextRow(
+             new List<object> { "Llegada Cliente",
+                                rnd_cli.implementAleatoryNumberDistribution
+                                (new Random()),
+                                reloj.getObjectProblemColumn(1)
+                                });
+            //No usados
+            llegadaCliente.setValueChange(1);
+            //llegadaCliente.setStateQueue();
+        }
+
+        //Metodo Cliente selecciona juego con Random
+        public void clientSelectGame() {
+            eleccionJuegoCli.valueAsigned(new Random());
+        }
+
+        //Metodo Atencion Cliente
+        public void clientAttetion() {
+           atencionCliente.setNextRow(
+           new List<object> { "Atencion Cliente",
+                                rnd_cla.implementAleatoryNumberDistribution
+                                (new Random()),
+                                reloj.getObjectProblemColumn(1)
+                                });
+           atencionCliente.setValueChange(1);
+           atencionCliente.setStateQueue();
+        }
+
+        //Metodo Llegada Juego
+        public void gameArrival()
+        {
+            llegadaJuego.setNextRow(
+            new List<object> { "Llegada Juego",
+                                rnd_jue.implementAleatoryNumberDistribution
+                                (new Random()),
+                                reloj.getObjectProblemColumn(1)
+                                });
+            //No usados
+            //llegadaJuego.setValueChange(1);
+            //llegadaJuego.setStateQueue();
+        }
+
+        //Metodo Juego Espejos
+        public void gameMirror()
+        {
+            juegoEspejo.setValuesChange(1, 1);
+            juegoEspejo.setStateQueue();
+            juegoEspejo.setNextRow(
+                new List<object> { "Juego Espejos",
+                                rnd_esp.implementAleatoryNumberDistribution
+                                (new Random()), reloj.getObjectProblemColumn(1)
+                                });
+        }
+
+        //Metodo Juego Laberinto
+        public void gameLaberint()
+        {
+            juegoLaberinto.setValuesChange(1, 1);
+            juegoLaberinto.setStateQueue();
+            juegoLaberinto.setNextRow(
+                new List<object> { "Juego Laberinto",
+                                rnd_lab.implementAleatoryNumberDistribution
+                                (new Random()), reloj.getObjectProblemColumn(1)
+                                });
+        }
+
+        //Metodo si el cliente vuelve a jugar Random
+        public void clientPlayAgain()
+        {
+            clienteVuelve.valueAsigned(new Random());
+        }
+
+        private void askNextEvent() {
+            //Tercera a n fila.
+            
+            //Llega nuevo cliente.
+            if (
+                ((double)llegadaCliente.getObjectListEvent(2)
+                < (double)atencionCliente.getObjectListEvent(2))
+                && ((double)llegadaCliente.getObjectListEvent(2)
+                < (double)llegadaJuego.getObjectListEvent(2))
+                )
+            {
+                clientArrival();
+                //marcar reloj
+            }
+
+            
+            // realizo atencion cliente
+            if (
+                ((double)atencionCliente.getObjectListEvent(2)
+                < (double)llegadaCliente.getObjectListEvent(2))
+                && ((double)atencionCliente.getObjectListEvent(2)
+                < (double)llegadaJuego.getObjectListEvent(2))
+                )
+            {
+                clientAttetion();
+                if (eleccionJuegoCli.valueAsigned(new Random()).Item1.Equals("Laberinto"))
+                {
+                    //seleccionJuego = true;
+                    colaSelectGame.getListProblemColumn().Add(true);
+                }
+                else
+                {
+                    //seleccionJuego = false;
+                    colaSelectGame.getListProblemColumn().Add(false);
+                }
+                //marcar reloj
+            }
+
+            //Llegada juego
+            if (
+                ((double)llegadaJuego.getObjectListEvent(2)
+                < (double)llegadaCliente.getObjectListEvent(2))
+                && ((double)llegadaJuego.getObjectListEvent(2)
+                < (double)atencionCliente.getObjectListEvent(2))
+               )
+            {
+                if ((bool)colaSelectGame.getListProblemColumn()[0])
+                {
+                    //Juega Laberinto
+                    colaSelectGame.getListProblemColumn().RemoveAt(0);
+                    gameLaberint();
+                    if ((int)juegoLaberinto.getObjectListEvent(3) > juegoLaberinto.getMaxCapacity())
+                    {
+                    
+                    }
+                    else
+                    {
+                    
+                    }
+                }
+                else
+                {
+                    //Juega Espejos
+                    colaSelectGame.getListProblemColumn().RemoveAt(0);
+                    gameMirror();
+                }
+                if (colaSelectGame.getListProblemColumn().Count > 0)
+                { gameArrival(); }
+                //marcar reloj
+            }
+
+
+        }
+
+        public void execute_logic(double initTime, double endTime) {
+            reloj.setObjectProblemColumn(1, initTime);
+            bool first_time = false;
+            while ((double)reloj.getObjectProblemColumn(1) < endTime) {
+                if (first_time == false)
+                {
+                    //Deben configurarse primero las 2 primeras filas de las n tiradas
+                    //a mano. Desde la tercera tirada en adelante todo se resuelve
+                    //por inferencia.
+                    //Primera Fila.
+                    clientArrival();
+                    reloj.setObjectProblemColumn(1, llegadaCliente.getObjectListEvent(2));
+                    //Segunda Fila.
+                    clientArrival();
+                    clientAttetion();
+                    if ((double)llegadaCliente.getObjectListEvent(2) >
+                        (double)atencionCliente.getObjectListEvent(2))
+                    { reloj.setObjectProblemColumn(1, llegadaCliente.getObjectListEvent(2)); }
+                    else
+                    { 
+                        reloj.setObjectProblemColumn(1, atencionCliente.getObjectListEvent(2));
+                        if (eleccionJuegoCli.valueAsigned(new Random()).Item1.Equals("Laberinto"))
+                        {
+                            gameArrival();
+                            //seleccionJuego = true;
+                            colaSelectGame.getListProblemColumn().Add(true);
+                        }
+                        else
+                        {
+                            gameArrival();
+                            //seleccionJuego = false;
+                            colaSelectGame.getListProblemColumn().Add(false);
+                        }
+                    }
+                    first_time = true;
+                }
+                else
+                {
+                    askNextEvent();
+                }
+            }
+        }
