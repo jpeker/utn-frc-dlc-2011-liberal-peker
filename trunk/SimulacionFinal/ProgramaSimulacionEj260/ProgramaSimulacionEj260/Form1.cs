@@ -87,7 +87,7 @@ namespace ProgramaSimulacionEj260
                     if (Convert.ToInt32(test) >= 100 && Convert.ToInt32(test) <= 1000)
                     {
                         test = txtLimiteCola.Text;
-                        if (Convert.ToInt32(test) >= 1 && Convert.ToInt32(test) <= 1000)
+                        if (Convert.ToInt32(test) >= 2 && Convert.ToInt32(test) <= 1000)
                         {
                             test = txtLlegadaPaquete.Text;
                             double value = Convert.ToDouble
