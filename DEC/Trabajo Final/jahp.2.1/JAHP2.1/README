@@ -1,0 +1,92 @@
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or (at
+your option) any later version.  
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+General Public License for more details.  
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the 
+Free Software Foundation, Inc., 
+59 Temple Place, Suite 330, 
+Boston, MA 02111-1307
+USA
+
+
+Introduction to JAHP
+====================
+
+
+JAHP is designed for single users who are making personal
+decisions. This software, a Swing based user interface, help you to
+achieve a better, faster and more justifiable decisions with a
+structured decision-making approach based on the AHP.
+
+The Analytic Hierarchy Process (AHP) is a powerful and flexible
+decision making process to help people set priorities and make the
+best decision when both qualitative and quantitative aspects of a
+decision need to be considered. By reducing complex decisions to a
+series of one-on-one comparisons, then synthesizing the results, AHP
+not only helps decision makers arrive at the best decision, but also
+provides a clear rationale that it is the best. Designed to reflect
+the way people actually think, AHP was developed more than 20 years
+ago by Dr. Thomas Saaty and continues to be the most highly regarded
+and widely used decision-making theory.
+
+
+
+Availability
+============
+
+   WWW users may want to check out the JAHP page at
+
+                               `http://www.emse.fr/~mmorge/software/JAHP.html'
+
+Contacts
+========
+
+Maxime Morge
+ENS Mines Saint Etienne
+158, cours Fauriel - F-42023 Saint-Etienne cedex 2. 
+http://messel.emse.fr/~mmorge
+morge@emse.fr
+
+thanks to :
+- Olivier Titaud (PhD in numerical analysis), for his help in mathematics
+- Laurent Girard (IT Consultant), for his 'do.bat'
+
+Quick Start
+===========
+See INSTALATION
+
+
+Remark
+======
+
+This software use JAMA : A Java Matrix Package
+
+Authors
+-------
+JAMA's initial design, as well as this reference implementation, was developed by
+Joe Hicklin
+Cleve Moler
+Peter Webb
+... from The MathWorks    
+Ronald F. Boisvert
+Bruce Miller
+Roldan Pozo
+Karin Remington
+... from NIST      
+
+Copyright Notice This software is a cooperative product of The
+MathWorks and the National Institute of Standards and Technology
+(NIST) which has been released to the public domain. Neither The
+MathWorks nor NIST assumes any responsibility whatsoever for its use
+by other parties, and makes no guarantees, expressed or implied, about
+its quality, reliability, or any other characteristic.
+
+
+
