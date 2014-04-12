@@ -6,7 +6,7 @@
 /*
  * GestionProblema.java
  *
- * Created on 11-nov-2009, 10:59:33
+ * 
  */
 
 package dec.gui;
@@ -31,7 +31,7 @@ import org.jdesktop.application.Action;
 
 /**
  *
- * @author Emiliano
+ * @author Kapica Liberal Ramirez
  */
 public class GestionProblema extends javax.swing.JPanel {
 

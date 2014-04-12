@@ -6,7 +6,7 @@
 /*
  * NuevoProblema.java
  *
- * Created on 06-nov-2009, 14:24:02
+ * 
  */
 
 package dec.gui;
@@ -26,7 +26,7 @@ import org.jdesktop.application.Action;
 
 /**
  *
- * @author Emiliano
+ * @author Kapica Liberal Ramirez
  */
 public class NuevoProblema extends javax.swing.JPanel {    
     private File file;

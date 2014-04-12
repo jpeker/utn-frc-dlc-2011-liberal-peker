@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  *
- * @author Emiliano
+ * @author Kapica Liberal Ramirez
  */
 public class ElectreToExcel extends ToExcel{
 
