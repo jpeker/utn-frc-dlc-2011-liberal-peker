@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=void\ leer()
+comment1.target=void\ mostrarCampo()
+comment2.target=void\ cargarMetaDatos()
+comment3.target=void\ cargarDatos()
+comment3.text=\nCarga\ datos\ en\ el\ archivo,\ tomando\ la\ informaci\u00F3n\ de\ campos\ del\ archivo\ de\ metadatos\n\n
+comment4.target=void\ mostrarDatos()
+comment5.params=args
+comment5.target=void\ main(String[])
+numComments=6

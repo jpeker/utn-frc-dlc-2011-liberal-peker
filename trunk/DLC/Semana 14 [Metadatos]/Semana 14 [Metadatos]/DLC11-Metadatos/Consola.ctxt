@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=class\ Consola
+comment0.text=\nClase\ para\ facilitar\ operaciones\ de\ carga\ por\ teclado\ en\ consola\ est\u00E1ndar\n@author\ Instructores\ de\ CISCO\ System\ para\ su\ curso\ de\ Fundamentos\ de\ Java\ 1.1\ -\ Modificado\ por\ Valerio\ Frittelli\n@version\ Mayo\ de\ 2004\n
+comment1.params=
+comment1.target=int\ readInt()
+comment1.text=\nLee\ un\ integer\ desde\ teclado.\ La\ entrada\ termina\ con\ un\ salto\ de\ linea\n@return\ el\ valor\ cargado,\ como\ un\ int\n\n
+comment2.params=
+comment2.target=String\ readLine()
+comment2.text=\nLee\ un\ string\ desde\ teclado.\ El\ string\ termina\ con\ un\ salto\ de\ linea\n@return\ el\ string\ leido\ (sin\ el\ salto\ de\ linea)\n\n
+comment3.params=
+comment3.target=double\ readDouble()
+comment3.text=\nLee\ un\ double\ desde\ teclado.\ La\ entrada\ termina\ con\ un\ salto\ de\ linea\n@return\ el\ valor\ cargado,\ como\ un\ double\n\n
+numComments=4
