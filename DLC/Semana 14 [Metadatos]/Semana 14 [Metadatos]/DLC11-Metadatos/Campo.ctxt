@@ -1,0 +1,26 @@
+#BlueJ class context
+comment0.target=Campo()
+comment0.text=\nCrea\ un\ objeto\ con\ valores\ por\ default\n\n
+comment1.params=nom\ tip\ cant\ es
+comment1.target=Campo(String,\ int,\ int,\ boolean)
+comment1.text=\nCrea\ el\ objeto\ tomando\ sus\ datos\ como\ par\u00E1metro\n\n
+comment2.target=String\ getNombre()
+comment2.text=\nAccede\ al\ nombre\n@return\ el\ valor\ del\ nombre\n\n
+comment3.target=int\ getTipo()
+comment3.text=\nAccede\ al\ tipo\n@return\ el\ valor\ del\ tipo\n\n
+comment4.target=int\ getCantidad()
+comment4.text=\nAccede\ a\ la\ cantidad\n@return\ el\ valor\ de\ la\ cantidad\n\n
+comment5.target=boolean\ isClave()
+comment5.text=\nAccede\ al\ indicador\ de\ clave\n@return\ el\ valor\ del\ indicador\ de\ clave\n\n
+comment6.target=int\ sizeOf()
+comment6.text=\nRetorna\ el\ tama\u00F1o\ en\ bytes\ de\ un\ Campo\ seg\u00FAn\ lo\ que\ ocupar\u00E1\ en\ disco\n@return\ el\ tama\u00F1o\ en\ bytes\ del\ objeto\n\n
+comment7.params=x
+comment7.target=void\ copiar(Campo)
+comment7.text=\nCopia\ en\ s\u00ED\ mismo\ al\ objeto\ tomado\ como\ par\u00E1metro\n@param\ x\ el\ objeto\ a\ copiar\n\n
+comment8.params=arch
+comment8.target=void\ fRead(RandomAccessFile)
+comment8.text=\nLee\ de\ disco\ un\ objeto\n@param\ arch\ el\ archivo\ desde\ el\ cual\ lee\n\n
+comment9.params=arch
+comment9.target=void\ fWrite(RandomAccessFile)
+comment9.text=\nGraba\ en\ disco\ un\ objeto\n@param\ arch\ el\ archivo\ en\ donde\ se\ graba\n\n
+numComments=10
