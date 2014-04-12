@@ -7,7 +7,7 @@ package dec;
 
 /**
  *
- * @author Emiliano
+ * @author Kapica Liberal Ramirez
  */
 public class Test {
 

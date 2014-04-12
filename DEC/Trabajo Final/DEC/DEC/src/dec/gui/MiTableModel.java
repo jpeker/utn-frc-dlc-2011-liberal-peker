@@ -12,7 +12,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Emiliano
+ * @author Kapica Liberal Ramirez
  */
 public class MiTableModel extends DefaultTableModel{    
     private Problema problema;   

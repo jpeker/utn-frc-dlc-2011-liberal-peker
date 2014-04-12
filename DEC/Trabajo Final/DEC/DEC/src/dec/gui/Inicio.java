@@ -6,14 +6,14 @@
 /*
  * Inicio.java
  *
- * Created on 12-nov-2009, 22:26:05
+ * 
  */
 
 package dec.gui;
 
 /**
  *
- * @author Emiliano
+ * @author Kapica Liberal Ramirez
  */
 public class Inicio extends javax.swing.JPanel {
 

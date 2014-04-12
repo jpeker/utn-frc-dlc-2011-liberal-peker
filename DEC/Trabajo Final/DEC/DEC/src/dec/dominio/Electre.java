@@ -7,8 +7,8 @@ package dec.dominio;
 
 /**
  *
- * @author Emiliano
+ * @author Kapica Liberal Ramirez
  */
 public class Electre {
-
+///TODO?
 }
