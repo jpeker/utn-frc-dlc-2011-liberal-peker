@@ -1,0 +1,18 @@
+C:\SIM - copia\random_numbers\random_numbers\bin\Debug\random_numbers.exe
+C:\SIM - copia\random_numbers\random_numbers\bin\Debug\random_numbers.pdb
+C:\SIM - copia\random_numbers\random_numbers\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\SIM - copia\random_numbers\random_numbers\obj\x86\Debug\random_numbers.Form1.resources
+C:\SIM - copia\random_numbers\random_numbers\obj\x86\Debug\random_numbers.Properties.Resources.resources
+C:\SIM - copia\random_numbers\random_numbers\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\SIM - copia\random_numbers\random_numbers\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\SIM - copia\random_numbers\random_numbers\obj\x86\Debug\random_numbers.exe
+C:\SIM - copia\random_numbers\random_numbers\obj\x86\Debug\random_numbers.pdb
+C:\SIM\TP3\random_numbers\random_numbers\obj\x86\Debug\random_numbers.exe
+C:\SIM\TP3\random_numbers\random_numbers\obj\x86\Debug\random_numbers.pdb
+C:\SIM\TP3\random_numbers\random_numbers\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\SIM\TP3\random_numbers\random_numbers\obj\x86\Debug\random_numbers.Form1.resources
+C:\SIM\TP3\random_numbers\random_numbers\obj\x86\Debug\random_numbers.Properties.Resources.resources
+C:\SIM\TP3\random_numbers\random_numbers\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\SIM\TP3\random_numbers\random_numbers\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\SIM\TP3\random_numbers\random_numbers\bin\Debug\random_numbers.exe
+C:\SIM\TP3\random_numbers\random_numbers\bin\Debug\random_numbers.pdb
