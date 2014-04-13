@@ -38,11 +38,31 @@ public class NuevoProblema extends javax.swing.JPanel {
 
     @Action
     public void aceptar(){
+        //Verifico campos
         if(this.problema.getNombre() == null || this.problema.getNombre().isEmpty()
-            || this.file == null || this.file.getAbsolutePath().isEmpty()){
-            JOptionPane.showMessageDialog(this, "Los campos NOMBRE y ARCHIVO son requeridos.");
+            || this.problema.getAutor() == null || this.problema.getAutor().isEmpty()
+            || this.problema.getAutor() == null || this.problema.getAutor().isEmpty()
+            || this.problema.getDescripcion() == null || this.problema.getDescripcion().isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Todos los campos son requeridos.");
             return;
         }
+        //Seteo opcion de guardar y añado archivo
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setApproveButtonText("Guardar");
+        File tempfile = new File(this.problema.getNombre());
+        fileChooser.setSelectedFile(tempfile);
+        int op = fileChooser.showOpenDialog(DECApp.getApplication().getMainFrame());
+        if(op == JFileChooser.APPROVE_OPTION){
+            if(!fileChooser.getSelectedFile().isDirectory()){
+                String path = fileChooser.getSelectedFile().getAbsolutePath();
+                path = path+".dec";
+                this.file = new File(path);
+            }
+        }
+        else{return;}
+
+
         problema.setFecha(new Date(System.currentTimeMillis()));
         problema.setFile(file);
         try {
@@ -63,18 +83,18 @@ public class NuevoProblema extends javax.swing.JPanel {
     }
 
     @Action
-    public void seleccionarArchivo(){
-        JFileChooser fileChooser = new JFileChooser();
-        int op = fileChooser.showOpenDialog(DECApp.getApplication().getMainFrame());
-        if(op == JFileChooser.APPROVE_OPTION){            
-            if(!fileChooser.getSelectedFile().isDirectory()){
-                String path = fileChooser.getSelectedFile().getAbsolutePath();
-                path = path+".dec";
-                this.filePath.setText(path);
-                this.file = new File(path);
-            }
-        }
-    }
+//    public void seleccionarArchivo(){
+//        JFileChooser fileChooser = new JFileChooser();
+//        int op = fileChooser.showOpenDialog(DECApp.getApplication().getMainFrame());
+//        if(op == JFileChooser.APPROVE_OPTION){
+//            if(!fileChooser.getSelectedFile().isDirectory()){
+//                String path = fileChooser.getSelectedFile().getAbsolutePath();
+//                path = path+".dec";
+//               // this.filePath.setText(path);
+//                this.file = new File(path);
+//            }
+//        }
+//    }
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -95,9 +115,6 @@ public class NuevoProblema extends javax.swing.JPanel {
         jTextArea1 = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        filePath = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
 
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(dec.DECApp.class).getContext().getResourceMap(NuevoProblema.class);
         setBorder(javax.swing.BorderFactory.createTitledBorder(resourceMap.getString("Form.border.title"))); // NOI18N
@@ -142,17 +159,6 @@ public class NuevoProblema extends javax.swing.JPanel {
         jButton2.setText(resourceMap.getString("jButton2.text")); // NOI18N
         jButton2.setName("jButton2"); // NOI18N
 
-        jLabel3.setText(resourceMap.getString("jLabel3.text")); // NOI18N
-        jLabel3.setName("jLabel3"); // NOI18N
-
-        filePath.setEditable(false);
-        filePath.setText(resourceMap.getString("filePath.text")); // NOI18N
-        filePath.setName("filePath"); // NOI18N
-
-        jButton3.setAction(actionMap.get("seleccionarArchivo")); // NOI18N
-        jButton3.setText(resourceMap.getString("jButton3.text")); // NOI18N
-        jButton3.setName("jButton3"); // NOI18N
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -160,31 +166,25 @@ public class NuevoProblema extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(132, 132, 132)
+                        .addComponent(jButton2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(17, 17, 17)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel1)
-                                    .addComponent(jLabel3)
                                     .addComponent(jLabel4))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(filePath, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(txtAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(132, 132, 132)
-                        .addComponent(jButton2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1)))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
@@ -193,7 +193,7 @@ public class NuevoProblema extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
@@ -201,12 +201,7 @@ public class NuevoProblema extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(filePath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(jButton3))
-                .addGap(34, 34, 34)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -222,13 +217,10 @@ public class NuevoProblema extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField filePath;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;

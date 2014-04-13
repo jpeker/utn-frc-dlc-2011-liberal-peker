@@ -21,11 +21,10 @@ public AHPToExcel(Problema problema,File file) {
 
     @Override
     protected void header() {
-       // this.valores.add("P: ");
+        this.valores.add("Resolución por AHP");
       //  this.valores.add(super.problema.getP());
-      //  this.libro.addRow(valores, RowType.HEADER);
+        this.libro.addRow(valores, RowType.HEADER);
     }
-
 
 
     @Override
@@ -59,7 +58,7 @@ public AHPToExcel(Problema problema,File file) {
         this.libro.addEmptyRow();
         //Ponderamos la matriz
         valores.clear();
-        valores.add("Matrix Ponderada con  Solución Ideal Positiva y Negativa");
+        valores.add("Valor de indice de consistencia");
         this.libro.addRow(valores, RowType.TITLE);
 
         this.libro.addEmptyRow();
@@ -167,5 +166,10 @@ public AHPToExcel(Problema problema,File file) {
         for (int i = 1; i < this.problema.getCriterioList().size()+2; i++) {
             this.libro.autoSizeColumns(i);
         }
+    }
+    private double getICvalue(){
+        double ICValue=-1;
+
+        return ICValue;
     }
 }
