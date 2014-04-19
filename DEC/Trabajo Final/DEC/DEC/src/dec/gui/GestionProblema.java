@@ -165,8 +165,8 @@ public class GestionProblema extends javax.swing.JPanel {
                 return "Excel 2007";
             }
         });
-
-        int op = fileChooser.showOpenDialog(DECApp.getApplication().getMainFrame());
+          int op = fileChooser.showSaveDialog(DECApp.getApplication().getMainFrame());
+        //int op = fileChooser.showOpenDialog(DECApp.getApplication().getMainFrame());
         if(op == JFileChooser.APPROVE_OPTION){
             File file = fileChooser.getSelectedFile();
             if(fileChooser.getFileFilter().getDescription().equalsIgnoreCase("Excel 2003")){

@@ -52,7 +52,8 @@ public class NuevoProblema extends javax.swing.JPanel {
         fileChooser.setApproveButtonText("Guardar");
         File tempfile = new File(this.problema.getNombre());
         fileChooser.setSelectedFile(tempfile);
-        int op = fileChooser.showOpenDialog(DECApp.getApplication().getMainFrame());
+         int op = fileChooser.showSaveDialog(DECApp.getApplication().getMainFrame());
+        //int op = fileChooser.showOpenDialog(DECApp.getApplication().getMainFrame());
         if(op == JFileChooser.APPROVE_OPTION){
             if(!fileChooser.getSelectedFile().isDirectory()){
                 String path = fileChooser.getSelectedFile().getAbsolutePath();
