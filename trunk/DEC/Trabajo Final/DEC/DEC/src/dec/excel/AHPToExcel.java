@@ -201,7 +201,36 @@ public class AHPToExcel extends ToExcel {
         valores.clear();
     }
 
+//    private double calculateRC(){
+//        AHPRCresolver.resolveLamdaMax(getPesosCompMatrix());
+//
+//        for(int i = 0; i< 1 ; i++){
+//
+//        }
+//    }
+    
+    private double[][] getPesosCompMatrix(){
+        //Matriz cuadrada de comparacion de los pesos
+        double [][] pesosCompMatrix = new double[pesos.size()][pesos.size()];
+        for(int i=0; i< getNxNArraySize(pesos.size()) ;i++){
+            pesosCompMatrix[i][getColumnIndex(i)]
+                    = setCellMatrixValue(i,getColumnIndex(i));
+        }
+        return pesosCompMatrix;
+    }
 
+    private int getNxNArraySize(int size1XNvalue){
+        return size1XNvalue* size1XNvalue;
+    }
+
+    private int getColumnIndex(int i){
+        return pesos.size()-(pesos.size()-i);
+    }
+
+    private double setCellMatrixValue(int i,int j){
+        return new Double(pesos.get(i).toString())
+                /new Double(pesos.get(j).toString());
+    }
 
     private double getIAValue(){
         //Si checkNumberOfAlts = true ejecutar esto

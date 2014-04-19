@@ -28,9 +28,9 @@ public class AHPRC {
     double IAValue = mapaValoresAlternativas.get(cantAlternativas);
     return IAValue;
     }
-    public double getIC(int cantCriterios,double lambaMax){
-
-    return 1.2;
+    public double getIC(int cantCriterios){
+        //resolveLambaMax();
+    return 0.0;
     }
 
     public double resolveLamdaMax(double[][] arrayOfCriteriaComparsion){
