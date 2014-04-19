@@ -87,12 +87,12 @@ public class ElectreToExcel extends ToExcel{
             valores.clear();
             String[] fila = posValores2.get(i);
             valores.add("=T("+fila[0]+")");
-            for (int j = 1; j < fila.length; j++) {
-                if(i!=(j-1)){
-                    String filaComparacion[]=posValores2.get(j-1);
+            for (int j = 0; j < fila.length; j++) {
+                if(i!=j){
+                    String filaComparacion[]=posValores2.get(j);
                     StringBuilder cell = new StringBuilder("=SUM(");
                     
-                    for(int k = 1; k<filaComparacion.length; k++){
+                    for(int k = 0; k<filaComparacion.length; k++){
 
                         cell.append("IF("+fila[k]+">"+filaComparacion[k]+","+super.posPesos[k]+",0)");
                         if(filaComparacion.length-1!=k){
