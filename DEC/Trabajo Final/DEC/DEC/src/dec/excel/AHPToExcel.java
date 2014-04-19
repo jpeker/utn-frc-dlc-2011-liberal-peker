@@ -15,8 +15,10 @@ import java.util.List;
  * @author PC ACER
  */
 public class AHPToExcel extends ToExcel {
-public AHPToExcel(Problema problema,File file) {
+    private AHPRC AHPRCresolver;
+    public AHPToExcel(Problema problema,File file) {
         super(problema, file);
+        AHPRCresolver = new AHPRC();
     }
 
     @Override
@@ -29,35 +31,24 @@ public AHPToExcel(Problema problema,File file) {
 
     @Override
     protected void detail() {
-        //Seteamos los pesos Normalizados
-        valores.clear();
-        valores.add("Matrix Normalizada");
-        this.libro.addRow(valores, RowType.TITLE);
-
-        //seteamos los pesos
-        this.libro.addEmptyRow();
-        pesos.clear();
-        pesos.add("Pesos");
-        for (int i = 1; i < posPesos.length-1; i++) {
-            pesos.add("="+posPesos[i]+"/"+posPesos[posPesos.length-1]);
+        //Normalizo la Matriz
+        normalizeMatrix();
+        /*Luego de tener la matriz normalizada
+         * comprobamos la consistencia de los
+         * juicios del desicisor utilizando el rc
+         * empleando el calculo de IC A IA previamente
+         */
+        if(isNumberOfAltsGreaterThanTwo()){
+            //Calculate RC
         }
-        posPesos = this.libro.addRow(pesos,RowType.CONTENT);
 
-        //seteamos los valores Normalizados
-        this.libro.addRow(cabecera,RowType.HEADER);
-        posValores2 = new ArrayList<String[]>();
-        for (int i = 0; i < posValores.size(); i++) {
-            valores.clear();
-            String[] fila = posValores.get(i);
-            valores.add("=T("+fila[0]+")");
-            for (int j = 1; j < fila.length; j++) {
-                valores.add("="+fila[j]+"/"+posTotales[j]);
-            }
-            posValores2.add(this.libro.addRow(valores,RowType.CONTENT));
-        }
-        this.libro.addEmptyRow();
+
+
+
+
+
         //Ponderamos la matriz
-        valores.clear();
+        
         valores.add("Valor de indice de consistencia");
         this.libro.addRow(valores, RowType.TITLE);
 
@@ -167,9 +158,67 @@ public AHPToExcel(Problema problema,File file) {
             this.libro.autoSizeColumns(i);
         }
     }
-    private double getICvalue(){
-        double ICValue=-1;
 
-        return ICValue;
+    private void normalizeMatrix()
+    {
+        setNormMatrixHeader();
+        setNormPesos();
+        setNormValues();
+    }
+
+    private void setNormMatrixHeader(){
+        //Seteamos el header de la matriz normalizada
+        valores.clear();
+        valores.add("Matrix Normalizada");
+        this.libro.addRow(valores, RowType.TITLE);
+    }
+
+    private void setNormPesos(){
+    //seteamos los pesos
+        this.libro.addEmptyRow();
+        pesos.clear();
+        pesos.add("Pesos");
+        for (int i = 1; i < posPesos.length-1; i++) {
+            pesos.add("="+posPesos[i]+"/"+posPesos[posPesos.length-1]);
+        }
+        posPesos = this.libro.addRow(pesos,RowType.CONTENT);
+    }
+
+    private void setNormValues(){
+     //seteamos los valores Normalizados
+        this.libro.addRow(cabecera,RowType.HEADER);
+        posValores2 = new ArrayList<String[]>();
+        for (int i = 0; i < posValores.size(); i++) {
+            valores.clear();
+            String[] fila = posValores.get(i);
+            valores.add("=T("+fila[0]+")");
+            for (int j = 1; j < fila.length; j++) {
+                valores.add("="+fila[j]+"/"+posTotales[j]);
+            }
+            posValores2.add(this.libro.addRow(valores,RowType.CONTENT));
+        }
+        this.libro.addEmptyRow();
+        valores.clear();
+    }
+
+
+
+    private double getIAValue(){
+        //Si checkNumberOfAlts = true ejecutar esto
+        int cant_Alternativas = problema.getAlternativaList().size();
+        double AHPIAvalue=AHPRCresolver.getIAValue(cant_Alternativas);
+        return AHPIAvalue;
+    }
+
+    private boolean isNumberOfAltsGreaterThanTwo()
+    {
+        boolean isAltsGreaterThanTwo = false;
+        int cantidad_Alternativas = problema.getAlternativaList().size();
+        //RC solo funciona con 3 alternativas en adelante
+        if(cantidad_Alternativas>2)
+        {
+           isAltsGreaterThanTwo = true;
+        }
+        return isAltsGreaterThanTwo;
     }
 }
