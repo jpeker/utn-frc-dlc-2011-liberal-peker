@@ -28,13 +28,18 @@ public class AHPRC {
     double IAValue = mapaValoresAlternativas.get(cantAlternativas);
     return IAValue;
     }
+    
+    //TODO
     public double getIC(int cantCriterios){
         //resolveLambaMax();
     return 0.0;
     }
 
-    public double resolveLamdaMax(double[][] arrayOfCriteriaComparsion){
-        arrayOfCriteriaComparsion[0][0]=1.2;
+    // TODO
+    public double resolveLamdaMax(int criterias,
+                                  double[][] arrayOfCriteriaComparsion)
+    {
+        arrayOfCriteriaComparsion[0][0]=0.0;
         return 0;
     }
 

@@ -66,7 +66,7 @@ public abstract class ToExcel {
         this.header();
         libro.addEmptyRow();
 
-        //Seteamos los pesos y la cebecera
+        //Seteamos los pesos y la cabecera
         valores.clear();
         valores.add("Matriz de Decisión");
         this.libro.addRow(valores, RowType.TITLE);
