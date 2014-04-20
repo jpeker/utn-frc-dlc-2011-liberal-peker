@@ -16,6 +16,7 @@ import java.util.List;
  */
 public class AHPToExcel extends ToExcel {
     private AHPRC AHPRCresolver;
+    private List pesosRC = new ArrayList();
     public AHPToExcel(Problema problema,File file) {
         super(problema, file);
         AHPRCresolver = new AHPRC();
@@ -175,6 +176,9 @@ public class AHPToExcel extends ToExcel {
 
     private void setNormPesos(){
     //seteamos los pesos
+        //Copio los pesos para operar
+        pesosRC = pesos;
+        //
         this.libro.addEmptyRow();
         pesos.clear();
         pesos.add("Pesos");
@@ -201,6 +205,7 @@ public class AHPToExcel extends ToExcel {
         valores.clear();
     }
 
+//TODO
 //    private double calculateRC(){
 //        AHPRCresolver.resolveLamdaMax(getPesosCompMatrix());
 //
@@ -208,30 +213,39 @@ public class AHPToExcel extends ToExcel {
 //
 //        }
 //    }
-    
+
+
+
     private double[][] getPesosCompMatrix(){
         //Matriz cuadrada de comparacion de los pesos
-        double [][] pesosCompMatrix = new double[pesos.size()][pesos.size()];
-        for(int i=0; i< getNxNArraySize(pesos.size()) ;i++){
+        double [][] pesosCompMatrix = new double
+                [pesosRC.size()]
+                [pesosRC.size()];
+        for(int i=0; i< getNxNArraySize(pesosRC.size()) ;i++){
             pesosCompMatrix[i][getColumnIndex(i)]
                     = setCellMatrixValue(i,getColumnIndex(i));
         }
         return pesosCompMatrix;
     }
 
+    //Devuelve tamaño de array para matriz nxn (cuadrada)
     private int getNxNArraySize(int size1XNvalue){
         return size1XNvalue* size1XNvalue;
     }
 
+    //Devuelve el indice de una col de una matriz cuadrada
     private int getColumnIndex(int i){
-        return pesos.size()-(pesos.size()-i);
+        return pesosRC.size()-(pesosRC.size()-i);
     }
 
+    //Devuelve cada valor de la matriz de criteriavscriteria de
+    //una matriz cuadrada
     private double setCellMatrixValue(int i,int j){
-        return new Double(pesos.get(i).toString())
-                /new Double(pesos.get(j).toString());
+        return new Double(pesosRC.get(i).toString())
+                /new Double(pesosRC.get(j).toString());
     }
 
+    //Devuelve el valor de IA
     private double getIAValue(){
         //Si checkNumberOfAlts = true ejecutar esto
         int cant_Alternativas = problema.getAlternativaList().size();
@@ -239,15 +253,16 @@ public class AHPToExcel extends ToExcel {
         return AHPIAvalue;
     }
 
-    private boolean isNumberOfAltsGreaterThanTwo()
+    //Calcula RC si la cant de criteria es mayor a 2
+    private boolean isNumberOfCriteriaGreaterThanTwo()
     {
-        boolean isAltsGreaterThanTwo = false;
-        int cantidad_Alternativas = problema.getAlternativaList().size();
+        boolean isCriteriaGreaterThanTwo = false;
+        int cantidad_Criterios = problema.getCriterioList().size();
         //RC solo funciona con 3 alternativas en adelante
-        if(cantidad_Alternativas>2)
+        if(cantidad_Criterios>2)
         {
-           isAltsGreaterThanTwo = true;
+           isCriteriaGreaterThanTwo = true;
         }
-        return isAltsGreaterThanTwo;
+        return isCriteriaGreaterThanTwo;
     }
 }
