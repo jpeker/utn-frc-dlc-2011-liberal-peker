@@ -20,7 +20,11 @@ public class Inicio extends javax.swing.JPanel {
     /** Creates new form Inicio */
     public Inicio() {
         initComponents();
+
+
+
     }
+
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -38,11 +42,11 @@ public class Inicio extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 635, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 478, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
