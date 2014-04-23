@@ -39,9 +39,9 @@ public class AHPToExcel extends ToExcel {
          * juicios del desicisor utilizando el rc
          * empleando el calculo de IC A IA previamente
          */
-        if(isNumberOfAltsGreaterThanTwo()){
-            //Calculate RC
-        }
+//        if(isNumberOfAltsGreaterThanTwo()){
+//            //Calculate RC
+//        }
 
 
 
