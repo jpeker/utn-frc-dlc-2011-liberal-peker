@@ -28,6 +28,9 @@ import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 import org.jdesktop.application.Action;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -42,6 +45,16 @@ public class GestionProblema extends javax.swing.JPanel {
     public GestionProblema(final Problema problema) {
         this.problema = problema;       
         initComponents();
+        this.txtNombreProblema.setText(this.problema.getNombre());
+        this.txtAreaDescripcionProblema.setText(this.problema.getDescripcion());
+      
+        this.txtAutorProblema.setText(this.problema.getAutor());
+
+        //seteo a String de la Fecha (parseo)
+        Date date = this.problema.getFecha();
+        DateFormat fechaformat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        this.txtFechaProblema.setText(fechaformat.format(date));
+
         this.modelo = (MiTableModel) this.jTable1.getModel();
         this.jTable1.getTableHeader().setReorderingAllowed(false);
     }
@@ -259,6 +272,11 @@ public class GestionProblema extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        txtNombreProblema = new javax.swing.JTextField();
+        txtFechaProblema = new javax.swing.JTextField();
+        txtAutorProblema = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtAreaDescripcionProblema = new javax.swing.JTextArea();
         jPanel3 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -504,7 +522,7 @@ public class GestionProblema extends javax.swing.JPanel {
                         .addComponent(btnEditAlternativa)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnDeleteAlternativa)
-                .addContainerGap(117, Short.MAX_VALUE))
+                .addContainerGap(165, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -534,6 +552,27 @@ public class GestionProblema extends javax.swing.JPanel {
         jLabel4.setText(resourceMap.getString("jLabel4.text")); // NOI18N
         jLabel4.setName("jLabel4"); // NOI18N
 
+        txtNombreProblema.setEditable(false);
+        txtNombreProblema.setText(resourceMap.getString("txtNombreProblema.text")); // NOI18N
+        txtNombreProblema.setName("txtNombreProblema"); // NOI18N
+
+        txtFechaProblema.setEditable(false);
+        txtFechaProblema.setText(resourceMap.getString("txtFechaProblema.text")); // NOI18N
+        txtFechaProblema.setName("txtFechaProblema"); // NOI18N
+
+        txtAutorProblema.setEditable(false);
+        txtAutorProblema.setText(resourceMap.getString("txtAutorProblema.text")); // NOI18N
+        txtAutorProblema.setName("txtAutorProblema"); // NOI18N
+
+        jScrollPane2.setName("jScrollPane2"); // NOI18N
+
+        txtAreaDescripcionProblema.setColumns(20);
+        txtAreaDescripcionProblema.setEditable(false);
+        txtAreaDescripcionProblema.setRows(5);
+        txtAreaDescripcionProblema.setName("txtAreaDescripcionProblema"); // NOI18N
+        txtAreaDescripcionProblema.setOpaque(false);
+        jScrollPane2.setViewportView(txtAreaDescripcionProblema);
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -541,23 +580,42 @@ public class GestionProblema extends javax.swing.JPanel {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel2))
-                .addContainerGap(1024, Short.MAX_VALUE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(36, 36, 36)
+                        .addComponent(txtNombreProblema, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                        .addComponent(txtAutorProblema, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(43, 43, 43)
+                        .addComponent(txtFechaProblema, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)))
+                .addGap(840, 840, 840))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(jLabel1)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtNombreProblema, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addGap(11, 11, 11)
-                .addComponent(jLabel3)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtFechaProblema, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtAutorProblema, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(resourceMap.getString("jPanel3.border.title"))); // NOI18N
@@ -668,7 +726,7 @@ public class GestionProblema extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -688,7 +746,7 @@ public class GestionProblema extends javax.swing.JPanel {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(autor))))
                             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane1))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -769,6 +827,7 @@ public class GestionProblema extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField4;
@@ -777,6 +836,10 @@ public class GestionProblema extends javax.swing.JPanel {
     private javax.swing.JLabel nombre;
     private javax.swing.JRadioButton radioMax;
     private javax.swing.JRadioButton radioMin;
+    private javax.swing.JTextArea txtAreaDescripcionProblema;
+    private javax.swing.JTextField txtAutorProblema;
+    private javax.swing.JTextField txtFechaProblema;
+    private javax.swing.JTextField txtNombreProblema;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 
