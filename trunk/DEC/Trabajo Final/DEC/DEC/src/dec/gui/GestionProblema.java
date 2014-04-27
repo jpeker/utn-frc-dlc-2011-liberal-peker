@@ -71,11 +71,15 @@ public class GestionProblema extends javax.swing.JPanel {
         criterio.setMaximizacion(this.radioMax.isSelected());
         this.modelo.addCriterio(criterio);
         this.criterio = new Criterio();
+        this.jTextField5.setText("");
+        this.jTextField4.setText("");
+        this.buttonGroup1.clearSelection();
     }
     @Action
     public void addAlternativa(){
         this.modelo.addAlternativa(alternativa);
         this.alternativa = new Alternativa();
+        this.jTextField6.setText("");
     }
     @Action
     public void removeAlternativa(){
