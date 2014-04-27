@@ -119,6 +119,7 @@ public class NuevoProblema extends javax.swing.JPanel {
 
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(dec.DECApp.class).getContext().getResourceMap(NuevoProblema.class);
         setBorder(javax.swing.BorderFactory.createTitledBorder(resourceMap.getString("Form.border.title"))); // NOI18N
+        setMaximumSize(new java.awt.Dimension(318, 310));
         setName("Form"); // NOI18N
 
         jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
