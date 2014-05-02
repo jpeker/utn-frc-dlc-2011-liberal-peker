@@ -146,7 +146,7 @@ public class TopsisToExcel extends ToExcel{
         this.libro.addEmptyRow();
 
         cabecera.clear();
-        cabecera.add("Alternativas");
+        cabecera.add("Alters");
         cabecera.add("Ideal (S+)");
         cabecera.add("Anti Ideal (S-)");
         cabecera.add("Proximidad (C*)");
@@ -166,7 +166,7 @@ public class TopsisToExcel extends ToExcel{
         }
 
         for (int i = 1; i < this.problema.getCriterioList().size()+2; i++) {
-            this.libro.autoSizeColumns(i);
+           this.libro.autoSizeColumns(i);
         }
     }  
 }
