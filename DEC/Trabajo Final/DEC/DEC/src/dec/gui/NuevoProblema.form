@@ -165,6 +165,7 @@
         </Property>
         <Property name="icon" type="javax.swing.Icon" resourceKey="jButton1.icon"/>
         <Property name="text" type="java.lang.String" resourceKey="jButton1.text"/>
+        <Property name="toolTipText" type="java.lang.String" resourceKey="jButton1.toolTipText"/>
         <Property name="name" type="java.lang.String" value="jButton1" noResource="true"/>
       </Properties>
     </Component>
@@ -175,6 +176,7 @@
         </Property>
         <Property name="icon" type="javax.swing.Icon" resourceKey="jButton2.icon"/>
         <Property name="text" type="java.lang.String" resourceKey="jButton2.text"/>
+        <Property name="toolTipText" type="java.lang.String" resourceKey="jButton2.toolTipText"/>
         <Property name="name" type="java.lang.String" value="jButton2" noResource="true"/>
       </Properties>
     </Component>
