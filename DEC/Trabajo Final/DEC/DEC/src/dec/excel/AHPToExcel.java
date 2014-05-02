@@ -32,6 +32,7 @@ public class AHPToExcel extends ToExcel {
 
     @Override
     protected void detail() {
+        compareMatrix();
         //Normalizo la Matriz
         normalizeMatrix();
         /*Luego de tener la matriz normalizada
@@ -136,7 +137,7 @@ public class AHPToExcel extends ToExcel {
         this.libro.addEmptyRow();
 
         cabecera.clear();
-        cabecera.add("Alternativas");
+        cabecera.add("Alters");
         cabecera.add("Ideal (S+)");
         cabecera.add("Anti Ideal (S-)");
         cabecera.add("Proximidad (C*)");
@@ -158,6 +159,31 @@ public class AHPToExcel extends ToExcel {
         for (int i = 1; i < this.problema.getCriterioList().size()+2; i++) {
             this.libro.autoSizeColumns(i);
         }
+    }
+
+    private void compareMatrix(){
+        valores.clear();
+        valores.add("Matriz de Comparación");
+        this.libro.addRow(valores, RowType.TITLE);
+        double [][] compMatrix = getPesosCompMatrix();
+        this.libro.addEmptyRow();
+        pesos.clear();
+
+        for (int i = 0; i < compMatrix.length; i++) {
+            valores.clear();
+            String[] fila = posValores.get(i);
+            valores.add("=T("+fila[0]+")");
+            for (int j = 1; j < fila.length; j++) {
+                valores.add("="+fila[j]+"/"+posTotales[j]);
+            }
+            posValores2.add(this.libro.addRow(valores,RowType.CONTENT));
+        }
+        this.libro.addEmptyRow();
+        valores.clear();
+
+
+
+
     }
 
     private void normalizeMatrix()
