@@ -129,7 +129,7 @@ public class ElectreToExcel extends ToExcel{
             valores.clear();
             String[] fila = posValores2.get(i);
             valores.add("=T("+fila[0]+")");
-            for (int j = 0; j < fila.length -1; j++) {
+            for (int j = 0; j < this.problema.getAlternativaList().size(); j++) {
                 if(i!=j){
                     String filaComparacion[]=posValores2.get(j);
                     StringBuilder cell = new StringBuilder("=SUM(");
