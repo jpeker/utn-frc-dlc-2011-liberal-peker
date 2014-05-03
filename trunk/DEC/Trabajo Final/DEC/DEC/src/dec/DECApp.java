@@ -17,6 +17,7 @@ public class DECApp extends SingleFrameApplication {
      */
     @Override protected void startup() {        
         show(new DECView(this));
+
     }
 
     /**
@@ -25,6 +26,7 @@ public class DECApp extends SingleFrameApplication {
      * builder, so this additional configuration is not needed.
      */
     @Override protected void configureWindow(java.awt.Window root) {
+
     }
 
     /**

@@ -14,6 +14,7 @@ package dec.gui;
 import dec.DECApp;
 import dec.DECView;
 import dec.controller.ProblemaController;
+import java.awt.Dimension;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -21,6 +22,7 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import org.jdesktop.application.Action;
 
@@ -75,6 +77,8 @@ public class NuevoProblema extends javax.swing.JPanel {
         }
         DECView view = (DECView) DECApp.getApplication().getMainView();
         view.gestionarProblema(problema);
+        JFrame mainFrame = DECApp.getApplication().getMainFrame();
+        mainFrame.setSize(new Dimension(1250,750));
     }
 
     @Action
