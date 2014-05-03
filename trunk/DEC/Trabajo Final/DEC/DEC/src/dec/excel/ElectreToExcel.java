@@ -63,7 +63,9 @@ public class ElectreToExcel extends ToExcel{
             String[] fila = posValores.get(i);
             valores.add("=T("+fila[0]+")");
             for (int j = 1; j < fila.length; j++) {
-                valores.add("=ABS("+posMejor[j]+"-"+fila[j]+")/("+posRango[j]+")");
+                //valores.add("=ABS("+posMejor[j]+"-"+fila[j]+")/("+posRango[j]+")");
+
+                valores.add("="+fila[j]+"/"+posTotales[j]);
             }
             posValores2.add(this.libro.addRow(valores,RowType.CONTENT));
         }

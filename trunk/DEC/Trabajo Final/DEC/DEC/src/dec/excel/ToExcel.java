@@ -33,7 +33,6 @@ public abstract class ToExcel {
     protected List cabecera = new ArrayList();
     protected List valores = new ArrayList();
     protected List<String[]> posValores;
-
     public ToExcel(Problema problema, File file) {
         this.problema = problema;
         this.file = file;
