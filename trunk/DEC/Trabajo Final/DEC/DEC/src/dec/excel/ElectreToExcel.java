@@ -109,6 +109,49 @@ public class ElectreToExcel extends ToExcel{
             posValores.add(this.libro.addRow(valores,RowType.CONTENT));
         }
         this.libro.addEmptyRows(2);
+
+
+//Indices de concordancia
+        valores.clear();
+        valores.add("Indices de concordancia");
+        this.libro.addRow(valores, RowType.TITLE);
+        this.libro.addEmptyRow();
+
+        valores.clear();
+        valores.add("Alternativas");
+        for(int i = 0; i<super.posValores.size(); i++){
+            valores.add("=T("+super.posValores.get(i)[0]+")");
+        }
+        this.libro.addRow(valores,RowType.HEADER);
+
+        posValores.clear();
+        for (int i = 0; i < posValores2.size(); i++) {
+            valores.clear();
+            String[] fila = posValores2.get(i);
+            valores.add("=T("+fila[0]+")");
+            for (int j = 0; j < fila.length; j++) {
+                if(i!=j){
+                    String filaComparacion[]=posValores2.get(j);
+                    StringBuilder cell = new StringBuilder("=SUM(");
+
+                    for(int k = 0; k<filaComparacion.length; k++){
+
+                        cell.append("IF("+fila[k]+">"+filaComparacion[k]+","+super.posPesos[k]+",0)");
+                        if(filaComparacion.length-1!=k){
+                            cell.append(",");
+                        }
+                    }
+                    cell.append(")");
+                    System.out.println(cell.toString());
+                    valores.add(cell.toString());
+                }else{
+                    valores.add(" X ");
+                }
+            }
+            posValores.add(this.libro.addRow(valores,RowType.CONTENT));
+        }
+        this.libro.addEmptyRows(2);
+        
     }
 
     @Override
