@@ -348,10 +348,11 @@ public class GestionProblema extends javax.swing.JPanel {
         );
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(resourceMap.getString("Form.border.title"))); // NOI18N
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setMaximumSize(new java.awt.Dimension(375, 375));
         setMinimumSize(new java.awt.Dimension(0, 0));
         setName("Form"); // NOI18N
-        setPreferredSize(new java.awt.Dimension(0, 0));
+        setPreferredSize(new java.awt.Dimension(375, 375));
 
         nombre.setFont(resourceMap.getFont("nombre.font")); // NOI18N
         nombre.setName("nombre"); // NOI18N
