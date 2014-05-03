@@ -10,6 +10,7 @@ import dec.gui.GestionProblema;
 import dec.gui.Inicio;
 import dec.gui.NuevoProblema;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -109,7 +110,11 @@ public class DECView extends FrameView {
 
     @Action
     public void nuevoProblema(){
-        this.addPanel(new NuevoProblema());
+        NuevoProblema np = new NuevoProblema();
+        np.setPreferredSize(new Dimension(375,375));
+        this.addPanel(np);
+        JFrame mainFrame = DECApp.getApplication().getMainFrame();
+        mainFrame.setSize(new Dimension(390,390));
     }
 
    
@@ -134,6 +139,8 @@ public class DECView extends FrameView {
                     return false;
                 }
                 if(ext.equalsIgnoreCase("dec")){
+
+
                     return true;
                 }else{
                     return false;
@@ -151,7 +158,11 @@ public class DECView extends FrameView {
             try {
                 Problema p = ProblemaController.getInstance().loadProblema(file);
                 p.setFile(file);
-                this.addPanel(new GestionProblema(p));
+                GestionProblema gp = new GestionProblema(p);
+                gp.setPreferredSize(new Dimension(1150,650));
+                this.addPanel(gp);
+                JFrame mainFrame = DECApp.getApplication().getMainFrame();
+                mainFrame.setSize(new Dimension(1250,750));
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(DECView.class.getName()).log(Level.SEVERE, null, ex);
             } catch (IOException ex) {
@@ -209,6 +220,7 @@ public class DECView extends FrameView {
         BL.getLayoutComponent("Center").setVisible(false);
         mainFrame.getContentPane().remove(BL.getLayoutComponent("Center"));
         mainFrame.add(panel,"Center");
+
         panel.setVisible(true);
 
     }

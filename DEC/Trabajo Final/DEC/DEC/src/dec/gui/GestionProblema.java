@@ -20,6 +20,7 @@ import dec.excel.ElectreToExcel;
 import dec.excel.TopsisToExcel;
 import dec.gui.util.DateConverter;
 import dec.gui.util.RequiredValidator;
+import java.awt.Dimension;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -57,6 +58,9 @@ public class GestionProblema extends javax.swing.JPanel {
 
         this.modelo = (MiTableModel) this.jTable1.getModel();
         this.jTable1.getTableHeader().setReorderingAllowed(false);
+        this.setPreferredSize(new Dimension(1150,650));
+
+        //this.setSize(1150, 650);
     }
 
     private void init(){       
@@ -349,10 +353,10 @@ public class GestionProblema extends javax.swing.JPanel {
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(resourceMap.getString("Form.border.title"))); // NOI18N
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setMaximumSize(new java.awt.Dimension(375, 375));
-        setMinimumSize(new java.awt.Dimension(0, 0));
+        setMaximumSize(new java.awt.Dimension(1150, 650));
+        setMinimumSize(new java.awt.Dimension(1150, 650));
         setName("Form"); // NOI18N
-        setPreferredSize(new java.awt.Dimension(375, 375));
+        setPreferredSize(new java.awt.Dimension(1150, 650));
 
         nombre.setFont(resourceMap.getFont("nombre.font")); // NOI18N
         nombre.setName("nombre"); // NOI18N
@@ -752,7 +756,7 @@ public class GestionProblema extends javax.swing.JPanel {
                                         .addComponent(autor))))
                             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         jPanel3.getAccessibleContext().setAccessibleName(resourceMap.getString("jPanel3.AccessibleContext.accessibleName")); // NOI18N
