@@ -121,6 +121,7 @@ public class NuevoProblema extends javax.swing.JPanel {
         setBorder(javax.swing.BorderFactory.createTitledBorder(resourceMap.getString("Form.border.title"))); // NOI18N
         setMaximumSize(new java.awt.Dimension(318, 310));
         setName("Form"); // NOI18N
+        setVerifyInputWhenFocusTarget(false);
 
         jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
         jLabel1.setName("jLabel1"); // NOI18N
