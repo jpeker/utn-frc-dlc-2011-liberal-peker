@@ -32,6 +32,7 @@ import org.jdesktop.application.Action;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -124,6 +125,10 @@ public class GestionProblema extends javax.swing.JPanel {
 
     @Action
     public void electre(){
+        this.problema.setC( JOptionPane.showInputDialog(null, "Introduzca un Limite entre 0 y 1", "Limite de Concordancia", JOptionPane.INFORMATION_MESSAGE)) ;
+        this.problema.setD( JOptionPane.showInputDialog(null, "Introduzca un Limite entre 0 y 1 ", "Limite de Discordancia", JOptionPane.INFORMATION_MESSAGE)) ;
+        System.out.println(this.problema.getC());
+        System.out.println(this.problema.getD());
         File file = this.getFile();
         if(file == null){
             return;
