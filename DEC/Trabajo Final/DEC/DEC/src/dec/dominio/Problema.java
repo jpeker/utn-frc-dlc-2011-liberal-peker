@@ -26,6 +26,8 @@ public class Problema implements Serializable {
     private List<Alternativa> alternativaList;
     private Double P;
     private transient File file;
+    private String C;
+    private String D;
 
     public Problema() {
         this.alternativaList = new ArrayList<Alternativa>();
@@ -88,6 +90,7 @@ public class Problema implements Serializable {
     public void setP(Double P) {
         this.P = P;
     }
+
 
     public List<Criterio> getCriterioList() {
         return criterioList;
@@ -168,6 +171,34 @@ public class Problema implements Serializable {
     @Override
     public String toString() {
         return "dec.dominio.Problema[id=" + id + "]";
+    }
+
+    /**
+     * @return the C
+     */
+    public String getC() {
+        return C;
+    }
+
+    /**
+     * @param C the C to set
+     */
+    public void setC(String C) {
+        this.C = C;
+    }
+
+    /**
+     * @return the D
+     */
+    public String getD() {
+        return D;
+    }
+
+    /**
+     * @param D the D to set
+     */
+    public void setD(String D) {
+        this.D = D;
     }
 
 }

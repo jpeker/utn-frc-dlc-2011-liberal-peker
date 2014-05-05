@@ -24,6 +24,7 @@ public class ElectreToExcel extends ToExcel{
     protected void detail() {
         //Normalizacion
         //Seteamos los pesos Normalizados
+
         valores.clear();
         valores.add("Matriz Normalizada");
         this.libro.addRow(valores, RowType.TITLE);
@@ -237,6 +238,73 @@ public class ElectreToExcel extends ToExcel{
             posValores.add(this.libro.addRow(valores,RowType.CONTENT));
         }
         this.libro.addEmptyRows(2);
+
+        //Indices de Superacion
+
+        String C=problema.getC(); //limite de superacion de concordancia
+        String D=problema.getD(); //limite de superacion de discordancia
+
+        valores.clear();
+        valores.add("Matriz de Superación");
+        this.libro.addRow(valores, RowType.TITLE);
+        this.libro.addEmptyRow();
+    
+        valores.clear();
+         valores.add("Lim. de Concord.:"+C+" - Lim. de Discord.:"+D);
+        this.libro.addRow(valores, RowType.TITLE);
+        this.libro.addEmptyRow();
+
+
+        valores.clear();
+        valores.add("Alternativas");
+        for(int i = 0; i<super.posValores.size(); i++){
+            valores.add("=T("+super.posValores.get(i)[0]+")");
+        }
+        this.libro.addRow(valores,RowType.HEADER);
+
+        posValores.clear();
+        for (int i = 0; i < posValores2.size(); i++) {
+            valores.clear();
+            String[] fila = posValores2.get(i);
+            valores.add("=T("+fila[0]+")");
+            for (int j = 0; j < this.problema.getAlternativaList().size(); j++) {
+                if(i!=j){
+                    String filaComparacion[]=posValores2.get(j);
+                    StringBuilder cell = new StringBuilder("=IF(AND(");
+
+                    cell.append("SUM(");
+                     for(int k = 1; k<filaComparacion.length; k++){
+
+                        cell.append("IF("+fila[k]+">"+filaComparacion[k]+","+super.posPesos[k]+",0)");
+                        if(filaComparacion.length-1!=k){
+                            cell.append(",");
+                        }
+                    }
+                    cell.append(")>"+C+",(");
+
+                    cell.append("MAX(");
+                    for(int k = 1; k<filaComparacion.length; k++){
+
+                        cell.append("IF("+fila[k]+"<"+filaComparacion[k]+","+"ABS("+fila[k]+"-"+filaComparacion[k]+")"+",0)");
+                        if(filaComparacion.length-1!=k){
+                            cell.append(",");
+                        }
+                    }
+                    cell.append(")"+"*(1/("+max+"))");
+
+                    cell.append(")<"+D+"),1,0)");
+                    System.out.println(cell.toString());
+                    valores.add(cell.toString());
+                }else{
+                    valores.add(" X ");
+                }
+            }
+            posValores.add(this.libro.addRow(valores,RowType.CONTENT));
+        }
+        this.libro.addEmptyRows(2);
+
+
+
     }
 
     @Override

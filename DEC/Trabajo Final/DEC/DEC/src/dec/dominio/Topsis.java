@@ -11,8 +11,8 @@ package dec.dominio;
  */
 
 /*
- * NO EMPLEADA ESTA CLASE NO SE PARA QUE ESTA EL DEBUG NUNCA LLAMA A LA
- * INSTANCIA.
+ * 
+ * 
  *
  *
  */
