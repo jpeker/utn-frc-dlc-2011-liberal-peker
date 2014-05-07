@@ -9,7 +9,7 @@ import org.jdesktop.beansbinding.Validator;
 
 /**
  *
- * @author Kapica Liberal Ramirez
+ * @author Kapica Liberal 
  */
 public class RequiredValidator extends Validator{
 

@@ -7,7 +7,7 @@ package dec.dominio;
 
 /**
  *
- * @author Kapica Liberal Ramirez
+ * @author Kapica Liberal 
  */
 public class Electre {
 ///TODO?
