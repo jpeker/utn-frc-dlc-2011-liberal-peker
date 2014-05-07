@@ -4,6 +4,8 @@
 
 package dec;
 
+import java.awt.Dimension;
+import javax.swing.JFrame;
 import org.jdesktop.application.Application;
 import org.jdesktop.application.SingleFrameApplication;
 
@@ -17,7 +19,7 @@ public class DECApp extends SingleFrameApplication {
      */
     @Override protected void startup() {        
         show(new DECView(this));
-
+ 
     }
 
     /**
@@ -42,5 +44,6 @@ public class DECApp extends SingleFrameApplication {
      */
     public static void main(String[] args) {
         launch(DECApp.class, args);
+        
     }
 }

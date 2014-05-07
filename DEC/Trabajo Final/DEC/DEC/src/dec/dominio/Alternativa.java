@@ -12,7 +12,7 @@ import javax.persistence.Transient;
 
 /**
  *
- * @author Kapica Liberal Ramirez
+ * @author Kapica Liberal 
  */
 public class Alternativa implements Serializable{
     private static final long serialVersionUID = 1L;   

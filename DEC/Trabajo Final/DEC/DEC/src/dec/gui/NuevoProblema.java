@@ -28,7 +28,7 @@ import org.jdesktop.application.Action;
 
 /**
  *
- * @author Kapica Liberal Ramirez
+ * @author Kapica Liberal 
  */
 public class NuevoProblema extends javax.swing.JPanel {    
     private File file;
@@ -36,6 +36,8 @@ public class NuevoProblema extends javax.swing.JPanel {
     /** Creates new form NuevoProblema */
     public NuevoProblema() {
         initComponents();
+        JFrame mainFrame = DECApp.getApplication().getMainFrame();
+        mainFrame.setSize(new Dimension(390,390));
     }
 
     @Action

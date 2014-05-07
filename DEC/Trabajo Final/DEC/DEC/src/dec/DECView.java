@@ -41,6 +41,7 @@ public class DECView extends FrameView {
         super(app);
 
         initComponents();
+       
 
         // status bar initialization - message timeout, idle icon and busy animation, etc
         ResourceMap resourceMap = getResourceMap();
@@ -64,7 +65,7 @@ public class DECView extends FrameView {
         idleIcon = resourceMap.getIcon("StatusBar.idleIcon");
         statusAnimationLabel.setIcon(idleIcon);
         progressBar.setVisible(false);
-
+         
         // connecting action tasks to status bar via TaskMonitor
         TaskMonitor taskMonitor = new TaskMonitor(getApplication().getContext());
         taskMonitor.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -94,7 +95,7 @@ public class DECView extends FrameView {
                     progressBar.setValue(value);
                 }
             }
-            
+           
         });
     }
 
@@ -139,8 +140,6 @@ public class DECView extends FrameView {
                     return false;
                 }
                 if(ext.equalsIgnoreCase("dec")){
-
-
                     return true;
                 }else{
                     return false;
@@ -211,7 +210,11 @@ public class DECView extends FrameView {
     }
 
     public void inicio(){
-        this.addPanel(new Inicio());
+        Inicio in = new Inicio();
+        in.setPreferredSize(new Dimension(375,375));
+        this.addPanel(in);
+        JFrame mainFrame = DECApp.getApplication().getMainFrame();
+        mainFrame.setSize(new Dimension(390,390));
     }
 
     private void addPanel(JPanel panel){

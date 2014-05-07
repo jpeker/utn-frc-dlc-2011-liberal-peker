@@ -11,16 +11,21 @@
 
 package dec.gui;
 
+import dec.DECApp;
+import java.awt.Dimension;
+import javax.swing.JFrame;
+
 /**
  *
- * @author Kapica Liberal Ramirez
+ * @author Kapica Liberal 
  */
 public class Inicio extends javax.swing.JPanel {
 
     /** Creates new form Inicio */
     public Inicio() {
         initComponents();
-
+        JFrame mainFrame = DECApp.getApplication().getMainFrame();
+        mainFrame.setSize(new Dimension(390,390));
 
 
     }

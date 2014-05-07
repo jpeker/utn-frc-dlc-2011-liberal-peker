@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author Kapica Liberal Ramirez
+ * @author Kapica Liberal
  */
 public class ValorAlternativaCriterio implements Serializable {
     private static final long serialVersionUID = 1L;

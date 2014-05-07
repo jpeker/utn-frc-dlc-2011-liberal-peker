@@ -19,7 +19,7 @@ import java.util.List;
 
 /**
  *
- * @author Kapica Liberal Ramirez
+ * @author Kapica Liberal
  */
 public abstract class ToExcel {
     protected Libro libro;

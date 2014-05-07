@@ -16,7 +16,7 @@ import java.io.ObjectOutputStream;
 
 /**
  *
- * @author Kapica Liberal Ramirez
+ * @author Kapica Liberal 
  */
 public class ProblemaController {
 

@@ -7,7 +7,7 @@ package dec.excel;
 
 /**
  *
- * @author Kapica Liberal Ramirez
+ * @author Kapica Liberal 
  */
 public enum RowType {
 

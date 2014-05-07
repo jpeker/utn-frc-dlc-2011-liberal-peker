@@ -14,7 +14,7 @@ import org.jdesktop.beansbinding.Converter;
 
 /**
  *
- * @author Kapica Liberal Ramirez
+ * @author Kapica Liberal 
  */
 public class DateConverter extends Converter<Date,String>{
 
