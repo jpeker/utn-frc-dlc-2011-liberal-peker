@@ -92,6 +92,11 @@ public abstract class ToExcel {
             valores.clear();
             valores.add(a.getNombre());
             for(ValorAlternativaCriterio valor : a.getValores()){
+                if(valor.getCriterioId().isMaximizacion()==false)// analizo si es a maximizar, sino divido por 1/x
+                {
+                  float value2= 1/valor.getValor();
+                  valor.setValor(value2);
+                }
                 valores.add(valor.getValor());
             }
             posValores.add(this.libro.addRow(valores,RowType.CONTENT));

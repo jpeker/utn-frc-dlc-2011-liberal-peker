@@ -280,7 +280,7 @@ public class ElectreToExcel extends ToExcel{
                             cell.append(",");
                         }
                     }
-                    cell.append(")>"+C+",(");
+                    cell.append(")>="+C+",(");//analisis de concordancia >=
 
                     cell.append("MAX(");
                     for(int k = 1; k<filaComparacion.length; k++){
@@ -292,7 +292,8 @@ public class ElectreToExcel extends ToExcel{
                     }
                     cell.append(")"+"*(1/("+max+"))");
 
-                    cell.append(")<"+D+"),1,0)");
+                    cell.append(")<="+D+"),1,0)"); //analisis de discordancia <=
+
                     System.out.println(cell.toString());
                     valores.add(cell.toString());
                 }else{

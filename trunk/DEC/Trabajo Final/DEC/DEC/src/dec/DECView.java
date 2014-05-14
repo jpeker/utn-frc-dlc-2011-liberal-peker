@@ -333,6 +333,7 @@ public class DECView extends FrameView {
         fileMenu.setName("fileMenu"); // NOI18N
 
         jMenuItem2.setAction(actionMap.get("abrirArchivo")); // NOI18N
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem2.setIcon(resourceMap.getIcon("jMenuItem2.icon")); // NOI18N
         jMenuItem2.setText(resourceMap.getString("jMenuItem2.text")); // NOI18N
         jMenuItem2.setName("jMenuItem2"); // NOI18N
@@ -343,7 +344,7 @@ public class DECView extends FrameView {
         exitMenuItem.setName("exitMenuItem"); // NOI18N
         exitMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exitMenuItemActionPerformed(evt);
+                exitMenuItemActionPerformed1(evt);
             }
         });
         fileMenu.add(exitMenuItem);
@@ -354,6 +355,7 @@ public class DECView extends FrameView {
         jMenu1.setName("jMenu1"); // NOI18N
 
         jMenuItem1.setAction(actionMap.get("nuevoProblema")); // NOI18N
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem1.setIcon(resourceMap.getIcon("jMenuItem1.icon")); // NOI18N
         jMenuItem1.setText(resourceMap.getString("jMenuItem1.text")); // NOI18N
         jMenuItem1.setName("jMenuItem1"); // NOI18N
@@ -365,6 +367,7 @@ public class DECView extends FrameView {
         helpMenu.setName("helpMenu"); // NOI18N
 
         aboutMenuItem.setAction(actionMap.get("showAboutBox")); // NOI18N
+        aboutMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
         aboutMenuItem.setIcon(resourceMap.getIcon("aboutMenuItem.icon")); // NOI18N
         aboutMenuItem.setName("aboutMenuItem"); // NOI18N
         helpMenu.add(aboutMenuItem);
@@ -415,11 +418,16 @@ public class DECView extends FrameView {
         @Action
     private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
         // TODO add your handling code here:mainPanel
-       int ans = (Integer) JOptionPane.showConfirmDialog(null, "¿Realmente desea salir?", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-       if(ans==0)
-       {System.exit(0);}
+       
 
     }//GEN-LAST:event_exitMenuItemActionPerformed
+
+        private void exitMenuItemActionPerformed1(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed1
+            // TODO add your handling code here:
+             int ans = (Integer) JOptionPane.showConfirmDialog(null, "¿Realmente desea salir?", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+       if(ans==0)
+       {System.exit(0);}
+        }//GEN-LAST:event_exitMenuItemActionPerformed1
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
