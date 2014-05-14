@@ -92,12 +92,14 @@ public abstract class ToExcel {
             valores.clear();
             valores.add(a.getNombre());
             for(ValorAlternativaCriterio valor : a.getValores()){
-                if(valor.getCriterioId().isMaximizacion()==false)// analizo si es a maximizar, sino divido por 1/x
-                {
+                if(valor.getCriterioId().isMaximizacion()==true)// analizo si es a maximizar, sino divido por 1/x
+                  {valores.add(valor.getValor());}
+                else//aca es de minimizacion
+                 {
                   float value2= 1/valor.getValor();
-                  valor.setValor(value2);
+                  valores.add(value2);
                 }
-                valores.add(valor.getValor());
+               // valores.add(valor.getValor());
             }
             posValores.add(this.libro.addRow(valores,RowType.CONTENT));
         }
