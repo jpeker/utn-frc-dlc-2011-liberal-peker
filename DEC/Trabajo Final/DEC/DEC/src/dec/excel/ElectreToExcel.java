@@ -364,49 +364,48 @@ public class ElectreToExcel extends ToExcel{
        while(tot<l);
 
                 posValores.add(this.libro.addRow(valores,RowType.CONTENT));
-      
+
+      this.libro.addRow(valores, 80, 0, RowType.CONTENT);
       eliminador="";
       eliminador2="";
+      String abecedario="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      ArrayList <String[]> letraFinal= new ArrayList<String[]>();
+           //  letraFinal.add(1,"hola"); add("1048560");
+
+      //valores.clear();
       StringBuilder cell = new StringBuilder("=");
       
       for(int i=0;i<valores.size();i++)
       {
           cell.append("IF(AND(");
-
+      boolean z=false;
           for(int j=0;j<valores.size();j++)
           { 
               if(i!=j)//no debo usar el mismo valor para comparar
              {
-               eliminador=valores.get(i).toString();//valor que viene de i para comparar contra los otros
-               System.out.println(eliminador);
-               for(int w=0;w<eliminador.length();w++)
-                    {
-                    if(w!=0)
-                    eliminador2+=eliminador.charAt(w);//elimini el 1er caracter sea X o =
-                    }
-                cell.append(eliminador2); //cell.append(valores.get(i));
-                eliminador="";
-                eliminador2="";
-              
-                eliminador=valores.get(j).toString();
-                for(int w=0;w<eliminador.length();w++)
-                    {
-                     if(w!=0)
-                     eliminador2+=eliminador.charAt(w);//elimini el 1er caracter sea X o =
-                     }
-              cell.append(">"+eliminador2);
-              eliminador="";
-              eliminador2="";
+               char letra= abecedario.charAt(i);
+               System.out.println(letra);
+               char letra2= abecedario.charAt(j);
+                System.out.println(letra);
+                cell.append(letra+"81"); //cell.append(valores.get(i));
+                cell.append(">"+letra2+"81"); //1048560
+               System.out.println(cell.toString());
               
               if(j<valores.size()-1)//no poner la ultima ,
               {
-                cell.append(",");
+                  cell.append(",");
+
               }
              
             }//cierre if
-          
+
+              if(i==valores.size()-1 && j == valores.size()-1)
+                  {
+                    cell.deleteCharAt(cell.length()-1);
+                  }
            }//cierre j
-            
+
+
           eliminador=valorFinal.get(i).toString();
                 for(int w=0;w<eliminador.length();w++)
                 {
@@ -437,7 +436,16 @@ public class ElectreToExcel extends ToExcel{
       //valores.clear();
       valores.clear();
       valores.add(cell);
-      this.libro.addRow(valores,RowType.HEADER);
+      posValores.add(this.libro.addRow(valores,RowType.CONTENT));
+      //this.libro.addRow(valores,RowType.HEADER);
+      valores.clear();
+      valores.add("=SUM(C58+B58)");
+      posValores.add(this.libro.addRow(valores,RowType.CONTENT));
+      
+      //this.libro.addRow(valores,RowType.HEADER);
+
+     // this.libro.addRow(valores, 1048574, 1, RowType.CONTENT);
+
 
 
 //        for(int e=0;e<matrix.size();e++)
