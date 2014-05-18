@@ -240,7 +240,7 @@ public class ElectreToExcel extends ToExcel{
         this.libro.addEmptyRows(2);
 
         //Indices de Superacion
-
+        List matrix = new ArrayList(); //matriz para solucion final
         String C=problema.getC(); //limite de superacion de concordancia
         String D=problema.getD(); //limite de superacion de discordancia
 
@@ -296,13 +296,160 @@ public class ElectreToExcel extends ToExcel{
 
                     System.out.println(cell.toString());
                     valores.add(cell.toString());
+
                 }else{
-                    valores.add(" X ");
+                    valores.add("X ");
                 }
             }
+            for(int h=1;h<valores.size();h++){
+            
+                matrix.add(valores.get(h));
+            }
             posValores.add(this.libro.addRow(valores,RowType.CONTENT));
+            
         }
-        this.libro.addEmptyRows(2);
+
+                this.libro.addEmptyRows(2);
+      List valorFinal = new ArrayList();
+
+        //valores.add("Alternativas");
+        for(int i = 0; i<super.posValores.size(); i++){
+            valorFinal.add("=T("+super.posValores.get(i)[0]+")");
+        }
+        this.libro.addRow(valorFinal,RowType.HEADER);
+      
+      valores.clear();
+      int l= super.posValores.size();
+      int g=0;
+      int tot=0;
+      //valores.clear();
+      System.out.println(l);
+      System.out.println(g);
+      
+      
+      String eliminador="";
+      String eliminador2="";
+    
+      do{
+
+       StringBuilder cell = new StringBuilder("=SUM(");
+       System.out.println(cell.toString());
+       for(int h=0;h<matrix.size();h++){
+         if(g==h)
+         {  
+          eliminador=matrix.get(g).toString();
+         
+                for(int w=0;w<eliminador.length();w++){
+                if(w!=0)
+                  eliminador2+=eliminador.charAt(w);//elimini el 1er caracter sea X o =
+
+                }
+
+          cell.append(eliminador2 + ",");
+          eliminador="";
+          eliminador2="";
+          System.out.println(cell.toString());
+          g+=l;
+          System.out.println(g);
+         }
+         
+        }
+       cell.append(")");
+       System.out.println(g);
+       System.out.println(cell.toString());
+         valores.add(cell.toString());
+         tot++;
+         g=tot;
+      }
+       while(tot<l);
+
+                posValores.add(this.libro.addRow(valores,RowType.CONTENT));
+      
+      eliminador="";
+      eliminador2="";
+      StringBuilder cell = new StringBuilder("=");
+      
+      for(int i=0;i<valores.size();i++)
+      {
+          cell.append("IF(AND(");
+
+          for(int j=0;j<valores.size();j++)
+          { 
+              if(i!=j)//no debo usar el mismo valor para comparar
+             {
+               eliminador=valores.get(i).toString();//valor que viene de i para comparar contra los otros
+               System.out.println(eliminador);
+               for(int w=0;w<eliminador.length();w++)
+                    {
+                    if(w!=0)
+                    eliminador2+=eliminador.charAt(w);//elimini el 1er caracter sea X o =
+                    }
+                cell.append(eliminador2); //cell.append(valores.get(i));
+                eliminador="";
+                eliminador2="";
+              
+                eliminador=valores.get(j).toString();
+                for(int w=0;w<eliminador.length();w++)
+                    {
+                     if(w!=0)
+                     eliminador2+=eliminador.charAt(w);//elimini el 1er caracter sea X o =
+                     }
+              cell.append(">"+eliminador2);
+              eliminador="";
+              eliminador2="";
+              
+              if(j<valores.size()-1)//no poner la ultima ,
+              {
+                cell.append(",");
+              }
+             
+            }//cierre if
+          
+           }//cierre j
+            
+          eliminador=valorFinal.get(i).toString();
+                for(int w=0;w<eliminador.length();w++)
+                {
+                if(w!=0)
+                  eliminador2+=eliminador.charAt(w);//elimini el 1er caracter sea X o =
+                }
+
+          cell.append("),"+eliminador2); //cell.append(valorFinal.get(i)+",");
+          eliminador="";
+          eliminador2=""; 
+          if(i<valores.size()-1)
+              {
+                cell.append(",");
+              }
+         }//fin i
+
+      for(int i=0;i<valores.size();i++)
+     {
+         cell.append(")");
+         
+     }
+      System.out.print(cell.toString());
+//
+//      valores.clear();
+//      valores.add("La mejor Alternativa es:");
+//      this.libro.addRow(valores,RowType.HEADER);
+
+      //valores.clear();
+      valores.clear();
+      valores.add(cell);
+      this.libro.addRow(valores,RowType.HEADER);
+
+
+//        for(int e=0;e<matrix.size();e++)
+//        {
+//
+//          for (int j = 0; j < matrix.get(e); j++) {
+//                if(e!=j)
+//                {
+//
+//                }}
+//        }
+
 
 
 
