@@ -151,16 +151,21 @@ public class TopsisToExcel extends ToExcel{
         cabecera.add("Anti Ideal (S-)");
         cabecera.add("Proximidad (C*)");
         this.libro.addRow(cabecera,RowType.HEADER);
-
+        List mejorValor = new ArrayList();
+        List nombreMejorValor = new ArrayList();
         for (int i = 0; i < problema.getAlternativaList().size(); i++) {
             valores.clear();
             String[] disIdeal = distanciaIdeal.get(i);
             String[] disAntiIdeal = distanciaAntiIdeal.get(i);
+            nombreMejorValor.add("T("+disIdeal[0]+")");
             valores.add("=T("+disIdeal[0]+")");
             valores.add("="+disIdeal[disIdeal.length-1]);
             valores.add("="+disAntiIdeal[disAntiIdeal.length-1]);
             String auxPos[] = this.libro.addRow(valores,RowType.CONTENT);
             String aux = this.libro.addCell("="+auxPos[2]+"/("+auxPos[1]+"+"+auxPos[2]+")");
+            mejorValor.add(aux);
+            System.out.println(mejorValor.get(i));
+            System.out.println(nombreMejorValor.get(i));
             auxPos = Arrays.copyOf(auxPos, auxPos.length+1);
             auxPos[auxPos.length-1] = aux;
         }
@@ -168,5 +173,57 @@ public class TopsisToExcel extends ToExcel{
         for (int i = 1; i < this.problema.getCriterioList().size()+2; i++) {
            this.libro.autoSizeColumns(i);
         }
+
+        //Resultado Final
+        StringBuilder cell = new StringBuilder("=");
+
+      for(int i=0;i<mejorValor.size();i++)
+      {
+          cell.append("IF(AND(");
+
+          for(int j=0;j<mejorValor.size();j++)
+          {
+              if(i!=j)//no debo usar el mismo valor para comparar
+             {
+                  cell.append(mejorValor.get(i)+">"+mejorValor.get(j));
+               System.out.println(cell.toString());
+
+               if(j<mejorValor.size()-1)//no poner la ultima ,
+              {
+                  cell.append(",");
+
+              }
+
+            }//cierre if
+
+              if(i==mejorValor.size()-1 && j == mejorValor.size()-1)
+                  {
+                    cell.deleteCharAt(cell.length()-1);
+                  }
+           }//cierre j
+
+
+          cell.append("),"+nombreMejorValor.get(i)); //cell.append(valorFinal.get(i)+",");
+
+          if(i<mejorValor.size()-1)
+              {
+                cell.append(",");
+              }
+         }//fin i
+
+      for(int i=0;i<mejorValor.size();i++)
+     {
+         cell.append(")");
+
+     }
+      System.out.print(cell.toString());
+      this.libro.addEmptyRows(2);
+      valores.clear();
+      valores.add("La mejor alternativa ordenada de acuerdo a su maxima similaridad al ideal Positivo es:");
+      this.libro.addRow(valores,RowType.TITLE);
+      valores.clear();
+      valores.add(cell.toString());//
+      this.libro.addRow(valores,RowType.HEADER);
+
     }  
 }
