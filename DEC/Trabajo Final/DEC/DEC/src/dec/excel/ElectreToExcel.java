@@ -365,7 +365,8 @@ public class ElectreToExcel extends ToExcel{
 
                 posValores.add(this.libro.addRow(valores,RowType.CONTENT));
 
-      this.libro.addRow(valores, 80, 0, RowType.CONTENT);
+
+      this.libro.addRow(valores, 1048559, 0, RowType.CONTENT);
       eliminador="";
       eliminador2="";
       String abecedario="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -387,8 +388,8 @@ public class ElectreToExcel extends ToExcel{
                System.out.println(letra);
                char letra2= abecedario.charAt(j);
                 System.out.println(letra);
-                cell.append(letra+"81"); //cell.append(valores.get(i));
-                cell.append(">"+letra2+"81"); //1048560
+                cell.append(letra+"1048560"); //cell.append(valores.get(i));
+                cell.append(">"+letra2+"1048560"); //1048560
                System.out.println(cell.toString());
               
               if(j<valores.size()-1)//no poner la ultima ,
@@ -429,19 +430,23 @@ public class ElectreToExcel extends ToExcel{
      }
       System.out.print(cell.toString());
 //
-//      valores.clear();
-//      valores.add("La mejor Alternativa es:");
-//      this.libro.addRow(valores,RowType.HEADER);
+//      
 
-      //valores.clear();
+//      valores.clear();
+//      valores.add("La mejor Alternativa es: ");
+//
+//     this.libro.addRow(valores,85,RowType.TITLE);
+//
+      this.libro.addCell("La mejor Alternativa es: ");
+
+      this.libro.addCell(cell.toString());
+
       valores.clear();
-      valores.add(cell);
-      posValores.add(this.libro.addRow(valores,RowType.CONTENT));
-      //this.libro.addRow(valores,RowType.HEADER);
-      valores.clear();
-      valores.add("=SUM(C58+B58)");
-      posValores.add(this.libro.addRow(valores,RowType.CONTENT));
-      
+      valores.add("La mejor Alternativa es:");
+      valores.add(cell.toString());
+      this.libro.addRow(valores,68,0,RowType.HEADER);
+
+      this.libro.addCell(cell.toString());
       //this.libro.addRow(valores,RowType.HEADER);
 
      // this.libro.addRow(valores, 1048574, 1, RowType.CONTENT);
