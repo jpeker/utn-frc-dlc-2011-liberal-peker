@@ -389,7 +389,7 @@ public class ElectreToExcel extends ToExcel{
                char letra2= abecedario.charAt(j);
                 System.out.println(letra);
                 cell.append(letra+"1048560"); //cell.append(valores.get(i));
-                cell.append(">"+letra2+"1048560"); //1048560
+                cell.append("<"+letra2+"1048560"); //1048560
                System.out.println(cell.toString());
               
               if(j<valores.size()-1)//no poner la ultima ,
@@ -415,6 +415,10 @@ public class ElectreToExcel extends ToExcel{
                 }
 
           cell.append("),"+eliminador2); //cell.append(valorFinal.get(i)+",");
+          if(i==valores.size()-1)
+                  {
+                    cell.append(",\"EMPATE\"");
+                  }
           eliminador="";
           eliminador2=""; 
           if(i<valores.size()-1)
@@ -442,7 +446,7 @@ public class ElectreToExcel extends ToExcel{
       this.libro.addCell(cell.toString());
 
       valores.clear();
-      valores.add("La mejor Alternativa es:");
+      valores.add("La mejor Alternativa es aquella que domina a las demas (Menor Valor en la ultima tabla). En caso de haber empate se indicará \"EMPATE\":");
      // valores.add(cell.toString());
       this.libro.addRow(valores,68,1,RowType.TITLE);
 
