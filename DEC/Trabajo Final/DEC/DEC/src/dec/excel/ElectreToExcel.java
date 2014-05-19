@@ -443,9 +443,12 @@ public class ElectreToExcel extends ToExcel{
 
       valores.clear();
       valores.add("La mejor Alternativa es:");
-      valores.add(cell.toString());
-      this.libro.addRow(valores,68,0,RowType.HEADER);
+     // valores.add(cell.toString());
+      this.libro.addRow(valores,68,1,RowType.TITLE);
 
+      valores.clear();
+       valores.add(cell.toString());
+       this.libro.addRow(valores,69,1,RowType.TITLE);
       this.libro.addCell(cell.toString());
       //this.libro.addRow(valores,RowType.HEADER);
 
