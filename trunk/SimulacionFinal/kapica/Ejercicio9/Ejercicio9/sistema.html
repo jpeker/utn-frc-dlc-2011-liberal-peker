@@ -1,0 +1,364 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<title>Final de Simulacion - Ejercicio nro 9</title>
+	<link rel="stylesheet" href="css.css" type="text/css" />
+	<script language="javascript">
+<!--//
+function mostrarEjercicio(){
+	if(document.getElementById("Ejerc").style.display=="none"){
+		document.getElementById("verEjerc").innerHTML="(Ocultar Ejercicio)<br><br>";
+		document.getElementById("Ejerc").style.display="block";
+	}else{
+		document.getElementById("verEjerc").innerHTML="(Ver Ejercicio)";
+		document.getElementById("Ejerc").style.display="none";
+	}
+}
+
+var numerosRnd_Da = new Array();
+var numerosRnd_DS = new Array();
+var numerosRnd_T = new Array();
+var demanda, stock, faltante, cp, ca, ct, acuA, acuP, i_Da, i_DS, i_T, precioStock, semanaPedidoLlega, pedidoLlega, pidePedido = "";
+demanda = stock = faltante = cp = ca = ct = acuA = acuP = i_Da = i_DS = precioStock = i_T = semanaPedidoLlega = pedidoLlega = 0;
+
+// Funcion para calcular el tiempo de entrega si se hace pedido.
+function tipo_entrega(rndEntrega){
+	if(rndEntrega<0.20){
+		return 1;
+	}else{
+		if(rndEntrega<0.60){
+			return 2;
+		}else{
+			return 3;
+		}
+	}
+}
+
+// Funcion para calcular la demanda de cada semana.
+function demandaSemana(rnd){
+	if(rnd<0.15){
+		demanda=0;
+	}else{
+		if(rnd<0.30){
+			demanda=1;
+		}else{
+			if(rnd<0.50){
+				demanda=2;
+			}else{
+				if(rnd<0.65){
+					demanda=3;
+				}else{
+					if(rnd<0.90){
+						demanda=4;	
+					}else      {
+						demanda=5;
+					}
+				}
+			}
+		}	
+	}
+	return demanda;
+}
+
+// Este es la funcion que hace randoms para cada vector con el mismo multiplicador
+// Como raiz a todos le ponemos 5, y luego usamos el 3 * ValorAnterior + 2
+function rndConDS(){
+	numerosRnd_DS[i_DS+1]=(3*numerosRnd_DS[i_DS] + 2 ) % 101;
+	i_DS++;
+	return (numerosRnd_DS[i_DS]/100);
+}
+
+function rndConDa(){
+	numerosRnd_Da[i_Da+1]=(3*numerosRnd_Da[i_Da] + 2 ) % 101;
+	i_Da++;
+	return (numerosRnd_Da[i_Da]/100);
+}
+
+function rndConT(){
+	numerosRnd_T[i_T+1]=(3*numerosRnd_T[i_T] + 2 ) % 101;
+	i_T++;
+	return (numerosRnd_T[i_T]/100);
+}
+
+function ejecutar(){
+	
+	numerosRnd_DS[0] = 5; // Vector Random de Demanda por semana
+	numerosRnd_Da[0] = 5; // Vector random de Bicicletas daniadas
+	numerosRnd_T[0]=5; // Vector random de Tipo de entrega
+	var iVector =0;
+	semanaPedidoLlega = 0;
+	var strCantDevueltas = "";
+	var cantPedido = "";
+	
+	
+	precioStock=parseInt(document.datosiniciales['costoStock'].value);
+	stock=parseInt(document.datosiniciales['cantSotckInicial'].value);
+	var simulaciones=parseInt(document.datosiniciales['simulaciones'].value);
+	
+	var tabla = "<table border=0 cellpadding=5 width=1400 cellspacing=0 style='border-collapse:collapse;table-layout:fixed;'> <col span=16 > <tr height=20 style='height:15.0pt;font-weight:bold;'>  <td height=20 class=xl15848 style='height:15.0pt;width:48pt'></td>  <td colspan=2 class=xl15848 >Demanda</td>   <td class=xl15848 >Entrega</td>  <td class=xl15848 ></td>  <td class=xl15848 >Pedido</td>  <td class=xl15848 ></td>  <td class=xl15848 ></td>  <td class=xl15848 ></td>  <td class=xl15848 ></td>  <td class=xl15848 ></td>  <td class=xl15848 ></td>  <td class=xl15848 ></td>  <td class=xl15848 ></td>  <td class=xl15848 ></td>  <td ></td> </tr> <tr height=20 style='height:15.0pt;font-weight:bold;'>  <td height=20 class=xl15848 style='height:15.0pt'>Semana</td>  <td width='10'>RND</td>  <td class=xl15848>Demanda</td>  <td class=xl15848>RND</td>  <td class=xl15848>Tpo.Ent.</td>  <td class=xl15848>S/N</td>  <td class=xl15848>Cant.Pedi<span style='display:none'>do</span></td>  <td class=xl15848>Stock</td>  <td class=xl15848>---<span style='mso-spacerun:yes'> </span></td>  <td class=xl15848>Dañandas <span style='display:none'>S/N</span></td>  <td class=xl15848>Cant. Devueltas</td>  <td class=xl15848>Faltante</td>  <td class=xl15848>Costo de stock</td>  <td class=xl15848>Costo del<br /> Pedido</td>  <td class=xl15848>Costo Por <br />Agotamiento</td>  <td >Costo <br />Total</td> </tr> ";
+	
+	
+	for(iVector=0; iVector<=simulaciones; iVector++){
+		rechazo='style="color:black"';
+		//alert(iVector);
+
+		if(iVector==0){
+			// Imprimo el estado inicial con algunos valores por defecto
+			cs = stock * precioStock;
+			
+			ct = cs + ca + cp;
+			
+			tabla+='<tr>  <td class="linea semana">'+iVector+'</td>' +
+			'  <td class="linea rnd_demanada"></td>' +
+			'  <td class="linea demanda"></td>' +
+			'  <td class="linea rnd_entrega"></td>' +
+			'  <td class="linea tipo_entrega"></td>' +
+			'  <td class="linea pide"></td>' +
+			'  <td class="linea cant_pedido"></td>' +
+			'  <td class="linea stock">' + stock + '</td>' +
+			'  <td class="linea rnd_daniada"></td>' +
+			'  <td class="linea daniada"></td>' +
+			'  <td class="linea devuelta"></td>' +
+			'  <td class="linea faltante"></td>' +
+			'  <td class="linea CostS">'+cs+'</td>' +
+			'  <td class="linea Costp">'+cp+'</td>' +
+			'  <td class="linea CostA">'+ca+'</td>' +
+			'  <td class="linea CostT">'+ct+'</td>' +
+			' </tr>';
+		}else{
+			// Inicializo variables
+			var sRand1, sRand2, sRnd3;
+			sRand1 = sRand2 = sRnd3 = "";
+			cantidadPedido = "";
+			pidePedido = "";
+			pedidoLlega = "";
+			faltante = '';
+			daniada = "";
+			strCantDevueltas = "";
+			
+			// Me fijo al comienzo de la semana (y los calculos) si llega pedido
+			
+			if(semanaPedidoLlega==iVector){
+				strCantDevueltas = 0;
+				
+				//  daniada o no
+				for(var intJ = 1; intJ < 7; intJ++){
+					// Random con random natural de javascript descomentamos abajo y comentamos el otro
+					// sRand3 = (parseInt(Math.random() * 100) / 100);
+					// Random con funcion provista por la materia 
+					sRand3 = rndConDa();
+					if(sRand3 < 0.19){
+						strCantDevueltas++;
+						daniada = "Si";
+					}
+				}
+				
+				// Le resto a la cantidad de bicis del pedido las que estan daniadas para sumar al stock
+				cantPedido = 6 - strCantDevueltas;
+				if(strCantDevueltas==0){strCantDevueltas="";}
+				stock = stock + cantPedido;	
+				semanaPedidoLlega = 0;
+			}
+			
+			
+			// sRand1 = (parseInt(Math.random() * 100) / 100);
+			// Random con funcion provista por la materia 
+			sRand1 = rndConDS();
+			// Calculo la demanda en base al random generado
+			demanda = demandaSemana(sRand1); 
+			
+			// Faltante
+			if(stock < demanda){
+				if(stock<0){
+					faltante = demanda;
+				}else{
+					faltante = demanda - stock;	
+				}
+				ca = faltante * 15;
+			}
+			
+			
+			stock = stock - demanda; 
+			
+			// Inicializo costo depedido
+			cp = 0; 
+			
+			// Aca calculo el punto de pedido
+			if(stock <= 2 && semanaPedidoLlega == 0){ 
+				
+				
+				sRand2 = rndConT();
+				
+				pedidoLlega=tipo_entrega(sRand2);
+
+
+				semanaPedidoLlega = pedidoLlega + iVector; // + 1;
+				cantidadPedido = "6";
+				pidePedido = "Si";
+				
+				cp = 30;
+			}
+			
+			// costo de mantener el stockk siempre y cuando el stock sea > 0
+			// Sino dejo el costo por stock de esa semana en 0 (cero) y el stock en 0 (cero)
+			if(stock > 0){ cs = stock * precioStock; }
+			else{ cs = 0; stock = 0; }
+			
+			
+			
+			ct = cs + ca + cp + ct;
+			tabla+='<tr  onmouseover="this.style.backgroundColor=\'#DDDDDD\';" onmouseout="this.style.backgroundColor=\'#FFFFFF\';">' +
+			'<td class="linea semana">'+iVector+'</td>' +
+			'  <td class="linea rnd_demanada">'+sRand1+'</td>' +
+			'  <td class="linea demanda">'+demanda+'</td>' +
+			'  <td class="linea rnd_entrega">'+sRand2+'</td>' +
+			'  <td class="linea tipo_entrega">'+pedidoLlega+'</td>' +
+			'  <td class="linea pide">'+pidePedido+'</td>' +
+			'  <td class="linea cant_pedido">'+cantidadPedido+'</td>' +
+			'  <td class="linea stock">' + stock + '</td>' +
+			'  <td class="linea rnd_daniada"></td>' +
+			'  <td class="linea daniada">'+daniada+'</td>' +
+			'  <td class="linea devuelta">'+strCantDevueltas+'</td>' +
+			'  <td class="linea faltante" style="color:">'+faltante+'</td>' +
+			'  <td class="linea CostS">'+cs+'</td>' +
+			'  <td class="linea Costp">'+cp+'</td>' +
+			'  <td class="linea CostA">'+ca+'</td>' +
+			'  <td class="linea CostT">'+ct+'</td>' +
+			' </tr>';
+		}
+	}	
+	tabla+='</table>';
+	document.getElementById("tablanueva").innerHTML=tabla;
+	console.log(numerosRnd_Da);
+	console.log(numerosRnd_DS);
+	console.log(numerosRnd_T);
+}
+
+
+//-->
+</script>
+<style type="text/css">
+<!--
+.style1 {color: #006699}
+.faltante{ color: #F00; }
+.daniada, .devuelta{ color: #00F; }
+.rnd_entrega, .pide, .cant_pedido{ color: #0B610B; }
+.linea{ border-bottom: 1px solid #CCC; }
+-->
+</style>
+</head>
+
+<body onload="">
+	<form name="datosiniciales">
+		<h4>Ejercicio n&deg; 9 </h4>
+		<span id="verEjerc" onclick="mostrarEjercicio()">(Ver Ejercicio)</span>
+		<span id="Ejerc" style="display:none;"> La firma "El Rey de la Bicicleta" pretende desarrollar una política de cantidad de pedido y punto
+			de renovación de pedido que minimice los costos totales asociados al inventario de bicicletas
+			de la compañía. La distribución de frecuencias para la demanda semanal es la siguiente:<br />
+			<br />
+			<table cellspacing="0" cellpadding="5" border="0" style="text-align:center; border:1px solid #CCC;">
+				<tr>
+					<td align="left">Demanda por semana </td>
+					<td>0</td>
+
+					<td>1</td>
+
+					<td>2</td>
+
+					<td>3</td>
+
+					<td>4</td>
+
+					<td>5</td>
+				</tr>
+				<tr>
+					<td align="left">Probabilidad (%)</td>
+
+					<td>15</td>
+
+					<td>15</td>
+
+					<td>20</td>
+
+					<td>15</td>
+
+					<td>25</td>
+
+					<td>10</td>
+				</tr>
+
+			</table>
+			<br />
+			La distribución de frecuencias relativas del tiempo de adelanto es la siguiente:
+			<br /><br />
+			<table cellspacing="0" cellpadding="5" border="0" style="text-align:center; border:1px solid #CCC;">
+				<tr>
+					<td align="left">Tiempo de entrega (semanas)</td>
+
+					<td>1</td>
+
+					<td>2</td>
+
+					<td>3</td>
+				</tr>
+				<tr>
+					<td align="left">Frecuencias relativas</td>
+
+					<td>0,2</td>
+
+					<td>0,4</td>
+
+					<td>0,4</td>
+				</tr></table>
+				<br />
+				Además existe una probabilidad del 18% de que cada bicicleta al llegar la orden se encuentre
+				dañada debe ser devuelta bajo garantía al proveedor sin costo adicional.<br />
+				<br />
+				El costo de tenencia es de $5 por unidad por semana, el costo de pedido es de $30 por cada
+				uno, el costo de agotamiento es de $15 por unidad y el inventario inicial es de 12 unidades.<br />
+				<br />
+				La empresa desea conocer los costos de inventario asociados a una política en la que la
+				cantidad a pedir es de 6 unidades y el punto de renovación de pedido es de 2 unidades.<br />
+				<br />
+				Simular 10 semanas de operación para este sistema de inventario y elabore un breve reporte
+				para "El Rey de la Bicicleta" en el que describa el análisis, las conclusiones y realice algunas
+				sugerencias para mejorar el análisis que permita reducir los costos de inventario.<br />
+				<br />
+				<strong>Nota: </strong>Suponer que los pedidos arriban al principio de la semana. Calcular el número de
+				bicicletas dañadas en el momento de recibir el pedido.</span>
+				<hr />
+				<table width="400" border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<td height="18">&nbsp;</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td height="18">Stock Inicial: </td>
+						<td><input name="cantSotckInicial" type="text" id="cantSotckInicial" style="height:20px; width:40px;" value="12" /></td>
+					</tr>
+					<tr>
+						<td height="18">Costo Stock x Unidad: </td>
+						<td><input name="costoStock" type="text" id="costoStock" style="height:20px; width:40px;" value="5" /></td>
+					</tr>
+					<tr>
+						<td height="18">Cantidad de Semanas a Simular: </td>
+						<td><input name="simulaciones" type="text" id="simulaciones" style="height:20px; width:40px;" value="10" /></td>
+					</tr>
+					<tr>
+						<td height="18">&nbsp;</td>
+						<td>&nbsp;</td>
+					</tr>
+				</table>
+
+			</form>
+			<input type="submit" name="Submit" value="Correr" onclick="ejecutar()" />
+			<br />
+
+			<br />
+
+			<span id="tablanueva"></span>
+			<span id="resultados1">
+			</span>
+		</body>
+		</html>

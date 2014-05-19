@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Final Simulación | Ejercicio X</title>
+	<link rel="stylesheet" href="css/bootstrap.css" media="screen">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset='utf-8'>
+
+	<!-- La firma "El Rey de la Bicicleta" pretende desarrollar una política de cantidad de pedido y punto de renovación de pedido que minimice los costos totales asociados al inventario de bicicletas de la compañía. La distribución de frecuencias para la demand semanal es la siguiente:
+
+	Demand por semana	0	1	2	3	4	5
+	Probabilidad (%)	15	15	20	15	25	10
+
+	La distribución de frecuencias relativas del tiempo de adelanto es la siguiente: 
+
+	Tiempo de entrega (semanas)	1	2	3
+	Frecuencias relativas	0,2	0,4	0,4
+
+	Además existe una probabilidad del 18% de que cada bicicleta al llegar la orden se encuentre dañada debe ser devuelta bajo garantía al proveedor sin costo adicional.
+
+	El costo de tenencia es de $5 por unidad por semana, el costo de pedido es de $30 por cada uno, el costo de agotamiento es de $15 por unidad y el inventario inicial es de 12 unidades.
+
+	La empresa desea conocer los costos de inventario asociados a una política en la que la cantidad a pedir es de 6 unidades y el punto de renovación de pedido es de 2 unidades.
+
+	Simular 10 semanas de operación para este sistema de inventario y elabore un breve reporte para "El Rey de la Bicicleta" en el que describa el análisis, las conclusiones y realice algunas sugerencias para mejorar el análisis que permita reducir los costos de inventario.
+
+	Nota: Suponer que los pedidos arriban al principio de la semana. Calcular el número de bicicletas dañadas en el momento de recibir el pedido. -->
+	
+	<script type="text/javascript">
+
+	/*
+	 * Tiempo de entrega (semanas)	1	2	3
+	 * Frecuencias relativas		0,2	0,4	0,4
+	 *
+	 */
+	 function get_delivery_time(rnd){
+	 	return rnd < 20 ? 1 : (rnd < 60 ? 2 : 3);
+	 }
+
+	/*
+	 * Demand por semana	0	1	2	3	4	5
+	 * Probabilidad (%)		15	15	20	15	25	10
+	 *
+	 */
+	 function get_demand(rnd){
+	 	if(rnd < 15)
+	 		demand = 0;
+	 	else if(rnd < 30)
+	 		demand = 1;
+	 	else if(rnd < 50)
+	 		demand = 2;
+	 	else if(rnd < 65)
+	 		demand = 3;
+	 	else if(rnd < 90)
+	 		demand = 4;
+	 	else
+	 		demand = 5;
+
+	 	return demand;
+	 }
+
+	// Esta es la funcion que hace randoms para cada vector con el mismo multiplicador
+	// Como raiz a todos le ponemos 5, y luego usamos el 3 * ValorAnterior + 2
+	// Esta funcion se repite para cada generador que se presenta
+    
+  
+    function rnd_ds(i){
+		var generated = [5, 17, 53, 60, 81, 43, 30, 92, 76, 28, 86, 58, 75];
+		return generated[i];
+	}
+
+
+	function rnd_da(i){
+		var generated = [5, 17, 53, 60, 81, 43, 30, 92, 76, 28, 86, 58, 75];
+		return generated[i];
+	}
+
+	function rnd_t(i){
+		var generated = [5, 17, 53, 60, 81, 43, 30, 92, 76, 28, 86, 58, 75];
+		return generated[i];
+	}
+
+    
+    
+	function run(){
+		
+		var rnd_demand = '';
+		var rnd_damage = '';
+		var rnd_delivery = '';
+
+		var week_order = '';
+		var damage = '';
+		var order = '';
+		var order_number = 1;
+		
+		var stock = 0;
+		var unit_cost = 0;
+		var simulaciones = 0;
+		// costo unitario
+        unit_cost = parseInt(document.getElementById('cost').value);
+		// stock inicial
+        stock = parseInt(document.getElementById('stock').value);
+		//Cantidad de simulaciones a realizar
+        simulaciones = parseInt(document.getElementById('simulations').value);
+
+		// costo de inventario inicial
+		var cs = stock * unit_cost;
+		// costo agotamiento
+		var ca = 0;
+		// costo de pedido
+		var cp = 0;
+		// costo total
+		var ct = cs + ca + cp;
+		var cta = ct;
+		
+        // creo la tabla donde se muestran las simulaciones a realizar 
+        // indicando en cada una el nombre de su columna
+		var tabla = "<table class='table table-striped table-hover'>" +
+						"<thead>" +
+							"<th>Semana</th>" +
+							"<th>RND</th>" +
+							"<th>Demanda</th>" +
+							"<th>RND</th>" +
+							"<th>Tpo. Entrega</th>" +
+							"<th>S/N</th>" +
+							"<th>Cant. Pedido</th>" +
+							"<th>Stock</th>" +
+							"<th>Dañadas</th>" +
+							"<th>Devueltas</th>" +
+							"<th>Faltante</th>" +
+							"<th>Costo Stock</th>" +
+							"<th>Costo Pedido</th>" +
+							"<th>Costo Ruptura</th>" +
+							"<th>Costo Total</th>" +
+							"<th>Costo Total Acum</th>" +
+						"</thead>";
+		//bucle principal de inicio de las simulaciones
+        for(i = 0; i <= simulaciones; i++){
+			// rechazo='style="color:black"';
+
+			if(i == 0){
+				tabla += "<tr>" +
+							"<td>" + i + "</td>" +
+							"<td></td>" +
+							"<td></td>" +
+							"<td></td>" +
+							"<td></td>" +
+							"<td></td>" +
+							"<td></td>" +
+							"<td>" + stock + "</td>" +
+							"<td></td>" +
+							"<td></td>" +
+							"<td></td>" +
+							"<td>" + cs + "</td>" +
+							"<td>" + cp + "</td>" +
+							"<td>" + ca + "</td>" +
+							"<td>" + ct + "</td>" +
+							"<td>" + cta + "</td>" +							
+						"</tr>";
+			} else {
+				// Me fijo al comienzo de la semana (y los calculos) si llega pedido
+				ct = 0;
+				var damage = 0;
+				var is_damaged = '';
+				if(week_order == i){
+					//  is_damaged o no
+					for(var j = 1; j < 7; j++){
+						// Random con funcion provista por la materia 
+						rnd_damage = this.rnd_da(j);
+						if(rnd_damage < 19){
+							damage++;
+						}
+					}
+					is_damaged = (damage > 0) ? 'Sí' : '';
+					if(damage === 0)
+						damage = '';
+
+					// Le resto a la cantidad de bicis del pedido las que estan is_damageds para sumar al stock
+					order = 6 - damage;
+					// if(damage == 0)
+					// 	damage = "";
+					stock = stock + order;	
+					week_order = 0;
+				}
+				
+				// Random con funcion provista por la materia 
+				rnd_demand = this.rnd_ds(i);
+				var weeks_left = '';
+				var is_ordered = '';
+				var default_order = '';
+				cp = 0;
+				ca = 0;
+				rnd_delivery = '';
+
+				// Calculo la demand en base al random generado
+				var demand = this.get_demand(rnd_demand);
+				var missed = '';
+				// missed
+				if(stock < demand){
+					if(stock < 0){
+						missed = demand;
+					}else{
+						missed = demand - stock;	
+					}
+					ca = missed * 15;
+				}
+				
+				stock = stock - demand;
+				
+				// Aca calculo el punto de pedido
+				if(stock <= 2 && week_order == ''){
+					rnd_delivery = this.rnd_t(order_number);
+					weeks_left = this.get_delivery_time(rnd_delivery);
+					order_number++;
+
+					week_order = weeks_left + i;
+					var is_ordered = 'Sí';
+					default_order = 6;	
+					cp = 30;
+				}
+				
+				// costo de mantener el stockk siempre y cuando el stock sea > 0
+				// Sino dejo el costo por stock de esa semana en 0 (cero) y el stock en 0 (cero)
+				if(stock > 0){
+					cs = stock * unit_cost;
+				}else{
+					cs = 0;
+					stock = 0;
+				}
+							
+				ct = cs + ca + cp + ct;
+				cta += ct; 
+				tabla += '<tr>' +
+				'<td>' +i+'</td>' +
+				'  <td class="linea rnd_demanada">'+rnd_demand+'</td>' +
+				'  <td class="linea demand">'+demand+'</td>' +
+				'  <td class="linea rnd_entrega">'+rnd_delivery+'</td>' +
+				'  <td class="linea tipo_entrega">'+weeks_left+'</td>' +
+				'  <td class="linea pide">'+is_ordered+'</td>' +
+				'  <td class="linea cant_pedido">'+default_order+'</td>' +
+				'  <td class="linea stock">' + stock + '</td>' +
+				'  <td class="linea is_damaged">'+ is_damaged +'</td>' +
+				'  <td class="linea is_damaged">'+ damage +'</td>' +
+				'  <td class="linea missed" style="color:">'+missed+'</td>' +
+				'  <td class="linea CostS">'+cs+'</td>' +
+				'  <td class="linea Costp">'+cp+'</td>' +
+				'  <td class="linea CostA">'+ca+'</td>' +
+				'  <td class="linea CostT">'+ct+'</td>' +
+				'  <td class="linea CT Acum">'+cta+'</td>' +
+				' </tr>';
+			}
+		}	
+		tabla+='</table>';
+		document.getElementById("sim-table").innerHTML = tabla;
+	}
+	</script>
+</head>
+<body>
+	<div class="container">
+		<h4>Ejercicio X </h4>
+		<!-- <span id="verEjerc" onclick="mostrarEjercicio()">(Ver Ejercicio)</span> -->
+		<span id="enunciado" style="display:none;"> La firma "El Rey de la Bicicleta" pretende desarrollar una política de cantidad de pedido y punto
+			de renovación de pedido que minimice los costos totales asociados al inventario de bicicletas
+			de la compañía. La distribución de frecuencias para la demand semanal es la siguiente:<br />
+			<br />
+			<table cellspacing="0" cellpadding="5" border="0" style="text-align:center; border:1px solid #CCC;">
+				<tr>
+					<td align="left">Demand por semana </td>
+					<td>0</td>
+					<td>1</td>
+					<td>2</td>
+					<td>3</td>
+					<td>4</td>
+					<td>5</td>
+				</tr>
+				<tr>
+					<td align="left">Probabilidad (%)</td>
+					<td>15</td>
+					<td>15</td>
+					<td>20</td>
+					<td>15</td>
+					<td>25</td>
+					<td>10</td>
+				</tr>
+			</table>
+			<br />
+			La distribución de frecuencias relativas del tiempo de adelanto es la siguiente:
+			<br /><br />
+			<table cellspacing="0" cellpadding="5" border="0" style="text-align:center; border:1px solid #CCC;">
+				<tr>
+					<td align="left">Tiempo de entrega (semanas)</td>
+					<td>1</td>
+					<td>2</td>
+					<td>3</td>
+				</tr>
+				<tr>
+					<td align="left">Frecuencias relativas</td>
+					<td>0,2</td>
+					<td>0,4</td>
+					<td>0,4</td>
+				</tr>
+			</table>
+			<br />
+			Además existe una probabilidad del 18% de que cada bicicleta al llegar la orden se encuentre
+			dañada debe ser devuelta bajo garantía al proveedor sin costo adicional.<br />
+			<br />
+			El costo de tenencia es de $5 por unidad por semana, el costo de pedido es de $30 por cada
+			uno, el costo de agotamiento es de $15 por unidad y el inventario inicial es de 12 unidades.<br />
+			<br />
+			La empresa desea conocer los costos de inventario asociados a una política en la que la
+			cantidad a pedir es de 6 unidades y el punto de renovación de pedido es de 2 unidades.<br />
+			<br />
+			Simular 10 semanas de operación para este sistema de inventario y elabore un breve reporte
+			para "El Rey de la Bicicleta" en el que describa el análisis, las conclusiones y realice algunas
+			sugerencias para mejorar el análisis que permita reducir los costos de inventario.<br />
+			<br />
+			<strong>Nota: </strong>Suponer que los pedidos arriban al principio de la semana. Calcular el número de
+			bicicletas dañadas en el momento de recibir el pedido.
+		</span>
+		<hr />
+		<form class="form-horizontal" role="form">
+			<div class="form-group">
+				<label for="stock" class="col-lg-2 control-label">Inventario inicial</label>
+				<div class="col-lg-2">
+					<input type="text" class="form-control" id="stock" placeholder="Stock" value="12">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="cost" class="col-lg-2 control-label">Costo por unidad</label>
+				<div class="col-lg-2">
+					<input type="text" class="form-control" id="cost" placeholder="Costo" value="5">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="simulations" class="col-lg-2 control-label">Semanas a simular</label>
+				<div class="col-lg-2">
+					<input type="text" class="form-control" id="simulations" placeholder="Semanas" value="10">
+				</div>
+			</div>
+		</form>
+		<input type="submit" name="Ejecutar" class="btn btn-primary" value="Ejecutar" onclick="run()" />	
+		<div id="sim-table"></div>
+		<span id="resultados1"></span>
+	</div>
+</body>
+</html>
